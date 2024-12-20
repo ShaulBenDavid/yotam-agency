@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { RxHamburgerMenu } from 'react-icons/rx';
 
 type BurgerButton = React.ButtonHTMLAttributes<HTMLButtonElement>;
 
@@ -13,21 +14,6 @@ export const BurgerButton = ({ onClick }: BurgerButton) => (
     aria-controls="navigation-drawer"
     className="mr-2 scale-x-[-1] p-2"
   >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      className="h-6 w-6"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-      aria-hidden="true"
-      focusable="false"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="2"
-        d="M4 6h16M4 12h16m-7 6h7"
-      />
-    </svg>
+    <RxHamburgerMenu size={32} color="#071952" />
   </button>
 );
