@@ -28,10 +28,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Header />
-        <main className="w-[1227px] flex-1 justify-center pt-14 max-lg:w-[1000px] max-md:w-full max-md:px-4">
-          {children}
-        </main>
+        <div className="flex min-h-screen flex-col items-center">
+          <Header />
+          <main className="tb:pt-20 w-[1400px] flex-grow pt-14 max-lg:w-[1000px] max-md:w-full max-md:px-2">
+            {children}
+          </main>
+        </div>
       </body>
     </html>
   );

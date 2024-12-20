@@ -16,7 +16,7 @@ export const Header = (): JSX.Element => {
   return (
     <>
       <header className="fixed z-10 flex w-full flex-col items-center bg-white bg-opacity-[0.5] backdrop-blur-xl">
-        <div className="bg-primary-950 max-tb:hidden flex w-full justify-center text-white">
+        <div className="bg-primary-950 max-tb:hidden flex w-full justify-center px-2 text-white">
           <div
             className="max-md:w-full-4 flex w-[1400px] flex-row items-center py-1 text-lg font-semibold max-lg:w-[1000px]"
             aria-label="Contact Information"
@@ -45,7 +45,7 @@ export const Header = (): JSX.Element => {
             </ul>
           </div>
         </div>
-        <nav className="flex w-[1400px] flex-row items-center py-2 max-lg:w-[1000px] max-md:w-full">
+        <nav className="flex w-[1400px] flex-row items-center px-2 py-2 max-lg:w-[1000px] max-md:w-full">
           <NavigationTabs navLinks={navigationLinksConfig} />
           <span className="tb:hidden">
             <BurgerButton onClick={() => setShowDrawer(true)} />

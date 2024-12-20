@@ -3,6 +3,7 @@ import type { Config } from 'tailwindcss';
 export default {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/screens/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
@@ -49,6 +50,9 @@ export default {
         },
         'light-gray': '#EBF4F6',
       },
+      animation: {
+        'fade-in-scale': 'fadeInScale 2s ease-in-out',
+      },
       keyframes: {
         enterIn: {
           '0%': { transform: 'translateX(100%)' },
@@ -57,6 +61,10 @@ export default {
         enterInSideTabs: {
           '0%': { transform: 'translateY(15px)', opacity: '0' },
           '100%': { translate: 'translateY(0)', opacity: '1' },
+        },
+        fadeInScale: {
+          '0%': { opacity: '0', transform: 'scale(1.2) translateX(-50%)' },
+          '100%': { opacity: '1', transform: 'scale(1) translateX(-50%)' },
         },
       },
     },

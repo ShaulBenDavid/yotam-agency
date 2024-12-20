@@ -1,6 +1,6 @@
 import React from 'react';
-import { FcHome } from 'react-icons/fc';
 import { GiJapan, GiPalmTree, GiSriLanka } from 'react-icons/gi';
+import { MdAttractions } from 'react-icons/md';
 
 import { Routes } from '@/routes';
 import { ButtonLinkVariants } from '../ButtonLink';
@@ -30,6 +30,12 @@ export const navigationLinksConfig: NavigationLinkConfigType[] = [
     href: Routes.THAILAND,
     title: 'תאילנד',
     icon: <GiPalmTree size={24} aria-hidden />,
+    isSideNavOnly: false,
+  },
+  {
+    href: Routes.ATTRACTIONS,
+    title: 'אטרקציות',
+    icon: <MdAttractions size={24} aria-hidden />,
     isSideNavOnly: false,
   },
 ];

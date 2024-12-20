@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import React from "react";
-import { useSelectedLayoutSegment } from "next/navigation";
-import type { NavigationLinkConfigType } from "../Header/Header.config";
-import { Drawer } from "../Drawer";
-import { SideNavTab } from "./SideNavTab";
-import { ButtonLink } from "../ButtonLink";
+import React from 'react';
+import { useSelectedLayoutSegment } from 'next/navigation';
+import type { NavigationLinkConfigType } from '../Header/Header.config';
+import { Drawer } from '../Drawer';
+import { SideNavTab } from './SideNavTab';
+import { ButtonLink } from '../ButtonLink';
 
 interface SideNavigationProps {
   isOpen: boolean;
@@ -18,12 +18,12 @@ export const SideNavigation = ({
   onClick,
   navLinks,
 }: SideNavigationProps) => {
-  const activeSegment = useSelectedLayoutSegment() ?? "/";
+  const activeSegment = useSelectedLayoutSegment() ?? '/';
 
   return (
     <Drawer onClose={onClick} isOpen={isOpen}>
       <ul
-        className="flex animate-[enterInSideTabs_0.6s_ease-in_forwards] flex-col gap-1 p-2 opacity-0 [&>*:last-child]:mt-2"
+        className="flex animate-[enterInSideTabs_0.6s_ease-in_forwards] flex-col gap-1 p-2 opacity-0"
         role="navigation"
         aria-label="Main"
         id="main-nav"
@@ -54,7 +54,7 @@ export const SideNavigation = ({
                 }
               />
             </li>
-          ),
+          )
         )}
       </ul>
     </Drawer>

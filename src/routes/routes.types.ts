@@ -5,4 +5,5 @@ export enum Routes {
   THAILAND = 'thailand',
   JAPAN = 'japan',
   SRI_LANKA = 'sri-lanka',
+  ATTRACTIONS = 'attractions',
 }
