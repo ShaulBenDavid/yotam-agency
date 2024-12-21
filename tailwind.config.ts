@@ -63,8 +63,8 @@ export default {
           '100%': { translate: 'translateY(0)', opacity: '1' },
         },
         fadeInScale: {
-          '0%': { opacity: '0', transform: 'scale(1.2) translateX(-50%)' },
-          '100%': { opacity: '1', transform: 'scale(1) translateX(-50%)' },
+          '0%': { opacity: '0', transform: 'scale(1.2) translate(-50%)' },
+          '100%': { opacity: '1', transform: 'scale(1) translate(-50%)' },
         },
       },
     },
