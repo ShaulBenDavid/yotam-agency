@@ -11,6 +11,10 @@ const legalNavigationConfig: NavigationColumnLinksType = [
     title: 'התצהרת נגישות',
     link: Routes.ACCESSIBILITY,
   },
+  {
+    title: 'צור קשר',
+    link: Routes.CONTACT_US,
+  },
 ];
 
 export const footerNavigationConfig = [

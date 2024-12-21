@@ -31,7 +31,7 @@ export default function RootLayout({
       >
         <div className="text-primary-950 flex min-h-screen flex-col items-center overflow-x-clip">
           <Header />
-          <main className="w-[1400px] flex-grow max-lg:w-[1000px] max-md:w-full max-md:px-2">
+          <main className="flex w-[1400px] flex-grow flex-col max-lg:w-[1000px] max-md:w-full max-md:px-2">
             {children}
           </main>
           <Footer />

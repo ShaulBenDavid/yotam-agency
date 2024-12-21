@@ -10,4 +10,5 @@ export enum Routes {
   // settings
   PRIVACY_POLICY = 'privacy-policy',
   ACCESSIBILITY = 'accessibility',
+  CONTACT_US = 'contact-us',
 }
