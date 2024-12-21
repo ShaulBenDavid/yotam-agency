@@ -51,7 +51,7 @@ export default {
         'light-gray': '#EBF4F6',
       },
       animation: {
-        'fade-in-scale': 'fadeInScale 2s ease-in-out',
+        'fade-in-scale': 'fadeInScale 1.5s ease-in-out',
       },
       keyframes: {
         enterIn: {
@@ -63,8 +63,11 @@ export default {
           '100%': { translate: 'translateY(0)', opacity: '1' },
         },
         fadeInScale: {
-          '0%': { opacity: '0', transform: 'scale(1.2) translate(-50%)' },
-          '100%': { opacity: '1', transform: 'scale(1) translate(-50%)' },
+          '0%': {
+            filter: 'blur(30)',
+            transform: 'scale(1.2) translate(-50%)',
+          },
+          '100%': { filter: 'blur(0)', transform: 'scale(1) translate(-50%)' },
         },
       },
     },

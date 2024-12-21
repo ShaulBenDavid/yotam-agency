@@ -2,7 +2,7 @@ import { Share } from '@/components/Share';
 import React from 'react';
 
 export const ShareWithFriends = (): JSX.Element => (
-  <section className="tb:py-8 px-2 py-4">
+  <section className="tb:py-8 border-primary-950 rounded-md border-t px-2 py-4">
     <h2 className="tb:text-2xl text-center text-lg font-bold">
       אהבת?! ספר לחברים
     </h2>

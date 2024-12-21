@@ -1,7 +1,6 @@
 import React from 'react';
+import { Thailand } from '@/screens/Thailand';
 
-const Thailand = () => {
-  return <div>Thailand</div>;
-};
+const ThailandPage = () => <Thailand />;
 
-export default Thailand;
+export default ThailandPage;

@@ -1,7 +1,6 @@
 import React from 'react';
+import { SriLanka } from '@/screens/SriLanka';
 
-const SriLanka = () => {
-  return <div>sri-lanka</div>;
-};
+const SriLankaPage = (): JSX.Element => <SriLanka />;
 
-export default SriLanka;
+export default SriLankaPage;

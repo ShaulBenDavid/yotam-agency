@@ -1,7 +1,6 @@
+import { Japan } from '@/screens/Japan';
 import React from 'react';
 
-const Japan = () => {
-  return <div>Japan</div>;
-};
+const JapanPage = (): JSX.Element => <Japan />;
 
-export default Japan;
+export default JapanPage;
