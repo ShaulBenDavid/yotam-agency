@@ -15,7 +15,7 @@ export const ImageLink = ({
 }: ImageLinkProps): JSX.Element => (
   <Link
     href={href}
-    className="min-w group grid h-40 w-full overflow-hidden rounded-md text-center drop-shadow-md"
+    className="group grid h-40 w-full overflow-hidden rounded-md text-center drop-shadow-md"
   >
     <div
       className="relative h-full w-full"
