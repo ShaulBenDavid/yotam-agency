@@ -3,7 +3,7 @@ import { ImageLink } from '@/components/ImageLink';
 import { countriesConfig } from './Countries.config';
 
 export const Countries = (): JSX.Element => (
-  <section className="tb:py-4 py-2">
+  <section className="tb:py-8 py-4">
     <h2 className="tb:text-2xl text-center text-lg font-bold">
       טיילו איתנו במדינות הכי ״חמות״ במזרח
     </h2>

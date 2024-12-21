@@ -6,4 +6,8 @@ export enum Routes {
   JAPAN = 'japan',
   SRI_LANKA = 'sri-lanka',
   ATTRACTIONS = 'attractions',
+
+  // settings
+  PRIVACY_POLICY = 'privacy-policy',
+  ACCESSIBILITY = 'accessibility',
 }
