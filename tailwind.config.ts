@@ -5,6 +5,7 @@ export default {
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/screens/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
@@ -19,6 +20,9 @@ export default {
     },
 
     extend: {
+      gridTemplateColumns: {
+        'cards-auto-fit': 'repeat(auto-fill, minmax(400px, 1fr))',
+      },
       colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)',

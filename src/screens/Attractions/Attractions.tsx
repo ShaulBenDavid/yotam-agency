@@ -8,7 +8,9 @@ import { FaUmbrellaBeach } from 'react-icons/fa6';
 
 export const Attractions = (): JSX.Element => (
   <div className="tb:py-4 flex w-full flex-col items-center gap-2 py-2">
-    <h1 className="tb:text-2xl text-center text-xl font-bold">אטרקציות</h1>
+    <h1 className="tb:text-3xl bg-primary-950 w-full rounded-md py-1 text-center text-2xl font-bold text-white">
+      אטרקציות
+    </h1>
     <p className="tb:text-xl max-w-[800px] text-center text-base font-medium">
       אטרקציות הן מה שהופכות את החופשה שלכם לבלתי נשכחת. עם זה חוויות אקסטרים,
       טרקים, פארקים ועוד... הם מה שעוזר לכם להכיר את התרבות והמדינה אלייה אתם

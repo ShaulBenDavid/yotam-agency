@@ -3,6 +3,12 @@
 @tailwind utilities;
 
 @layer components {
+  .app-p {
+    @apply tb:text-xl text-center text-base font-medium;
+  }
+  .app-h2 {
+    @apply tb:text-2xl text-center text-xl font-bold;
+  }
 }
 
 /*
