@@ -3,6 +3,7 @@ import { FcCloseUpMode } from 'react-icons/fc';
 import { Intro } from '@/screens/Root/components/Intro';
 import { countriesConfig } from '@/constants/Countries.config';
 import { CitiesSection } from './CitiesSection';
+import { Carousel } from '@/components/Carousel';
 
 interface CountryPageProps {
   name: string;
@@ -28,5 +29,6 @@ export const CountryPage = ({
       <p className="app-p">{forWho}</p>
     </section>
     <CitiesSection countryName={name} cities={countriesConfig} />
+    <Carousel />
   </div>
 );

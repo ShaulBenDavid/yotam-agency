@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss';
+import scrollbar from 'tailwind-scrollbar';
 
 export default {
   content: [
@@ -22,6 +23,9 @@ export default {
     extend: {
       gridTemplateColumns: {
         'cards-auto-fit': 'repeat(auto-fill, minmax(400px, 1fr))',
+      },
+      boxShadow: {
+        card: '0 2px 8px 0 rgba(26, 26, 26, 0.16)',
       },
       colors: {
         background: 'var(--background)',
@@ -76,5 +80,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [scrollbar],
 } satisfies Config;

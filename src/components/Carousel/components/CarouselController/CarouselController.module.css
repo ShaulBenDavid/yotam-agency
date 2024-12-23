@@ -1,0 +1,28 @@
+.rightBackground,
+.leftBackground {
+  position: absolute;
+  bottom: 0;
+  height: calc(100% - 37px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 4px;
+}
+
+.leftBackground {
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 50px;
+  border-radius: 6px 100px 100px 6px;
+  background-color: #0d34a2;
+}
+
+.rightBackground {
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 100px 6px 6px 100px;
+  height: 50px;
+  background-color: #0d34a2;
+}
