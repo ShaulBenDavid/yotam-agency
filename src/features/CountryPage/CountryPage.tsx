@@ -3,7 +3,6 @@ import { FcCloseUpMode } from 'react-icons/fc';
 import { Intro } from '@/screens/Root/components/Intro';
 import { countriesConfig } from '@/constants/Countries.config';
 import { CitiesSection } from './CitiesSection';
-import { Carousel } from '@/components/Carousel';
 import { ShareWithFriends } from '../ShareWithFriends';
 
 interface CountryPageProps {
@@ -30,7 +29,6 @@ export const CountryPage = ({
       <p className="app-p">{forWho}</p>
     </section>
     <CitiesSection countryName={name} cities={countriesConfig} />
-    <Carousel />
     <ShareWithFriends
       title="אהבת?! ספר לחברים"
       description="שלח לחברים ומצא פרטנרים לטיול עוד היום!"

@@ -81,6 +81,7 @@ export const Carousel = (): JSX.Element => {
             <HotelCard
               name={name}
               image={image.src}
+              address="asdas dasdasd asdas, asd"
               stars={stars}
               rate={rate}
               fromPrice={fromPrice}
