@@ -1,4 +1,4 @@
-import type { Post } from "@/src/sanity/types";
+import type { Post } from '@/sanity/types';
 
 export interface PostPageResponse extends Post {
   estimatedWordCount: number;

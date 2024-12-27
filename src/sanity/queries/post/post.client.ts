@@ -1,7 +1,7 @@
-import { client } from "@/src/sanity/sanity.client";
-import { allPostsQuery, postQuery, postsQuery } from "./post.queries";
-import type { PostPageResponse } from "./post.types";
-import type { Post } from "../../types";
+import { client } from '@/sanity/sanity.client';
+import { allPostsQuery, postQuery, postsQuery } from './post.queries';
+import type { PostPageResponse } from './post.types';
+import type { Post } from '../../types';
 
 const REVALIDATE = { next: { revalidate: 86400 } };
 

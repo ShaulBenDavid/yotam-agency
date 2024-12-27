@@ -1,6 +1,6 @@
-import { client } from "@/src/sanity/sanity.client";
-import { topicsQuery } from "./home.queries";
-import type { GetTopics } from "./home.types";
+import { client } from '@/sanity/sanity.client';
+import { topicsQuery } from './home.queries';
+import type { GetTopics } from './home.types';
 
 const REVALIDATE = { next: { revalidate: 86400 } };
 
