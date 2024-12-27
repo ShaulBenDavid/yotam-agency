@@ -4,6 +4,7 @@ import { Intro } from '@/screens/Root/components/Intro';
 import { countriesConfig } from '@/constants/Countries.config';
 import { CitiesSection } from './CitiesSection';
 import { Carousel } from '@/components/Carousel';
+import { ShareWithFriends } from '../ShareWithFriends';
 
 interface CountryPageProps {
   name: string;
@@ -30,5 +31,9 @@ export const CountryPage = ({
     </section>
     <CitiesSection countryName={name} cities={countriesConfig} />
     <Carousel />
+    <ShareWithFriends
+      title="אהבת?! ספר לחברים"
+      description="שלח לחברים ומצא פרטנרים לטיול עוד היום!"
+    />
   </div>
 );

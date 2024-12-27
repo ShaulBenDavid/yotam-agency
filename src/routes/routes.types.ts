@@ -11,4 +11,5 @@ export enum Routes {
   PRIVACY_POLICY = 'privacy-policy',
   ACCESSIBILITY = 'accessibility',
   CONTACT_US = 'contact-us',
+  ABOUT_US = 'about-us',
 }

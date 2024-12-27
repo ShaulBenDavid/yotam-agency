@@ -19,7 +19,7 @@ export const CarouselController = ({
       <div className={S.leftBackground}>
         <button
           aria-label="previous sections"
-          tabIndex={0}
+          tabIndex={-1}
           className="tb:p-4 group duration-75"
           onClick={() => handleScroll(-1)}
         >
@@ -35,7 +35,7 @@ export const CarouselController = ({
       <div className={S.rightBackground}>
         <button
           aria-label="next sections"
-          tabIndex={0}
+          tabIndex={-1}
           className="tb:p-4 group duration-75"
           onClick={() => handleScroll(1)}
         >

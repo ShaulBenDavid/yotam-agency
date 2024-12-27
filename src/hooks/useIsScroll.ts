@@ -2,7 +2,9 @@
 
 import { useLayoutEffect, useState, type RefObject } from 'react';
 
-export const useIsScroll = (containerRef: RefObject<HTMLDivElement | null>) => {
+export const useIsScroll = (
+  containerRef: RefObject<HTMLUListElement | null>
+) => {
   const [hasScroll, setHasScroll] = useState<boolean>(false);
 
   useLayoutEffect(() => {

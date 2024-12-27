@@ -2,7 +2,7 @@ import React from 'react';
 import { Intro } from './components/Intro';
 import { Countries } from './components/Countries';
 import { ContactUs } from './components/ContactUs';
-import { ShareWithFriends } from './components/ShareWithFriends';
+import { ShareWithFriends } from '../../features/ShareWithFriends';
 import { WhyUs } from './components/WhyUs';
 import JapanImage from '@/assets/images/jpLandImg.jpg';
 
@@ -12,6 +12,9 @@ export const Root = (): JSX.Element => (
     <Countries />
     <ContactUs />
     <WhyUs />
-    <ShareWithFriends />
+    <ShareWithFriends
+      title="אהבת?! ספר לחברים"
+      description="בין אם אתם אוהבים ערים, הרים, או חופים, בין אם אתם אוהבים טרקים, בטן גב או מטרופולין. המזרח בשבילכם!"
+    />
   </div>
 );

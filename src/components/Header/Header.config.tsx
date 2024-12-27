@@ -1,9 +1,9 @@
 import React from 'react';
 import { GiJapan, GiPalmTree, GiSriLanka } from 'react-icons/gi';
+import { GrInfo } from 'react-icons/gr';
 import { MdAttractions } from 'react-icons/md';
 import { TbAccessibleFilled } from 'react-icons/tb';
 import { FaPhone } from 'react-icons/fa';
-
 import { Routes } from '@/routes';
 import { ButtonLinkVariants } from '../ButtonLink';
 
@@ -44,6 +44,12 @@ export const navigationLinksConfig: NavigationLinkConfigType[] = [
     href: Routes.CONTACT_US,
     title: 'צור קשר',
     icon: <FaPhone size={24} aria-hidden />,
+    isSideNavOnly: false,
+  },
+  {
+    href: Routes.ABOUT_US,
+    title: 'עלינו',
+    icon: <GrInfo size={24} aria-hidden />,
     isSideNavOnly: false,
   },
   {
