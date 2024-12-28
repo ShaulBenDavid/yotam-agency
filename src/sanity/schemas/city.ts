@@ -10,6 +10,13 @@ export default defineType({
       name: 'title',
       title: 'Title',
       type: 'string',
+      validation: (Rule) =>
+        Rule.custom((value) => {
+          if (value && value !== value.toLowerCase()) {
+            return 'Title must be in lowercase.';
+          }
+          return true;
+        }),
     }),
     defineField({
       name: 'slug',

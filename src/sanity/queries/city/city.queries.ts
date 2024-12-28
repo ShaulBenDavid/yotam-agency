@@ -22,3 +22,9 @@ export const citiesLinksByCountryQuery = groq`
     title
   }
 `;
+
+export const getCityQuery = groq`
+  *[_type == 'city' && slug.current == $slug][0] {
+  ...
+  }
+`;

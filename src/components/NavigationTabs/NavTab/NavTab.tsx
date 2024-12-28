@@ -2,11 +2,10 @@
 
 import React from 'react';
 import Link from 'next/link';
-import type { Routes } from '@/routes';
 import { NavLinkAnimation } from './NavTab.config';
 
 interface NavTabProps {
-  href: Routes;
+  href: string;
   title: string;
   isActive: boolean;
 }

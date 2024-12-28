@@ -27,7 +27,7 @@ export const NavigationTabs = ({
         linkVariant ? (
           <li key={href}>
             <ButtonLink
-              href={href}
+              href={`/${href}`}
               variant={linkVariant}
               ariaLabel={title}
               isAriaCurrent={activeSegment === href.substring(1)}
@@ -38,7 +38,7 @@ export const NavigationTabs = ({
         ) : (
           <NavTab
             key={href}
-            href={href}
+            href={`/${href}`}
             title={title}
             isActive={activeSegment === href.substring(1)}
           />

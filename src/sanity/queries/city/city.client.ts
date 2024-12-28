@@ -3,8 +3,10 @@ import {
   allCitiesQuery,
   citiesByCountryQuery,
   citiesLinksByCountryQuery,
+  getCityQuery,
 } from './city.queries';
 import type { CityLinkType, CitySlugType } from './city.types';
+import { City } from '@/sanity/types';
 
 export const getAllCities = async (): Promise<CitySlugType[]> => {
   const cities = await client.fetch(allCitiesQuery);
@@ -27,4 +29,11 @@ export const getCitiesLinkByCountry = async (
     slug: countryName,
   });
   return cities;
+};
+
+export const getCity = async (cityName: string): Promise<City> => {
+  const city = await client.fetch(getCityQuery, {
+    slug: cityName,
+  });
+  return city;
 };

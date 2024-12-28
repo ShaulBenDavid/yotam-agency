@@ -3,9 +3,11 @@ import { notFound } from 'next/navigation';
 import SriLankaBImage from '@/assets/images/sriLankaB.jpg';
 import ThailandBImage from '@/assets/images/thailandB.jpg';
 import JapanBImage from '@/assets/images/japanB.jpg';
+import CountriesJSON from '@/constants/content/countries.json';
 import { Routes } from '@/routes';
 import { countries } from '@/routes/routes.types';
-import { CitySlugType, getAllCities } from '@/sanity/queries/city';
+import { CitySlugType, getAllCities, getCity } from '@/sanity/queries/city';
+import { City } from '@/screens/City';
 
 const images = {
   [Routes.SRI_LANKA]: SriLankaBImage,
@@ -29,13 +31,22 @@ type CityPageProps = {
 };
 
 const CityPage = async ({ params }: CityPageProps) => {
-  const { country, city } = await params;
+  const { country, city: citySlug } = await params;
+  const cityData = await getCity(citySlug);
 
   if (!countries.includes(country)) {
     notFound();
   }
-  console.log(images);
-  return <div>{city}</div>;
+
+  return (
+    <City
+      cityName={cityData.title}
+      countryName={CountriesJSON[cityData.country].title}
+      image={images[cityData.country]?.blurDataURL ?? ''}
+      description={cityData.description}
+      forWho={cityData.forWho}
+    />
+  );
 };
 
 export default CityPage;

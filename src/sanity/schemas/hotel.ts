@@ -2,8 +2,8 @@ import { Routes } from '@/routes';
 import { defineField, defineType } from 'sanity';
 
 export default defineType({
-  name: 'city',
-  title: 'City',
+  name: 'hotel',
+  title: 'Hotel',
   type: 'document',
   fields: [
     defineField({
@@ -29,6 +29,11 @@ export default defineType({
       },
     }),
     defineField({
+      name: 'address',
+      title: 'Address',
+      type: 'string',
+    }),
+    defineField({
       name: 'starRating',
       title: 'Star Rating',
       type: 'number',
@@ -43,6 +48,11 @@ export default defineType({
       title: 'Review Number',
       type: 'number',
       validation: (Rule) => Rule.required().min(0),
+    }),
+    defineField({
+      name: 'price',
+      title: 'Price',
+      type: 'number',
     }),
     defineField({
       name: 'country',
