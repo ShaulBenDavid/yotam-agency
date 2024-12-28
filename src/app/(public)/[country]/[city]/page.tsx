@@ -5,8 +5,7 @@ import ThailandBImage from '@/assets/images/thailandB.jpg';
 import JapanBImage from '@/assets/images/japanB.jpg';
 import { Routes } from '@/routes';
 import { countries } from '@/routes/routes.types';
-import { getAllCities } from '@/sanity/queries/city';
-import { City } from '@/sanity/types';
+import { CitySlugType, getAllCities } from '@/sanity/queries/city';
 
 const images = {
   [Routes.SRI_LANKA]: SriLankaBImage,
@@ -15,7 +14,7 @@ const images = {
 };
 
 export async function generateStaticParams() {
-  const cities: City[] = await getAllCities();
+  const cities: CitySlugType[] = await getAllCities();
   return cities.map((city) => ({
     country: city.country,
     city: city.slug.current,

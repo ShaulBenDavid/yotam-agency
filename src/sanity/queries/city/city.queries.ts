@@ -6,3 +6,19 @@ export const allCitiesQuery = groq`
     country
 } 
 `;
+
+export const citiesByCountryQuery = groq`
+  *[_type == 'city' && country == $slug] {
+    slug,
+    country
+  }
+`;
+
+export const citiesLinksByCountryQuery = groq`
+  *[_type == 'city' && country == $slug] {
+    slug,
+    country,
+    mainImage,
+    title
+  }
+`;

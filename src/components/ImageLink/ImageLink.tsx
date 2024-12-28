@@ -1,10 +1,9 @@
 import React from 'react';
-import type { Routes } from '@/routes';
 import Link from 'next/link';
 
 export interface ImageLinkProps {
   title: string;
-  href: Routes;
+  href: string;
   image: string;
 }
 
@@ -33,7 +32,7 @@ export const ImageLink = ({
       </div>
     </div>
     <span
-      className="tb:text-4xl z-10 place-self-center text-2xl font-bold text-white"
+      className="tb:text-4xl z-10 place-self-center text-2xl font-bold capitalize text-white"
       style={{
         gridRow: 1,
         gridColumn: 1,

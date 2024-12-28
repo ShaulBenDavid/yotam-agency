@@ -7,6 +7,7 @@ import JapanBImage from '@/assets/images/japanB.jpg';
 import CountriesJSON from '@/constants/content/countries.json';
 import { Routes } from '@/routes';
 import { countries } from '@/routes/routes.types';
+import { getCitiesLinkByCountry } from '@/sanity/queries/city';
 
 const images = {
   [Routes.SRI_LANKA]: SriLankaBImage,
@@ -30,6 +31,7 @@ type CountryProps = {
 
 const Country = async ({ params }: CountryProps) => {
   const { country } = await params;
+  const cities = await getCitiesLinkByCountry(country);
 
   if (!countries.includes(country)) {
     notFound();
@@ -41,6 +43,7 @@ const Country = async ({ params }: CountryProps) => {
       image={images[country].src}
       description={CountriesJSON[country].description}
       forWho={CountriesJSON[country].forWho}
+      cities={cities}
     />
   );
 };
