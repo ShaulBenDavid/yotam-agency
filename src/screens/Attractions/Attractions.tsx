@@ -1,10 +1,11 @@
+import React from 'react';
 import { ImageLink } from '@/components/ImageLink';
 import { countriesConfig } from '@/constants/Countries.config';
-import React from 'react';
 import { FcGlobe } from 'react-icons/fc';
 import { FcSportsMode } from 'react-icons/fc';
 import { FcLandscape } from 'react-icons/fc';
 import { FaUmbrellaBeach } from 'react-icons/fa6';
+import { ContactUs } from '../Root/components/ContactUs';
 
 export const Attractions = (): JSX.Element => (
   <div className="tb:py-4 flex w-full flex-col items-center gap-2 py-2">
@@ -32,5 +33,6 @@ export const Attractions = (): JSX.Element => (
         ))}
       </div>
     </div>
+    <ContactUs />
   </div>
 );
