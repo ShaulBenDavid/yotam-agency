@@ -1,5 +1,5 @@
-import { notFound } from "next/navigation";
+import { notFound } from 'next/navigation';
 
-const NotFound = async () => notFound();
+const NotFound = async (): Promise<JSX.Element> => notFound();
 
 export default NotFound;

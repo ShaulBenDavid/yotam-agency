@@ -8,6 +8,8 @@ import { Routes } from '@/routes';
 import { countries } from '@/routes/routes.types';
 import { CitySlugType, getAllCities, getCity } from '@/sanity/queries/city';
 import { City } from '@/screens/City';
+import { getHotels } from '@/sanity/queries/hotel';
+import { getAttractions } from '@/sanity/queries/attraction';
 
 const images = {
   [Routes.SRI_LANKA]: SriLankaBImage,
@@ -30,9 +32,12 @@ type CityPageProps = {
   }>;
 };
 
-const CityPage = async ({ params }: CityPageProps) => {
+const CityPage = async ({ params }: CityPageProps): Promise<JSX.Element> => {
   const { country, city: citySlug } = await params;
   const cityData = await getCity(citySlug);
+  const hotels = await getHotels(citySlug);
+  const attractions = await getAttractions(citySlug);
+  console.log(hotels, attractions);
 
   if (!countries.includes(country)) {
     notFound();

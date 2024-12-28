@@ -29,7 +29,7 @@ type CountryProps = {
   }>;
 };
 
-const Country = async ({ params }: CountryProps) => {
+const Country = async ({ params }: CountryProps): Promise<JSX.Element> => {
   const { country } = await params;
   const cities = await getCitiesLinkByCountry(country);
 

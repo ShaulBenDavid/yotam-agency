@@ -4,7 +4,7 @@ import NotFoundSVG from '@/assets/images/404SVG.svg';
 import { Routes } from '@/routes';
 import { ButtonLink, ButtonLinkVariants } from '@/components/ButtonLink';
 
-const NotFound = () => (
+const NotFound = (): JSX.Element => (
   <div className="flex flex-grow flex-col items-center justify-center gap-4 py-10">
     <h1 className="text-4xl font-bold">404</h1>
     <EmptyState
