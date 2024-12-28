@@ -43,12 +43,12 @@ export const Share = ({
         hashtag="#dwizard"
       >
         <FacebookIcon size={32} round />
-      </FacebookShareButton>{' '}
+      </FacebookShareButton>
     </span>
     <span className="h-10 border-2 border-transparent duration-200 focus-within:border-blue-700 hover:scale-110">
       <LinkedinShareButton url={`${shareContent.url}${url}`}>
         <LinkedinIcon size={32} round />
-      </LinkedinShareButton>{' '}
+      </LinkedinShareButton>
     </span>
     <span className="h-10 border-2 border-transparent duration-200 focus-within:border-blue-700 hover:scale-110">
       <WhatsappShareButton
@@ -57,7 +57,7 @@ export const Share = ({
         separator=":: "
       >
         <WhatsappIcon size={32} round />
-      </WhatsappShareButton>{' '}
+      </WhatsappShareButton>
     </span>
     <span className="h-10 border-2 border-transparent duration-200 focus-within:border-blue-700 hover:scale-110">
       <TwitterShareButton
@@ -65,7 +65,7 @@ export const Share = ({
         title={title ?? shareContent.title}
       >
         <TwitterIcon size={32} round />
-      </TwitterShareButton>{' '}
+      </TwitterShareButton>
     </span>
   </div>
 );

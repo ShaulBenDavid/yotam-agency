@@ -13,3 +13,5 @@ export enum Routes {
   CONTACT_US = 'contact-us',
   ABOUT_US = 'about-us',
 }
+
+export const countries = [Routes.JAPAN, Routes.SRI_LANKA, Routes.THAILAND];

@@ -1,1 +1,0 @@
-export { SriLanka } from './SriLanka';
