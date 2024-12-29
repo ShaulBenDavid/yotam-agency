@@ -7,7 +7,7 @@ export const ContactUs = (): JSX.Element => (
     <h2 className="tb:text-2xl text-center text-lg font-bold">
       לפרטים נוספים צרו קשר
     </h2>
-    <p className="">התייעצות, שאלה או סגירת חופשה? על תהססו להתקשר</p>
+    <p className="">התייעצות, שאלה או סגירת חופשה? אל תהססו להתקשר</p>
     <span className="flex flex-row items-center justify-center gap-2 py-2">
       <MdAccessTime size={24} aria-hidden />
       בימים א’-ה’ בין השעות 09:00-18:00
