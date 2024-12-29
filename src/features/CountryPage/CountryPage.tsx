@@ -6,7 +6,6 @@ import { CitiesSection } from './CitiesSection';
 import { ShareWithFriends } from '../ShareWithFriends';
 import { ImageLinkProps } from '@/components/ImageLink/ImageLink';
 import { forUrl } from '@/sanity/sanity.utils';
-import { WEBSITE_URL } from '@/constants';
 
 interface CountryPageProps {
   name: string;
@@ -50,7 +49,7 @@ export const CountryPage = ({
       <ShareWithFriends
         title="אהבת?! ספר לחברים"
         description="שלח לחברים ומצא פרטנרים לטיול עוד היום!"
-        url={`${WEBSITE_URL}/${slug}`}
+        url={`/${slug}`}
       />
     </div>
   );

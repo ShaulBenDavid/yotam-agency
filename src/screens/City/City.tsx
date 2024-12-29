@@ -1,6 +1,5 @@
 import React from 'react';
 import { FaPlaneDeparture } from 'react-icons/fa';
-import { WEBSITE_URL } from '@/constants';
 import { Intro } from '@/screens/Root/components/Intro';
 import { CityLinkType } from '@/sanity/queries/city';
 import { ShareWithFriends } from '../../features/ShareWithFriends';
@@ -44,7 +43,7 @@ export const City = ({
     <ShareWithFriends
       title="אהבת?! ספר לחברים"
       description="שלח לחברים ומצא פרטנרים לטיול עוד היום!"
-      url={`${WEBSITE_URL}/${countrySlug}/${citySlug}`}
+      url={`/${countrySlug}/${citySlug}`}
     />
   </div>
 );

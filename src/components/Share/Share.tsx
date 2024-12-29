@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { WEBSITE_URL } from '@/constants';
 import {
   EmailIcon,
   EmailShareButton,
@@ -23,7 +22,7 @@ interface ShareProps {
 }
 
 export const Share = ({
-  url = WEBSITE_URL,
+  url = '',
   subject,
   title,
 }: ShareProps): JSX.Element => (
