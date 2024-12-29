@@ -9,6 +9,7 @@ import CountriesJSON from '@/constants/content/countries.json';
 import { Routes } from '@/routes';
 import { countries } from '@/routes/routes.types';
 import { getCitiesLinkByCountry } from '@/sanity/queries/city';
+import { WEBSITE_URL } from '@/constants';
 
 const images = {
   [Routes.SRI_LANKA]: SriLankaBImage,
@@ -41,7 +42,7 @@ export async function generateMetadata({
     description,
     authors: {
       name: 'FlySan',
-      url: `website/${country}`,
+      url: `${WEBSITE_URL}/${country}`,
     },
     openGraph: {
       title,
@@ -69,6 +70,7 @@ const Country = async ({ params }: CountryProps): Promise<JSX.Element> => {
       description={CountriesJSON[country].description}
       forWho={CountriesJSON[country].forWho}
       cities={cities}
+      slug={country}
     />
   );
 };

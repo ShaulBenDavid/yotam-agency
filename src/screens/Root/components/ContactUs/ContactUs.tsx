@@ -3,7 +3,7 @@ import React from 'react';
 import { MdAccessTime } from 'react-icons/md';
 
 export const ContactUs = (): JSX.Element => (
-  <section className="tb:py-8 bg-primary-950 tb:text-xl w-full rounded-md px-2 py-4 text-center text-base font-medium text-white">
+  <section className="tb:py-8 bg-primary-950 tb:text-xl w-full rounded-md py-4 text-center text-base font-medium text-white">
     <h2 className="tb:text-2xl text-center text-lg font-bold">
       לפרטים נוספים צרו קשר
     </h2>

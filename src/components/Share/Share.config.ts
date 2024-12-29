@@ -1,4 +1,4 @@
-import { WEBSITE_URL } from '@/constants/details';
+import { WEBSITE_URL } from '@/constants';
 
 type ShareContent = {
   url: string;

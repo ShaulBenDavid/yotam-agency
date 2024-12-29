@@ -18,7 +18,7 @@ export const Footer = () => (
             aria-label="Home"
             className="hover:underline"
           >
-            Dwizard.io™
+            FlySan.co.il™
           </Link>{' '}
           כל הזכויות שמורות.
         </span>

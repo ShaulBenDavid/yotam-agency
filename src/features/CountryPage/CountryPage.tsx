@@ -6,12 +6,14 @@ import { CitiesSection } from './CitiesSection';
 import { ShareWithFriends } from '../ShareWithFriends';
 import { ImageLinkProps } from '@/components/ImageLink/ImageLink';
 import { forUrl } from '@/sanity/sanity.utils';
+import { WEBSITE_URL } from '@/constants';
 
 interface CountryPageProps {
   name: string;
   description: string;
   image: string;
   forWho: string;
+  slug: string;
   cities?: CityLinkType[];
 }
 
@@ -20,6 +22,7 @@ export const CountryPage = ({
   description,
   image,
   forWho,
+  slug,
   cities,
 }: CountryPageProps): JSX.Element => {
   const transformedCitiesLink = cities?.map(
@@ -31,7 +34,7 @@ export const CountryPage = ({
   );
 
   return (
-    <div className="tb:gap-2 flex flex-col items-center gap-2 px-2 pb-8">
+    <div className="tb:gap-2 flex flex-col items-center gap-2 pb-8">
       <Intro title={name} image={image} maxHeight="400px" />
       <div className="tb:py-4 max-w-[900px] py-2">
         <p className="app-p">{description}</p>
@@ -47,6 +50,7 @@ export const CountryPage = ({
       <ShareWithFriends
         title="אהבת?! ספר לחברים"
         description="שלח לחברים ומצא פרטנרים לטיול עוד היום!"
+        url={`${WEBSITE_URL}/${slug}`}
       />
     </div>
   );

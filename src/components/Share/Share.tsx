@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { WEBSITE_URL } from '@/constants';
 import {
   EmailIcon,
   EmailShareButton,
@@ -22,7 +23,7 @@ interface ShareProps {
 }
 
 export const Share = ({
-  url = '',
+  url = WEBSITE_URL,
   subject,
   title,
 }: ShareProps): JSX.Element => (
@@ -40,7 +41,7 @@ export const Share = ({
       <FacebookShareButton
         url={`${shareContent.url}${url}`}
         quote={title ?? shareContent.title}
-        hashtag="#dwizard"
+        hashtag="#flysan"
       >
         <FacebookIcon size={32} round />
       </FacebookShareButton>

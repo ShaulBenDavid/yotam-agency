@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaPlaneDeparture } from 'react-icons/fa';
+import { WEBSITE_URL } from '@/constants';
 import { Intro } from '@/screens/Root/components/Intro';
 import { CityLinkType } from '@/sanity/queries/city';
 import { ShareWithFriends } from '../../features/ShareWithFriends';
@@ -11,6 +12,8 @@ interface CityProps {
   description: string;
   image: string;
   forWho: string;
+  citySlug: string;
+  countrySlug: string;
   cities?: CityLinkType[];
 }
 
@@ -20,8 +23,10 @@ export const City = ({
   description,
   image,
   forWho,
+  citySlug,
+  countrySlug,
 }: CityProps): JSX.Element => (
-  <div className="tb:gap-2 flex flex-col items-center gap-2 px-2 pb-8">
+  <div className="tb:gap-2 flex flex-col items-center gap-2 pb-8">
     <Intro
       title={`${countryName} - ${cityName}`}
       image={image}
@@ -39,6 +44,7 @@ export const City = ({
     <ShareWithFriends
       title="אהבת?! ספר לחברים"
       description="שלח לחברים ומצא פרטנרים לטיול עוד היום!"
+      url={`${WEBSITE_URL}/${countrySlug}/${citySlug}`}
     />
   </div>
 );

@@ -11,6 +11,7 @@ import { CitySlugType, getAllCities, getCity } from '@/sanity/queries/city';
 import { City } from '@/screens/City';
 import { getHotels } from '@/sanity/queries/hotel';
 import { getAttractions } from '@/sanity/queries/attraction';
+import { WEBSITE_URL } from '@/constants';
 
 const images = {
   [Routes.SRI_LANKA]: SriLankaBImage,
@@ -44,7 +45,7 @@ export async function generateMetadata({
     description,
     authors: {
       name: 'FlySan',
-      url: `website/${country}/${city}`,
+      url: `${WEBSITE_URL}/${country}/${city}`,
     },
     openGraph: {
       title,
@@ -75,6 +76,8 @@ const CityPage = async ({ params }: CityPageProps): Promise<JSX.Element> => {
       image={images[cityData.country]?.blurDataURL ?? ''}
       description={cityData.description}
       forWho={cityData.forWho}
+      citySlug={citySlug}
+      countrySlug={country}
     />
   );
 };

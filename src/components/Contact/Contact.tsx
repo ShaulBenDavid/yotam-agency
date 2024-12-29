@@ -3,7 +3,7 @@ import { FaPhone, FaWhatsapp } from 'react-icons/fa';
 import { IoIosMail } from 'react-icons/io';
 
 export const Contact = (): JSX.Element => (
-  <ul className="flex flex-row flex-wrap items-center justify-center gap-4 px-2">
+  <ul className="flex flex-row flex-wrap items-center justify-center gap-4">
     <li className="flex flex-row gap-2">
       <FaPhone size={24} />
       <a

@@ -2,7 +2,7 @@ import React from 'react';
 import { whyUsListConfig } from './WhyUs.config';
 
 export const WhyUs = (): JSX.Element => (
-  <section className="tb:py-8 px-2 py-4">
+  <section className="tb:py-8 py-4">
     <h2 className="tb:text-2xl text-center text-lg font-bold">
       אז למה לסגור איתנו?
     </h2>
