@@ -1,4 +1,5 @@
 import React from 'react';
+import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import SriLankaBImage from '@/assets/images/sriLankaB.jpg';
 import ThailandBImage from '@/assets/images/thailandB.jpg';
@@ -31,6 +32,30 @@ type CityPageProps = {
     city: string;
   }>;
 };
+
+export async function generateMetadata({
+  params,
+}: CityPageProps): Promise<Metadata> {
+  const { country, city } = await params;
+  const { title, description } = await getCity(city);
+
+  return {
+    title,
+    description,
+    authors: {
+      name: 'FlySan',
+      url: `website/${country}/${city}`,
+    },
+    openGraph: {
+      title,
+      description,
+    },
+    twitter: {
+      title,
+      description,
+    },
+  };
+}
 
 const CityPage = async ({ params }: CityPageProps): Promise<JSX.Element> => {
   const { country, city: citySlug } = await params;

@@ -37,7 +37,7 @@ export const CountryPage = ({
         <p className="app-p">{description}</p>
       </div>
       <section className="tb:py-4 flex max-w-[900px] flex-col items-center gap-2 py-2">
-        <FcCloseUpMode size={50} />
+        <FcCloseUpMode size={50} aria-hidden />
         <h2 className="app-h2">אז למי {name} מתאימה!</h2>
         <p className="app-p">{forWho}</p>
       </section>

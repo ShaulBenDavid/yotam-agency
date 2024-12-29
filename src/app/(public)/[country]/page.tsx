@@ -1,4 +1,5 @@
 import React from 'react';
+import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { CountryPage } from '@/features/CountryPage';
 import SriLankaBImage from '@/assets/images/sriLankaB.jpg';
@@ -28,6 +29,30 @@ type CountryProps = {
     country: Routes.SRI_LANKA | Routes.THAILAND | Routes.JAPAN;
   }>;
 };
+
+export async function generateMetadata({
+  params,
+}: CountryProps): Promise<Metadata> {
+  const { country } = await params;
+  const { title, description } = CountriesJSON[country];
+
+  return {
+    title,
+    description,
+    authors: {
+      name: 'FlySan',
+      url: `website/${country}`,
+    },
+    openGraph: {
+      title,
+      description,
+    },
+    twitter: {
+      title,
+      description,
+    },
+  };
+}
 
 const Country = async ({ params }: CountryProps): Promise<JSX.Element> => {
   const { country } = await params;
