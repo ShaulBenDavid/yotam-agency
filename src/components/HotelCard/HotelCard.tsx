@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
-import { Rating } from '../Rating';
 import { MdPlace } from 'react-icons/md';
+import { Rating } from '../Rating';
 
 interface HotelCardProps {
   image: string;
@@ -9,7 +9,7 @@ interface HotelCardProps {
   address: string;
   stars: number;
   rate: number;
-  fromPrice: number;
+  fromPrice?: number;
 }
 
 export const HotelCard = ({
@@ -50,7 +50,7 @@ export const HotelCard = ({
       >
         <span
           aria-label={`Hotel rate - ${rate}`}
-          className="bg-primary-950 w-fit rounded-md p-1 text-base font-semibold text-white"
+          className="bg-primary-950 w-fit min-w-8 rounded-md p-1 text-base font-semibold text-white"
         >
           {rate}
         </span>
@@ -58,9 +58,11 @@ export const HotelCard = ({
           <Rating rate={stars} />
         </div>
       </div>
-      <span aria-label="price">
-        <strong>החל מ-</strong> {fromPrice}
-      </span>
+      {fromPrice && (
+        <span aria-label="price">
+          <strong>החל מ-</strong> {fromPrice}
+        </span>
+      )}
     </div>
   </div>
 );

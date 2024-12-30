@@ -63,7 +63,7 @@ const CityPage = async ({ params }: CityPageProps): Promise<JSX.Element> => {
   const cityData = await getCity(citySlug);
   const hotels = await getHotels(citySlug);
   const attractions = await getAttractions(citySlug);
-  console.log(hotels, attractions);
+  console.log(attractions);
 
   if (!countries.includes(country)) {
     notFound();
@@ -78,6 +78,7 @@ const CityPage = async ({ params }: CityPageProps): Promise<JSX.Element> => {
       forWho={cityData.forWho}
       citySlug={citySlug}
       countrySlug={country}
+      hotels={hotels}
     />
   );
 };

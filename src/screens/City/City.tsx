@@ -2,8 +2,10 @@ import React from 'react';
 import { FaPlaneDeparture } from 'react-icons/fa';
 import { Intro } from '@/screens/Root/components/Intro';
 import { CityLinkType } from '@/sanity/queries/city';
+import { Hotel } from '@/sanity/types';
 import { ShareWithFriends } from '../../features/ShareWithFriends';
 import { ContactUs } from '../Root/components/ContactUs';
+import { HotelsSection } from './components/HotelsSection';
 
 interface CityProps {
   cityName: string;
@@ -14,6 +16,7 @@ interface CityProps {
   citySlug: string;
   countrySlug: string;
   cities?: CityLinkType[];
+  hotels: Hotel[];
 }
 
 export const City = ({
@@ -24,6 +27,7 @@ export const City = ({
   forWho,
   citySlug,
   countrySlug,
+  hotels,
 }: CityProps): JSX.Element => (
   <div className="tb:gap-2 flex flex-col items-center gap-2 pb-8">
     <Intro
@@ -39,6 +43,7 @@ export const City = ({
       <h2 className="app-h2">אז למי {cityName} מתאימה!</h2>
       <p className="app-p">{forWho}</p>
     </section>
+    {!!hotels.length && <HotelsSection cityName={cityName} hotels={hotels} />}
     <ContactUs />
     <ShareWithFriends
       title="אהבת?! ספר לחברים"

@@ -4,56 +4,20 @@ import React, { useCallback, useRef } from 'react';
 import { useIsScroll } from '@/hooks';
 import { useShowsButtons } from './useShowsButtons';
 import { CarouselController } from './components/CarouselController';
-import Test from '@/assets/images/japanB.jpg';
-import Test2 from '@/assets/images/jpLandImg.jpg';
-import { HotelCard } from '../HotelCard';
 
-const data = [
-  {
-    image: Test,
-    name: 'Hilton - bangkok',
-    stars: 4,
-    rate: 8.4,
-    fromPrice: 300,
-  },
-  {
-    image: Test2,
-    name: 'Hilton - bangkok',
-    stars: 4,
-    rate: 8.4,
-    fromPrice: 300,
-  },
-  {
-    image: Test,
-    name: 'Hilton - bangkok',
-    stars: 4,
-    rate: 8.4,
-    fromPrice: 300,
-  },
-  {
-    image: Test,
-    name: 'Hilton - bangkok',
-    stars: 4,
-    rate: 8.4,
-    fromPrice: 300,
-  },
-  {
-    image: Test,
-    name: 'Hilton - bangkok',
-    stars: 4,
-    rate: 8.4,
-    fromPrice: 300,
-  },
-  {
-    image: Test,
-    name: 'Hilton - bangkok',
-    stars: 4,
-    rate: 8.4,
-    fromPrice: 300,
-  },
-];
+interface DataProps {
+  _id: string;
+}
 
-export const Carousel = (): JSX.Element => {
+interface CarouselProps<T extends DataProps> {
+  data: T[];
+  cardRender: (item: T) => JSX.Element;
+}
+
+export const Carousel = <T extends DataProps>({
+  data,
+  cardRender,
+}: CarouselProps<T>): JSX.Element => {
   const scrollRef = useRef<HTMLUListElement>(null);
   const isScroll = useIsScroll(scrollRef);
   const showsButtons = useShowsButtons(scrollRef);
@@ -73,19 +37,12 @@ export const Carousel = (): JSX.Element => {
         ref={scrollRef}
         aria-label="Hotels"
       >
-        {data.map(({ name, image, stars, rate, fromPrice }) => (
+        {data.map((item) => (
           <li
             className="tb:w-1/3 mr-4 w-[70%] min-w-52 shrink-0 snap-start snap-always"
-            key={name}
+            key={item._id}
           >
-            <HotelCard
-              name={name}
-              image={image.src}
-              address="asdas dasdasd asdas, asd"
-              stars={stars}
-              rate={rate}
-              fromPrice={fromPrice}
-            />
+            {cardRender(item)}
           </li>
         ))}
       </ul>
