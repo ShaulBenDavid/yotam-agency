@@ -1,9 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
-import type { Routes } from '@/routes';
 
 interface SideNavTabProps {
-  href: Routes;
+  href: string;
   title: string;
   isActive: boolean;
   icon?: JSX.Element;

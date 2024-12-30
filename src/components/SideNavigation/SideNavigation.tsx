@@ -32,7 +32,7 @@ export const SideNavigation = ({
           linkVariant ? (
             <li key={href}>
               <ButtonLink
-                href={href}
+                href={`/${href}`}
                 variant={linkVariant}
                 ariaLabel={title}
                 isAriaCurrent={
@@ -45,7 +45,7 @@ export const SideNavigation = ({
           ) : (
             <li key={href}>
               <SideNavTab
-                href={href}
+                href={`/${href}`}
                 onClick={onClick}
                 title={title}
                 icon={icon}
