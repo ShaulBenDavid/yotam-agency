@@ -50,7 +50,7 @@ export const HotelCard = ({
       >
         <span
           aria-label={`Hotel rate - ${rate}`}
-          className="bg-primary-950 w-fit min-w-8 rounded-md p-1 text-base font-semibold text-white"
+          className="bg-primary-950 w-fit min-w-8 rounded-md p-1 text-center text-base font-semibold text-white"
         >
           {rate}
         </span>

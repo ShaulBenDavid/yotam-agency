@@ -35,6 +35,11 @@ export async function generateMetadata({
   params,
 }: CountryProps): Promise<Metadata> {
   const { country } = await params;
+
+  if (!countries.includes(country)) {
+    notFound();
+  }
+
   const { title, description } = CountriesJSON[country];
 
   return {
@@ -57,11 +62,11 @@ export async function generateMetadata({
 
 const Country = async ({ params }: CountryProps): Promise<JSX.Element> => {
   const { country } = await params;
-  const cities = await getCitiesLinkByCountry(country);
-
   if (!countries.includes(country)) {
     notFound();
   }
+
+  const cities = await getCitiesLinkByCountry(country);
 
   return (
     <CountryPage

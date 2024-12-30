@@ -38,6 +38,10 @@ export async function generateMetadata({
   params,
 }: CityPageProps): Promise<Metadata> {
   const { country, city } = await params;
+  if (!countries.includes(country)) {
+    notFound();
+  }
+
   const { title, description } = await getCity(city);
 
   return {
@@ -60,14 +64,14 @@ export async function generateMetadata({
 
 const CityPage = async ({ params }: CityPageProps): Promise<JSX.Element> => {
   const { country, city: citySlug } = await params;
+  if (!countries.includes(country)) {
+    notFound();
+  }
+
   const cityData = await getCity(citySlug);
   const hotels = await getHotels(citySlug);
   const attractions = await getAttractions(citySlug);
   console.log(attractions);
-
-  if (!countries.includes(country)) {
-    notFound();
-  }
 
   return (
     <City

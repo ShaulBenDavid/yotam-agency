@@ -6,6 +6,9 @@ import type { Hotel } from '@/sanity/types';
 import { Carousel } from '@/components/Carousel';
 import { HotelCard } from '@/components/HotelCard';
 import { forUrl } from '@/sanity/sanity.utils';
+import { ButtonLink } from '@/components/ButtonLink';
+import { Routes } from '@/routes';
+import { FaArrowLeft } from 'react-icons/fa';
 
 interface HotelsSectionProps {
   hotels: Hotel[];
@@ -16,7 +19,7 @@ export const HotelsSection = ({
   hotels,
   cityName,
 }: HotelsSectionProps): JSX.Element => (
-  <section className="flex w-full flex-col items-center gap-2">
+  <section className="tb:py-4 flex w-full flex-col items-center gap-2 py-2">
     <FaHotel size={50} aria-hidden />
     <h2 className="app-h2">אז איפה ישנים ב{cityName}</h2>
     <Carousel
@@ -39,6 +42,8 @@ export const HotelsSection = ({
         />
       )}
     />
-    {/* Navigation to all the hotels */}
+    <ButtonLink href={Routes.HOTELS} width="250px">
+      לכל בתי המלון <FaArrowLeft />
+    </ButtonLink>
   </section>
 );
