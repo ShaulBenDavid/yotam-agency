@@ -7,6 +7,7 @@ export interface Hotel extends Base {
   slug: Slug;
   mainImage: Image;
   address: string;
+  mapLink: string;
   starRating: number;
   reviewScore: number;
   price?: number;

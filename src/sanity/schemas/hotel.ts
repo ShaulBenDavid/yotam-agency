@@ -34,6 +34,12 @@ export default defineType({
       type: 'string',
     }),
     defineField({
+      name: 'mapLink',
+      title: 'Map Link',
+      type: 'url',
+      description: 'A link to the hotel location on a map (e.g., Google Maps).',
+    }),
+    defineField({
       name: 'starRating',
       title: 'Star Rating',
       type: 'number',

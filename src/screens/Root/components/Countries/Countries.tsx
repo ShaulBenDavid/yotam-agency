@@ -13,7 +13,7 @@ export const Countries = (): JSX.Element => (
     </p>
     <div className="tb:flex-row tb:gap-8 flex flex-col justify-between gap-2 pt-4">
       {countriesConfig.map(({ title, href, image }) => (
-        <ImageLink title={title} href={href} image={image} key={href} />
+        <ImageLink title={title} href={`/${href}`} image={image} key={href} />
       ))}
     </div>
   </section>

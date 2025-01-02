@@ -29,7 +29,11 @@ export const City = ({
   countrySlug,
   hotels,
 }: CityProps): JSX.Element => (
-  <div className="tb:gap-2 flex flex-col items-center gap-2 pb-8">
+  <div
+    className="tb:gap-2 flex flex-col items-center gap-2 pb-8"
+    id={citySlug}
+    tabIndex={-1}
+  >
     <Intro
       title={`${countryName} - ${cityName}`}
       image={image}

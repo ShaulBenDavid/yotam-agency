@@ -2,10 +2,11 @@ import React from 'react';
 import { FcCloseUpMode } from 'react-icons/fc';
 import { Intro } from '@/screens/Root/components/Intro';
 import { CityLinkType } from '@/sanity/queries/city';
-import { CitiesSection } from './CitiesSection';
-import { ShareWithFriends } from '../ShareWithFriends';
 import { ImageLinkProps } from '@/components/ImageLink/ImageLink';
 import { forUrl } from '@/sanity/sanity.utils';
+import { Routes } from '@/routes';
+import { CitiesSection } from './CitiesSection';
+import { ShareWithFriends } from '../ShareWithFriends';
 
 interface CountryPageProps {
   name: string;
@@ -25,15 +26,19 @@ export const CountryPage = ({
   cities,
 }: CountryPageProps): JSX.Element => {
   const transformedCitiesLink = cities?.map(
-    ({ slug, mainImage, country, title }): ImageLinkProps => ({
+    ({ slug: cSlug, mainImage, country, title }): ImageLinkProps => ({
       title: title,
-      href: `/${country}/${slug.current}/`,
+      href: `/${Routes.COUNTRY}/${country}/${cSlug.current}/`,
       image: forUrl(mainImage).url(),
     })
   );
 
   return (
-    <div className="tb:gap-2 flex flex-col items-center gap-2 pb-8">
+    <div
+      className="tb:gap-2 flex flex-col items-center gap-2 pb-8"
+      tabIndex={-1}
+      id={slug}
+    >
       <Intro title={name} image={image} maxHeight="400px" />
       <div className="tb:py-4 max-w-[900px] py-2">
         <p className="app-p">{description}</p>

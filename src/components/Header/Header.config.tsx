@@ -5,10 +5,11 @@ import { MdAttractions } from 'react-icons/md';
 import { TbAccessibleFilled } from 'react-icons/tb';
 import { FaPhone } from 'react-icons/fa';
 import { Routes } from '@/routes';
+import { buildRoutePath } from '@/utils';
 import { ButtonLinkVariants } from '../ButtonLink';
 
 export type NavigationLinkConfigType = {
-  href: Routes;
+  href: string;
   title: string;
   linkVariant?: ButtonLinkVariants;
   icon?: JSX.Element;
@@ -17,19 +18,19 @@ export type NavigationLinkConfigType = {
 
 export const navigationLinksConfig: NavigationLinkConfigType[] = [
   {
-    href: Routes.JAPAN,
+    href: buildRoutePath(Routes.COUNTRY, Routes.JAPAN),
     title: 'יפן',
     icon: <GiJapan size={24} aria-hidden />,
     isSideNavOnly: false,
   },
   {
-    href: Routes.SRI_LANKA,
+    href: buildRoutePath(Routes.COUNTRY, Routes.SRI_LANKA),
     title: 'סרי לנקה',
     icon: <GiSriLanka size={24} aria-hidden />,
     isSideNavOnly: false,
   },
   {
-    href: Routes.THAILAND,
+    href: buildRoutePath(Routes.COUNTRY, Routes.THAILAND),
     title: 'תאילנד',
     icon: <GiPalmTree size={24} aria-hidden />,
     isSideNavOnly: false,

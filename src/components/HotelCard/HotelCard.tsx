@@ -32,13 +32,13 @@ export const HotelCard = ({
     />
     <div className="flex flex-col p-2">
       <h3
-        className="tb:text-xl w-full pb-1 text-left text-base font-bold"
+        className="tb:text-xl w-full pb-1 text-left text-base font-bold capitalize"
         style={{ direction: 'ltr' }}
       >
         {name}
       </h3>
       <address
-        className="flex flex-row gap-2 text-sm font-medium opacity-90"
+        className="first-capitalize flex flex-row gap-2 text-sm font-medium opacity-90"
         style={{ direction: 'ltr' }}
       >
         <MdPlace size={16} aria-hidden className="shrink-0" />
