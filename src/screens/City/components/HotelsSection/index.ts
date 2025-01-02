@@ -1,1 +1,0 @@
-export { HotelsSection } from './HotelsSection';

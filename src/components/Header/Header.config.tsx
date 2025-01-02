@@ -24,15 +24,15 @@ export const navigationLinksConfig: NavigationLinkConfigType[] = [
     isSideNavOnly: false,
   },
   {
-    href: buildRoutePath(Routes.COUNTRY, Routes.SRI_LANKA),
-    title: 'סרי לנקה',
-    icon: <GiSriLanka size={24} aria-hidden />,
-    isSideNavOnly: false,
-  },
-  {
     href: buildRoutePath(Routes.COUNTRY, Routes.THAILAND),
     title: 'תאילנד',
     icon: <GiPalmTree size={24} aria-hidden />,
+    isSideNavOnly: false,
+  },
+  {
+    href: buildRoutePath(Routes.COUNTRY, Routes.SRI_LANKA),
+    title: 'סרי לנקה',
+    icon: <GiSriLanka size={24} aria-hidden />,
     isSideNavOnly: false,
   },
   {

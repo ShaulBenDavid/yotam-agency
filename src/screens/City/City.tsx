@@ -1,11 +1,15 @@
+'use client';
+
 import React from 'react';
-import { FaPlaneDeparture } from 'react-icons/fa';
+import { FaHotel, FaPlaneDeparture } from 'react-icons/fa';
 import { Intro } from '@/screens/Root/components/Intro';
 import { CityLinkType } from '@/sanity/queries/city';
 import { Hotel } from '@/sanity/types';
+import { HotelCard } from '@/components/HotelCard';
+import { forUrl } from '@/sanity/sanity.utils';
 import { ShareWithFriends } from '../../features/ShareWithFriends';
 import { ContactUs } from '../Root/components/ContactUs';
-import { HotelsSection } from './components/HotelsSection';
+import { CarouselSection } from './components/CarouselSection';
 
 interface CityProps {
   cityName: string;
@@ -47,7 +51,32 @@ export const City = ({
       <h2 className="app-h2">אז למי {cityName} מתאימה!</h2>
       <p className="app-p">{forWho}</p>
     </section>
-    {!!hotels.length && <HotelsSection cityName={cityName} hotels={hotels} />}
+    {!!hotels.length && (
+      <CarouselSection
+        title={`אז איפה ישנים ב${cityName}`}
+        data={hotels}
+        linkText="לכל הבתי מלון"
+        icon={<FaHotel size={50} aria-hidden />}
+        cardRender={({
+          title,
+          starRating,
+          price,
+          reviewScore,
+          address,
+          mainImage,
+        }) => (
+          <HotelCard
+            name={title}
+            image={forUrl(mainImage).url()}
+            address={address}
+            stars={starRating}
+            rate={reviewScore}
+            fromPrice={price}
+          />
+        )}
+      />
+    )}
+
     <ContactUs />
     <ShareWithFriends
       title="אהבת?! ספר לחברים"
