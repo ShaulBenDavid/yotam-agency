@@ -4,12 +4,15 @@ import React from 'react';
 import { FaHotel, FaPlaneDeparture } from 'react-icons/fa';
 import { Intro } from '@/screens/Root/components/Intro';
 import { CityLinkType } from '@/sanity/queries/city';
-import { Hotel } from '@/sanity/types';
+import { Attraction, Hotel } from '@/sanity/types';
 import { HotelCard } from '@/components/HotelCard';
 import { forUrl } from '@/sanity/sanity.utils';
 import { ShareWithFriends } from '../../features/ShareWithFriends';
 import { ContactUs } from '../Root/components/ContactUs';
 import { CarouselSection } from './components/CarouselSection';
+import { AttractionCard } from '@/components/AttractionCard';
+import { MdOutlineAttractions } from 'react-icons/md';
+import { Routes } from '@/routes';
 
 interface CityProps {
   cityName: string;
@@ -21,6 +24,7 @@ interface CityProps {
   countrySlug: string;
   cities?: CityLinkType[];
   hotels: Hotel[];
+  attractions: Attraction[];
 }
 
 export const City = ({
@@ -32,6 +36,7 @@ export const City = ({
   citySlug,
   countrySlug,
   hotels,
+  attractions,
 }: CityProps): JSX.Element => (
   <div
     className="tb:gap-2 flex flex-col items-center gap-2 pb-8"
@@ -56,6 +61,7 @@ export const City = ({
         title={`אז איפה ישנים ב${cityName}`}
         data={hotels}
         linkText="לכל הבתי מלון"
+        linkHref={Routes.HOTELS}
         icon={<FaHotel size={50} aria-hidden />}
         cardRender={({
           title,
@@ -64,6 +70,7 @@ export const City = ({
           reviewScore,
           address,
           mainImage,
+          mapLink,
         }) => (
           <HotelCard
             name={title}
@@ -72,9 +79,29 @@ export const City = ({
             stars={starRating}
             rate={reviewScore}
             fromPrice={price}
+            mapLink={mapLink}
           />
         )}
       />
+    )}
+    {!!attractions.length && (
+      <>
+        <hr className="border-primary-950 my-6 w-full" aria-hidden />
+        <CarouselSection
+          title={`אז מה עושים ב${cityName}`}
+          data={attractions}
+          linkText="לכל האטרקציות"
+          linkHref={Routes.ATTRACTIONS}
+          icon={<MdOutlineAttractions size={50} aria-hidden />}
+          cardRender={({ title, address, mainImage }) => (
+            <AttractionCard
+              name={title}
+              image={forUrl(mainImage).url()}
+              address={address}
+            />
+          )}
+        />
+      </>
     )}
 
     <ContactUs />

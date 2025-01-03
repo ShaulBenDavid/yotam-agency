@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { MdPlace } from 'react-icons/md';
+import { isRtl } from '@/utils';
 
 interface AttractionCardProps {
   image: string;
@@ -29,7 +30,10 @@ export const AttractionCard = ({
     <div className="bg-primary-950 z-[1] -mt-3 flex flex-col rounded-2xl p-2 text-left text-white">
       <h3
         className="tb:text-lg w-full pb-1 text-base font-bold"
-        style={{ direction: 'ltr' }}
+        style={{
+          direction: isRtl(name) ? 'rtl' : 'ltr',
+          textAlign: isRtl(name) ? 'right' : 'left',
+        }}
       >
         {name}
       </h3>

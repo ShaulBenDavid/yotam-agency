@@ -44,6 +44,10 @@ export async function generateMetadata({
 
   const { title, description } = await getCity(city);
 
+  if (!title) {
+    notFound();
+  }
+
   return {
     title,
     description,
@@ -69,9 +73,11 @@ const CityPage = async ({ params }: CityPageProps): Promise<JSX.Element> => {
   }
 
   const cityData = await getCity(citySlug);
+  if (!cityData?.title) {
+    notFound();
+  }
   const hotels = await getHotels(citySlug);
   const attractions = await getAttractions(citySlug);
-  console.log(attractions);
 
   return (
     <City
@@ -83,6 +89,7 @@ const CityPage = async ({ params }: CityPageProps): Promise<JSX.Element> => {
       citySlug={citySlug}
       countrySlug={country}
       hotels={hotels}
+      attractions={attractions}
     />
   );
 };

@@ -3,7 +3,6 @@
 import React from 'react';
 import { Carousel } from '@/components/Carousel';
 import { ButtonLink } from '@/components/ButtonLink';
-import { Routes } from '@/routes';
 import { FaArrowLeft } from 'react-icons/fa';
 
 interface DataProps {
@@ -14,6 +13,7 @@ interface CarouselSectionProps<T> {
   title: string;
   data: T[];
   linkText: string;
+  linkHref: string;
   icon: JSX.Element;
   cardRender: (data: T) => JSX.Element;
 }
@@ -22,6 +22,7 @@ export const CarouselSection = <T extends DataProps>({
   title,
   data,
   linkText,
+  linkHref,
   icon,
   cardRender,
 }: CarouselSectionProps<T>): JSX.Element => (
@@ -29,7 +30,7 @@ export const CarouselSection = <T extends DataProps>({
     {icon}
     <h2 className="app-h2">{title}</h2>
     <Carousel data={data} cardRender={cardRender} />
-    <ButtonLink href={Routes.HOTELS} width="250px">
+    <ButtonLink href={linkHref} width="250px">
       {linkText}
       <FaArrowLeft />
     </ButtonLink>

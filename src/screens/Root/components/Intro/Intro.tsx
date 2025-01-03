@@ -11,7 +11,7 @@ export const Intro = ({
   image,
   maxHeight = '500px',
 }: IntroProps): JSX.Element => (
-  <section className="grid h-[27vw] min-h-80" style={{ maxHeight }}>
+  <section className="grid h-[27vw]" style={{ maxHeight }}>
     <div
       className="relative h-full w-full overflow-y-clip"
       aria-hidden

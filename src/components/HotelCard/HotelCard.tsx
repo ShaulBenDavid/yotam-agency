@@ -7,6 +7,7 @@ interface HotelCardProps {
   image: string;
   name: string;
   address: string;
+  mapLink: string;
   stars: number;
   rate: number;
   fromPrice?: number;
@@ -19,6 +20,7 @@ export const HotelCard = ({
   stars,
   rate,
   fromPrice,
+  mapLink,
 }: HotelCardProps): JSX.Element => (
   <div className="shadow-card flex w-full flex-col rounded-md">
     <Image
@@ -37,13 +39,15 @@ export const HotelCard = ({
       >
         {name}
       </h3>
-      <address
-        className="first-capitalize flex flex-row gap-2 text-sm font-medium opacity-90"
-        style={{ direction: 'ltr' }}
-      >
-        <MdPlace size={16} aria-hidden className="shrink-0" />
-        {address}
-      </address>
+      <a href={mapLink} target="_blank" rel="noopener noreferrer">
+        <address
+          className="first-capitalize flex flex-row gap-2 text-sm font-medium opacity-90"
+          style={{ direction: 'ltr' }}
+        >
+          <MdPlace size={16} aria-hidden className="shrink-0" />
+          {address}
+        </address>
+      </a>
       <div
         className="flex flex-row items-center gap-2 py-1"
         style={{ direction: 'ltr' }}
