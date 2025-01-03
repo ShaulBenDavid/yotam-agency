@@ -7,11 +7,10 @@ import JapanBImage from '@/assets/images/japanB.jpg';
 import CountriesJSON from '@/constants/content/countries.json';
 import { Routes } from '@/routes';
 import { countries } from '@/routes/routes.types';
-import { CitySlugType, getAllCities, getCity } from '@/sanity/queries/city';
-import { City } from '@/screens/City';
-import { getFiveHotels } from '@/sanity/queries/hotel';
-import { getFiveAttractions } from '@/sanity/queries/attraction';
+import { getAttractions } from '@/sanity/queries/attraction';
 import { WEBSITE_URL } from '@/constants';
+import { getCity } from '@/sanity/queries/city';
+import { CityAttractions } from '@/screens/CityAttractions';
 
 const images = {
   [Routes.SRI_LANKA]: SriLankaBImage,
@@ -19,15 +18,7 @@ const images = {
   [Routes.THAILAND]: ThailandBImage,
 };
 
-export async function generateStaticParams() {
-  const cities: CitySlugType[] = await getAllCities();
-  return cities.map((city) => ({
-    country: city.country,
-    city: city.slug.current,
-  }));
-}
-
-type CityPageProps = {
+type CityAttractionsPageProps = {
   params: Promise<{
     country: Routes.SRI_LANKA | Routes.THAILAND | Routes.JAPAN;
     city: string;
@@ -36,37 +27,30 @@ type CityPageProps = {
 
 export async function generateMetadata({
   params,
-}: CityPageProps): Promise<Metadata> {
+}: CityAttractionsPageProps): Promise<Metadata> {
   const { country, city } = await params;
   if (!countries.includes(country)) {
     notFound();
   }
 
-  const { title, description } = await getCity(city);
-
-  if (!title) {
-    notFound();
-  }
-
   return {
-    title,
-    description,
+    title: city,
     authors: {
       name: 'FlySan',
-      url: `${WEBSITE_URL}/${country}/${city}`,
+      url: `${WEBSITE_URL}/${country}/${city}/attractions`,
     },
     openGraph: {
-      title,
-      description,
+      title: city,
     },
     twitter: {
-      title,
-      description,
+      title: city,
     },
   };
 }
 
-const CityPage = async ({ params }: CityPageProps): Promise<JSX.Element> => {
+const CityAttractionsPage = async ({
+  params,
+}: CityAttractionsPageProps): Promise<JSX.Element> => {
   const { country, city: citySlug } = await params;
   if (!countries.includes(country)) {
     notFound();
@@ -76,22 +60,18 @@ const CityPage = async ({ params }: CityPageProps): Promise<JSX.Element> => {
   if (!cityData?.title) {
     notFound();
   }
-  const hotels = await getFiveHotels(citySlug);
-  const attractions = await getFiveAttractions(citySlug);
+  const attractions = await getAttractions(citySlug);
 
   return (
-    <City
+    <CityAttractions
       cityName={cityData.title}
       countryName={CountriesJSON[cityData.country].title}
       image={images[cityData.country]?.blurDataURL ?? ''}
-      description={cityData.description}
-      forWho={cityData.forWho}
       citySlug={citySlug}
       countrySlug={country}
-      hotels={hotels}
       attractions={attractions}
     />
   );
 };
 
-export default CityPage;
+export default CityAttractionsPage;

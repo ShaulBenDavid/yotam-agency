@@ -23,6 +23,7 @@ export default {
     extend: {
       gridTemplateColumns: {
         'cards-auto-fit': 'repeat(auto-fill, minmax(300px, 1fr))',
+        'cards-xl-auto-fit': 'repeat(auto-fill, minmax(400px, 1fr))',
       },
       boxShadow: {
         card: '0 2px 8px 0 rgba(26, 26, 26, 0.16)',

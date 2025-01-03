@@ -1,7 +1,7 @@
 import React from 'react';
-import { Intro } from './components/Intro';
+import { Intro } from '../../features/Intro';
 import { Countries } from './components/Countries';
-import { ContactUs } from './components/ContactUs';
+import { ContactUs } from '../../features/ContactUs';
 import { ShareWithFriends } from '../../features/ShareWithFriends';
 import { WhyUs } from './components/WhyUs';
 import JapanImage from '@/assets/images/jpLandImg.jpg';

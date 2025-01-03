@@ -5,7 +5,7 @@ import { FcGlobe } from 'react-icons/fc';
 import { FcSportsMode } from 'react-icons/fc';
 import { FcLandscape } from 'react-icons/fc';
 import { FaUmbrellaBeach } from 'react-icons/fa6';
-import { ContactUs } from '../Root/components/ContactUs';
+import { ContactUs } from '../../features/ContactUs';
 
 export const Attractions = (): JSX.Element => (
   <div className="tb:py-4 flex w-full flex-col items-center gap-2 py-2">

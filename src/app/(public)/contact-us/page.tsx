@@ -1,5 +1,5 @@
 import React from 'react';
-import { ContactUs } from '@/screens/Root/components/ContactUs';
+import { ContactUs } from '@/features/ContactUs';
 import { FcAssistant } from 'react-icons/fc';
 
 const ContactUS = (): JSX.Element => (

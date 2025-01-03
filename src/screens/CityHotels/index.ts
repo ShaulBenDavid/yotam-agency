@@ -1,0 +1,1 @@
+export { CityHotels } from './CityHotels';

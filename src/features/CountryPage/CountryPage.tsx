@@ -1,6 +1,6 @@
 import React from 'react';
 import { FcCloseUpMode } from 'react-icons/fc';
-import { Intro } from '@/screens/Root/components/Intro';
+import { Intro } from '@/features/Intro';
 import { CityLinkType } from '@/sanity/queries/city';
 import { ImageLinkProps } from '@/components/ImageLink/ImageLink';
 import { forUrl } from '@/sanity/sanity.utils';

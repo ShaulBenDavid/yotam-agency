@@ -2,13 +2,13 @@
 
 import React from 'react';
 import { FaHotel, FaPlaneDeparture } from 'react-icons/fa';
-import { Intro } from '@/screens/Root/components/Intro';
+import { Intro } from '@/features/Intro';
 import { CityLinkType } from '@/sanity/queries/city';
 import { Attraction, Hotel } from '@/sanity/types';
 import { HotelCard } from '@/components/HotelCard';
 import { forUrl } from '@/sanity/sanity.utils';
 import { ShareWithFriends } from '../../features/ShareWithFriends';
-import { ContactUs } from '../Root/components/ContactUs';
+import { ContactUs } from '../../features/ContactUs';
 import { CarouselSection } from './components/CarouselSection';
 import { AttractionCard } from '@/components/AttractionCard';
 import { MdOutlineAttractions } from 'react-icons/md';
@@ -61,7 +61,7 @@ export const City = ({
         title={`אז איפה ישנים ב${cityName}`}
         data={hotels}
         linkText="לכל הבתי מלון"
-        linkHref={Routes.HOTELS}
+        linkHref={`${citySlug}/${Routes.HOTELS}`}
         icon={<FaHotel size={50} aria-hidden />}
         cardRender={({
           title,
@@ -91,7 +91,7 @@ export const City = ({
           title={`אז מה עושים ב${cityName}`}
           data={attractions}
           linkText="לכל האטרקציות"
-          linkHref={Routes.ATTRACTIONS}
+          linkHref={`${citySlug}/${Routes.ATTRACTIONS}`}
           icon={<MdOutlineAttractions size={50} aria-hidden />}
           cardRender={({ title, address, mainImage }) => (
             <AttractionCard
