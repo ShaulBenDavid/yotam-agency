@@ -25,7 +25,6 @@ export const NavigationColumn = ({
             <a
               href={link}
               className="capitalize hover:underline"
-              aria-label={title}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -34,11 +33,7 @@ export const NavigationColumn = ({
           </li>
         ) : (
           <li className="mb-4" key={title}>
-            <Link
-              href={link}
-              className="capitalize hover:underline"
-              aria-label={title}
-            >
+            <Link href={link} className="capitalize hover:underline">
               {title}
             </Link>
           </li>

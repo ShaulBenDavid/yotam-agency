@@ -4,14 +4,16 @@ interface IntroProps {
   title: string;
   image: string;
   maxHeight?: string;
+  minHeight?: string;
 }
 
 export const Intro = ({
   title,
   image,
   maxHeight = '500px',
+  minHeight = '120px',
 }: IntroProps): JSX.Element => (
-  <section className="grid h-[27vw]" style={{ maxHeight }}>
+  <section className="grid h-[27vw]" style={{ maxHeight, minHeight }}>
     <div
       className="relative h-full w-full overflow-y-clip"
       aria-hidden

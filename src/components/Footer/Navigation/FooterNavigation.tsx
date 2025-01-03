@@ -11,12 +11,7 @@ export const FooterNavigation = (): JSX.Element => (
     aria-label="Footer"
   >
     <div className="mb-6 md:mb-0">
-      <Link
-        href={Routes.ROOT}
-        className="flex w-fit items-center"
-        aria-label="Dev Wizard Home"
-        passHref
-      >
+      <Link href={Routes.ROOT} className="flex w-fit items-center" passHref>
         logo
       </Link>
     </div>

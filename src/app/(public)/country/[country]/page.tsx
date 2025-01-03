@@ -43,18 +43,18 @@ export async function generateMetadata({
   const { title, description } = CountriesJSON[country];
 
   return {
-    title,
+    title: `חופשה ב${title}`,
     description,
     authors: {
       name: 'FlySan',
       url: `${WEBSITE_URL}/${country}`,
     },
     openGraph: {
-      title,
+      title: `חופשה ב${title}`,
       description,
     },
     twitter: {
-      title,
+      title: `חופשה ב${title}`,
       description,
     },
   };

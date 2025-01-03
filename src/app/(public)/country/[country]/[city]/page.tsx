@@ -49,18 +49,18 @@ export async function generateMetadata({
   }
 
   return {
-    title,
+    title: `חופשה ב${title}`,
     description,
     authors: {
       name: 'FlySan',
       url: `${WEBSITE_URL}/${country}/${city}`,
     },
     openGraph: {
-      title,
+      title: `חופשה ב${title}`,
       description,
     },
     twitter: {
-      title,
+      title: `חופשה ב${title}`,
       description,
     },
   };

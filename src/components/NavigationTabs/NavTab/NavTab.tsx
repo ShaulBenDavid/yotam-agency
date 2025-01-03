@@ -16,11 +16,7 @@ export const NavTab = ({ href, title, isActive }: NavTabProps): JSX.Element => (
       isActive && 'before:w-full before:hover:w-full'
     }`}
   >
-    <Link
-      href={href}
-      aria-label={title}
-      aria-current={isActive ? 'page' : undefined}
-    >
+    <Link href={href} aria-current={isActive ? 'page' : undefined}>
       {title}
     </Link>
   </li>

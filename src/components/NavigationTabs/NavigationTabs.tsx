@@ -29,7 +29,6 @@ export const NavigationTabs = ({
             <ButtonLink
               href={`/${href}`}
               variant={linkVariant}
-              ariaLabel={title}
               isAriaCurrent={activeSegment === href.substring(1)}
             >
               {title}

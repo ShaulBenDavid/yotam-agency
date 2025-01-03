@@ -19,7 +19,6 @@ export const SideNavTab = ({
   <Link
     href={href}
     onClick={onClick}
-    aria-label={title}
     aria-current={isActive ? 'page' : undefined}
     className={`focus:bg-gray group flex w-full flex-row content-center items-center gap-1 rounded-md p-2 font-semibold capitalize text-gray-900 focus:bg-opacity-20 ${
       isActive &&

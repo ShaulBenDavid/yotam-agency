@@ -8,7 +8,11 @@ import JapanImage from '@/assets/images/jpLandImg.jpg';
 
 export const Root = (): JSX.Element => (
   <div className="tb:gap-2 flex flex-col gap-2 pb-8">
-    <Intro title="חופשות במזרח סוגרים עם יותם טורס" image={JapanImage.src} />
+    <Intro
+      title="חופשות במזרח סוגרים עם יותם טורס"
+      image={JapanImage.src}
+      minHeight="288px"
+    />
     <Countries />
     <ContactUs />
     <WhyUs />

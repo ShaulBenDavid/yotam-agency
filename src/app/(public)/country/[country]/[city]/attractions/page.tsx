@@ -9,7 +9,7 @@ import { Routes } from '@/routes';
 import { countries } from '@/routes/routes.types';
 import { getAttractions } from '@/sanity/queries/attraction';
 import { WEBSITE_URL } from '@/constants';
-import { getCity } from '@/sanity/queries/city';
+import { CitySlugType, getAllCities, getCity } from '@/sanity/queries/city';
 import { CityAttractions } from '@/screens/CityAttractions';
 
 const images = {
@@ -17,6 +17,14 @@ const images = {
   [Routes.JAPAN]: JapanBImage,
   [Routes.THAILAND]: ThailandBImage,
 };
+
+export async function generateStaticParams() {
+  const cities: CitySlugType[] = await getAllCities();
+  return cities.map((city) => ({
+    country: city.country,
+    city: city.slug.current,
+  }));
+}
 
 type CityAttractionsPageProps = {
   params: Promise<{

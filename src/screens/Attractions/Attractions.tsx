@@ -5,6 +5,7 @@ import { FcGlobe } from 'react-icons/fc';
 import { FcSportsMode } from 'react-icons/fc';
 import { FcLandscape } from 'react-icons/fc';
 import { FaUmbrellaBeach } from 'react-icons/fa6';
+import { ShareWithFriends } from '@/features/ShareWithFriends';
 import { ContactUs } from '../../features/ContactUs';
 
 export const Attractions = (): JSX.Element => (
@@ -34,5 +35,9 @@ export const Attractions = (): JSX.Element => (
       </div>
     </div>
     <ContactUs />
+    <ShareWithFriends
+      title="אהבת?! ספר לחברים"
+      description="בין אם אתם אוהבים ערים, הרים, או חופים, בין אם אתם אוהבים טרקים, בטן גב או מטרופולין. המזרח בשבילכם!"
+    />
   </div>
 );
