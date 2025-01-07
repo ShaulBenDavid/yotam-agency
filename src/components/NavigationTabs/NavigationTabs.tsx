@@ -23,7 +23,7 @@ export const NavigationTabs = ({
       aria-label="Main"
       id="main-nav"
     >
-      {filteredLinks.map(({ title, href, linkVariant }) =>
+      {filteredLinks.map(({ title, href, linkVariant, subLinks }) =>
         linkVariant ? (
           <li key={href}>
             <ButtonLink
@@ -40,6 +40,7 @@ export const NavigationTabs = ({
             href={`/${href}`}
             title={title}
             isActive={activeSegment === href.substring(1)}
+            subLinks={subLinks}
           />
         )
       )}

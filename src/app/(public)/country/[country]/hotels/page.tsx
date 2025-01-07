@@ -8,9 +8,11 @@ import CountriesJSON from '@/constants/content/countries.json';
 import { Routes } from '@/routes';
 import { countries } from '@/routes/routes.types';
 import { WEBSITE_URL } from '@/constants';
-import { CitySlugType, getAllCities, getCity } from '@/sanity/queries/city';
-import { CityHotels } from '@/screens/CityHotels';
-import { getHotels } from '@/sanity/queries/hotel';
+import {
+  CitySlugType,
+  getAllCities,
+  getCitiesByCountry,
+} from '@/sanity/queries/city';
 
 const images = {
   [Routes.SRI_LANKA]: SriLankaBImage,
@@ -22,21 +24,19 @@ export async function generateStaticParams() {
   const cities: CitySlugType[] = await getAllCities();
   return cities.map((city) => ({
     country: city.country,
-    city: city.slug.current,
   }));
 }
 
-type CityHotelsPageProps = {
+type CountryHotelsPageProps = {
   params: Promise<{
     country: Routes.SRI_LANKA | Routes.THAILAND | Routes.JAPAN;
-    city: string;
   }>;
 };
 
 export async function generateMetadata({
   params,
-}: CityHotelsPageProps): Promise<Metadata> {
-  const { country, city } = await params;
+}: CountryHotelsPageProps): Promise<Metadata> {
+  const { country } = await params;
   if (!countries.includes(country)) {
     notFound();
   }
@@ -47,7 +47,7 @@ export async function generateMetadata({
     title: `מלונות ב${title}`,
     authors: {
       name: 'FlySan',
-      url: `${WEBSITE_URL}/${country}/${city}/hotels`,
+      url: `${WEBSITE_URL}/${country}/hotels`,
     },
     openGraph: {
       title: `מלונות ב${title}`,
@@ -58,30 +58,17 @@ export async function generateMetadata({
   };
 }
 
-const CityHotelsPage = async ({
+const CountryHotelsPage = async ({
   params,
-}: CityHotelsPageProps): Promise<JSX.Element> => {
-  const { country, city: citySlug } = await params;
-  if (!countries.includes(country)) {
+}: CountryHotelsPageProps): Promise<JSX.Element> => {
+  const { country } = await params;
+  if (!countries.includes(country) && !images[country]) {
     notFound();
   }
+  const cities = await getCitiesByCountry(country);
+  console.log(cities);
 
-  const cityData = await getCity(citySlug);
-  if (!cityData?.title) {
-    notFound();
-  }
-  const hotels = await getHotels(citySlug);
-
-  return (
-    <CityHotels
-      cityName={cityData.title}
-      countryName={CountriesJSON[cityData.country].title}
-      image={images[cityData.country]?.blurDataURL ?? ''}
-      citySlug={citySlug}
-      countrySlug={country}
-      hotels={hotels}
-    />
-  );
+  return <div>s</div>;
 };
 
-export default CityHotelsPage;
+export default CountryHotelsPage;

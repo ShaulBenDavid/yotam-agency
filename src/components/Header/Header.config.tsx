@@ -8,12 +8,15 @@ import { Routes } from '@/routes';
 import { buildRoutePath } from '@/utils';
 import { ButtonLinkVariants } from '../ButtonLink';
 
+export type SubLinkConfigType = Omit<NavigationLinkConfigType, 'subLinks'>;
+
 export type NavigationLinkConfigType = {
   href: string;
   title: string;
   linkVariant?: ButtonLinkVariants;
   icon?: JSX.Element;
   isSideNavOnly: boolean;
+  subLinks?: SubLinkConfigType[];
 };
 
 export const navigationLinksConfig: NavigationLinkConfigType[] = [
@@ -22,18 +25,62 @@ export const navigationLinksConfig: NavigationLinkConfigType[] = [
     title: 'יפן',
     icon: <GiJapan size={24} aria-hidden />,
     isSideNavOnly: false,
+    subLinks: [
+      {
+        href: buildRoutePath(Routes.COUNTRY, Routes.JAPAN, Routes.HOTELS),
+        title: 'מלונות',
+        isSideNavOnly: false,
+      },
+      {
+        href: buildRoutePath(Routes.COUNTRY, Routes.JAPAN, Routes.ATTRACTIONS),
+        title: 'אטרקציות',
+        isSideNavOnly: false,
+      },
+    ],
   },
   {
     href: buildRoutePath(Routes.COUNTRY, Routes.THAILAND),
     title: 'תאילנד',
     icon: <GiPalmTree size={24} aria-hidden />,
     isSideNavOnly: false,
+    subLinks: [
+      {
+        href: buildRoutePath(Routes.COUNTRY, Routes.THAILAND, Routes.HOTELS),
+        title: 'מלונות',
+        isSideNavOnly: false,
+      },
+      {
+        href: buildRoutePath(
+          Routes.COUNTRY,
+          Routes.THAILAND,
+          Routes.ATTRACTIONS
+        ),
+        title: 'אטרקציות',
+        isSideNavOnly: false,
+      },
+    ],
   },
   {
     href: buildRoutePath(Routes.COUNTRY, Routes.SRI_LANKA),
     title: 'סרי לנקה',
     icon: <GiSriLanka size={24} aria-hidden />,
     isSideNavOnly: false,
+    subLinks: [
+      {
+        href: buildRoutePath(Routes.COUNTRY, Routes.SRI_LANKA, Routes.HOTELS),
+        title: 'מלונות',
+        isSideNavOnly: false,
+      },
+      {
+        href: buildRoutePath(
+          Routes.COUNTRY,
+          Routes.SRI_LANKA,
+          Routes.ATTRACTIONS
+        ),
+        title: 'אטרקציות',
+        isSideNavOnly: false,
+      },
+    ],
   },
   {
     href: Routes.ATTRACTIONS,

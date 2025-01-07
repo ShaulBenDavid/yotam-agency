@@ -7,10 +7,12 @@ import JapanBImage from '@/assets/images/japanB.jpg';
 import CountriesJSON from '@/constants/content/countries.json';
 import { Routes } from '@/routes';
 import { countries } from '@/routes/routes.types';
-import { getAttractions } from '@/sanity/queries/attraction';
 import { WEBSITE_URL } from '@/constants';
-import { CitySlugType, getAllCities, getCity } from '@/sanity/queries/city';
-import { CityAttractions } from '@/screens/CityAttractions';
+import {
+  CitySlugType,
+  getAllCities,
+  getCitiesByCountry,
+} from '@/sanity/queries/city';
 
 const images = {
   [Routes.SRI_LANKA]: SriLankaBImage,
@@ -22,21 +24,19 @@ export async function generateStaticParams() {
   const cities: CitySlugType[] = await getAllCities();
   return cities.map((city) => ({
     country: city.country,
-    city: city.slug.current,
   }));
 }
 
-type CityAttractionsPageProps = {
+type CountryAttractionsPageProps = {
   params: Promise<{
     country: Routes.SRI_LANKA | Routes.THAILAND | Routes.JAPAN;
-    city: string;
   }>;
 };
 
 export async function generateMetadata({
   params,
-}: CityAttractionsPageProps): Promise<Metadata> {
-  const { country, city } = await params;
+}: CountryAttractionsPageProps): Promise<Metadata> {
+  const { country } = await params;
   if (!countries.includes(country)) {
     notFound();
   }
@@ -47,7 +47,7 @@ export async function generateMetadata({
     title: `אטרקציות ב${title}`,
     authors: {
       name: 'FlySan',
-      url: `${WEBSITE_URL}/${country}/${city}/attractions`,
+      url: `${WEBSITE_URL}/${country}/hotels`,
     },
     openGraph: {
       title: `אטרקציות ב${title}`,
@@ -58,30 +58,17 @@ export async function generateMetadata({
   };
 }
 
-const CityAttractionsPage = async ({
+const CountryAttractionsPage = async ({
   params,
-}: CityAttractionsPageProps): Promise<JSX.Element> => {
-  const { country, city: citySlug } = await params;
-  if (!countries.includes(country)) {
+}: CountryAttractionsPageProps): Promise<JSX.Element> => {
+  const { country } = await params;
+  if (!countries.includes(country) && !images[country]) {
     notFound();
   }
+  const cities = await getCitiesByCountry(country);
+  console.log(cities);
 
-  const cityData = await getCity(citySlug);
-  if (!cityData?.title) {
-    notFound();
-  }
-  const attractions = await getAttractions(citySlug);
-
-  return (
-    <CityAttractions
-      cityName={cityData.title}
-      countryName={CountriesJSON[cityData.country].title}
-      image={images[cityData.country]?.blurDataURL ?? ''}
-      citySlug={citySlug}
-      countrySlug={country}
-      attractions={attractions}
-    />
-  );
+  return <div>s</div>;
 };
 
-export default CityAttractionsPage;
+export default CountryAttractionsPage;
