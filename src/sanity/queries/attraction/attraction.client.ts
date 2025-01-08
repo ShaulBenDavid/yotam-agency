@@ -3,6 +3,7 @@ import { Attraction } from '@/sanity/types';
 import {
   getFiveAttractionsQuery,
   getAttractionsQuery,
+  getAttractionsByCountryQuery,
 } from './attraction.queries';
 
 export const getFiveAttractions = async (
@@ -20,3 +21,10 @@ export const getAttractions = async (
     slug: cityName,
   });
 };
+
+export const getAttractionsByCountry = async (
+  countrySlug: string
+): Promise<Attraction[]> =>
+  await client.fetch(getAttractionsByCountryQuery, {
+    slug: countrySlug,
+  });

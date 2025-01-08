@@ -54,7 +54,7 @@ export const CountryPage = ({
       <ShareWithFriends
         title="אהבת?! ספר לחברים"
         description="שלח לחברים ומצא פרטנרים לטיול עוד היום!"
-        url={`/${slug}`}
+        url={`/${Routes.COUNTRY}/${slug}`}
       />
     </div>
   );

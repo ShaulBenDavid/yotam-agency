@@ -108,7 +108,7 @@ export const City = ({
     <ShareWithFriends
       title="אהבת?! ספר לחברים"
       description="שלח לחברים ומצא פרטנרים לטיול עוד היום!"
-      url={`/${countrySlug}/${citySlug}`}
+      url={`/${Routes.COUNTRY}/${countrySlug}/${citySlug}`}
     />
   </div>
 );

@@ -69,7 +69,7 @@ export const CountryExtra = <T extends CountryExtraDataProps>({
       <ShareWithFriends
         title="אהבת?! ספר לחברים"
         description="שלח לחברים ומצא פרטנרים לטיול עוד היום!"
-        url={`/${countrySlug}/${activitySlug}`}
+        url={`/${Routes.COUNTRY}/${countrySlug}/${activitySlug}`}
       />
     </div>
   );

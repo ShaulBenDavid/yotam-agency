@@ -1,4 +1,5 @@
 import React from 'react';
+import { Routes } from '@/routes';
 import { ContactUs } from '@/features/ContactUs';
 import { Intro } from '@/features/Intro';
 import { ShareWithFriends } from '../ShareWithFriends';
@@ -50,7 +51,7 @@ export const CityExtra = <T extends DataProps>({
     <ShareWithFriends
       title="אהבת?! ספר לחברים"
       description="שלח לחברים ומצא פרטנרים לטיול עוד היום!"
-      url={`/${countrySlug}/${citySlug}/${activitySlug}`}
+      url={`/${Routes.COUNTRY}/${countrySlug}/${citySlug}/${activitySlug}`}
     />
   </div>
 );

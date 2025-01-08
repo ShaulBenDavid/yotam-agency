@@ -8,11 +8,9 @@ import CountriesJSON from '@/constants/content/countries.json';
 import { Routes } from '@/routes';
 import { countries } from '@/routes/routes.types';
 import { WEBSITE_URL } from '@/constants';
-import {
-  CitySlugType,
-  getAllCities,
-  getCitiesByCountry,
-} from '@/sanity/queries/city';
+import { CitySlugType, getAllCities } from '@/sanity/queries/city';
+import { getAttractionsByCountry } from '@/sanity/queries/attraction';
+import { CountryAttractions } from '@/screens/CountryAttractions';
 
 const images = {
   [Routes.SRI_LANKA]: SriLankaBImage,
@@ -65,10 +63,18 @@ const CountryAttractionsPage = async ({
   if (!countries.includes(country) && !images[country]) {
     notFound();
   }
-  const cities = await getCitiesByCountry(country);
-  console.log(cities);
 
-  return <div>s</div>;
+  const { title } = CountriesJSON[country];
+  const attractions = await getAttractionsByCountry(country);
+
+  return (
+    <CountryAttractions
+      countrySlug={country}
+      countryName={title}
+      image={images[country].blurDataURL ?? ''}
+      data={attractions}
+    />
+  );
 };
 
 export default CountryAttractionsPage;

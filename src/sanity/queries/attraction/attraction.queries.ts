@@ -11,3 +11,11 @@ export const getAttractionsQuery = groq`
   ...
   }
 `;
+
+export const getAttractionsByCountryQuery = groq`
+ *[_type == 'attraction' && country == $slug] {
+  ...,
+  city-> {
+    ...
+  }
+  }`;
