@@ -10,3 +10,11 @@ export const getHotelsQuery = groq`
   ...
   }
 `;
+
+export const getHotelsByCountryQuery = groq`
+ *[_type == 'hotel' && country == $slug] {
+  ...,
+  city-> {
+    ...
+  }
+  }`;

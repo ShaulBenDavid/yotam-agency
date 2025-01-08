@@ -18,13 +18,15 @@ export const MenuSubLinks = ({
   subLinks,
 }: MenuSubLinksProps) => (
   <ul
-    className={`absolute ${isDropdownOpen ? 'flex' : 'hidden'} right-0 top-[100%] flex flex-col gap-2 rounded-md bg-white px-4 py-2 text-base drop-shadow-lg`}
+    className={`absolute ${isDropdownOpen ? 'flex' : 'hidden'} right-0 top-[100%] flex cursor-default flex-col gap-2 rounded-md bg-white px-4 py-2 text-base drop-shadow-lg`}
     aria-labelledby={buttonId}
     id={menuId}
   >
     {subLinks.map(({ href, title }) => (
       <li key={`sublinks-${href}`}>
-        <Link href={`/${href}`}>{title}</Link>
+        <Link href={`/${href}`} className="hover:underline">
+          {title}
+        </Link>
       </li>
     ))}
   </ul>

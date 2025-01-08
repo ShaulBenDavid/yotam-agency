@@ -1,11 +1,16 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import '@/styles/global.css';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { AppProviders } from '@/providers';
 import { defaultMetadata } from '@/metadata';
+import theme from '@/styles/tailwind.theme';
 
 export const metadata: Metadata = defaultMetadata;
+
+export const viewport: Viewport = {
+  themeColor: theme.primary[950],
+};
 
 export default function RootLayout({
   children,
