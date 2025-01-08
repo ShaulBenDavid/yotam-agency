@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { FaHotel } from 'react-icons/fa';
+import { MdOutlineAttractions } from 'react-icons/md';
 import { CountryExtra } from '@/features/CountryExtra/CountryExtra';
 import { Routes } from '@/routes';
 import { forUrl } from '@/sanity/sanity.utils';
@@ -25,7 +25,7 @@ export const CountryAttractions = ({
     activityName="אטרקציות"
     activitySlug={Routes.ATTRACTIONS}
     linkText="לכל האטרקציות ב"
-    icon={<FaHotel size={50} aria-hidden />}
+    icon={<MdOutlineAttractions size={50} aria-hidden />}
     carouselTitle="אטרקציות ב"
     countrySlug={countrySlug}
     countryName={countryName}

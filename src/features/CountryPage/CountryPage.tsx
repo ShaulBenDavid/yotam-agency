@@ -1,4 +1,6 @@
 import React from 'react';
+import { FaHotel } from 'react-icons/fa';
+import { MdOutlineAttractions } from 'react-icons/md';
 import { FcCloseUpMode } from 'react-icons/fc';
 import { Intro } from '@/features/Intro';
 import { CityLinkType } from '@/sanity/queries/city';
@@ -7,6 +9,7 @@ import { forUrl } from '@/sanity/sanity.utils';
 import { Routes } from '@/routes';
 import { CitiesSection } from './CitiesSection';
 import { ShareWithFriends } from '../ShareWithFriends';
+import { ButtonLink } from '@/components/ButtonLink';
 
 interface CountryPageProps {
   name: string;
@@ -51,6 +54,18 @@ export const CountryPage = ({
       {transformedCitiesLink && (
         <CitiesSection countryName={name} cities={transformedCitiesLink} />
       )}
+      <section className="tb:py-4 flex flex-col items-center gap-2 py-2">
+        <h2 className="app-h2">למידע נוסף</h2>
+        <div className="flex flex-row gap-2">
+          <ButtonLink href={`${slug}/${Routes.HOTELS}`}>
+            בתי במלון <FaHotel aria-hidden className="mr-2" size={24} />
+          </ButtonLink>
+          <ButtonLink href={`${slug}/${Routes.ATTRACTIONS}`}>
+            אטרקציות
+            <MdOutlineAttractions aria-hidden className="mr-2" size={24} />
+          </ButtonLink>
+        </div>
+      </section>
       <ShareWithFriends
         title="אהבת?! ספר לחברים"
         description="שלח לחברים ומצא פרטנרים לטיול עוד היום!"
