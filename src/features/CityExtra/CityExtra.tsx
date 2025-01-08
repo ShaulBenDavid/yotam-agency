@@ -42,7 +42,7 @@ export const CityExtra = <T extends DataProps>({
       maxHeight="250px"
     />
     <section
-      className="tb:py-4 grid-cols-cards-xl-auto-fit grid w-full gap-6 py-2"
+      className="tb:py-4 tb:grid-cols-cards-xl-auto-fit grid-cols-cards-auto-fit grid w-full gap-6 py-2"
       aria-label={activityName}
     >
       {data?.map((item) => cardRender(item))}
