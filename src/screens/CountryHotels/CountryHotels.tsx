@@ -7,6 +7,7 @@ import { CountryExtra } from '@/features/CountryExtra/CountryExtra';
 import { Routes } from '@/routes';
 import { forUrl } from '@/sanity/sanity.utils';
 import { Hotel } from '@/sanity/types';
+import { HotelModal, useHotelModal } from '@/features/HotelModal';
 
 interface CountryHotelsProps {
   countryName: string;
@@ -20,35 +21,41 @@ export const CountryHotels = ({
   image,
   countrySlug,
   data,
-}: CountryHotelsProps): JSX.Element => (
-  <CountryExtra
-    activityName="מלונות"
-    activitySlug={Routes.HOTELS}
-    linkText="לכל המלונות ב"
-    icon={<FaHotel size={50} aria-hidden />}
-    carouselTitle="בתי מלון ב"
-    countrySlug={countrySlug}
-    countryName={countryName}
-    image={image}
-    data={data}
-    cardRender={({
-      title,
-      starRating,
-      price,
-      reviewScore,
-      address,
-      mainImage,
-      mapLink,
-    }) => (
-      <HotelCard
-        name={title}
-        image={forUrl(mainImage).url()}
-        address={address}
-        stars={starRating}
-        rate={reviewScore}
-        fromPrice={price}
-        mapLink={mapLink}
+}: CountryHotelsProps): JSX.Element => {
+  const { onShow, onClose, hotelModalRef, hotelModalData } = useHotelModal();
+
+  return (
+    <>
+      <CountryExtra
+        activityName="מלונות"
+        activitySlug={Routes.HOTELS}
+        linkText="לכל המלונות ב"
+        icon={<FaHotel size={50} aria-hidden />}
+        carouselTitle="בתי מלון ב"
+        countrySlug={countrySlug}
+        countryName={countryName}
+        image={image}
+        data={data}
+        cardRender={(params) => (
+          <HotelCard
+            name={params.title}
+            image={forUrl(params.mainImage).url()}
+            address={params.address}
+            stars={params.starRating}
+            rate={params.reviewScore}
+            fromPrice={params?.price}
+            mapLink={params.mapLink}
+            onClick={() => onShow(params)}
+          />
+        )}
       />
-    )}
-  />
-);
+      {hotelModalData && (
+        <HotelModal
+          onClose={onClose}
+          ref={hotelModalRef}
+          data={hotelModalData}
+        />
+      )}
+    </>
+  );
+};

@@ -5,6 +5,7 @@ import type { City } from './city.types';
 export interface Hotel extends Base {
   title: string;
   slug: Slug;
+  description: string;
   mainImage: Image;
   address: string;
   mapLink: string;

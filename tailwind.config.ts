@@ -63,6 +63,10 @@ export default {
         'fade-in-scale': 'fadeInScale 1.5s ease-in-out',
       },
       keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
         enterIn: {
           '0%': { transform: 'translateX(100%)' },
           '100%': { translate: 'translateX(0%)' },

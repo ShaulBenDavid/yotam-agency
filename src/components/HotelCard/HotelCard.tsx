@@ -2,7 +2,9 @@ import React from 'react';
 import Image from 'next/image';
 import { MdPlace } from 'react-icons/md';
 import { Rating } from '../Rating';
+import { Button } from '../Button';
 
+export const ARIA_HOTEL_INFO_MODAL = 'hotel-info-modal';
 interface HotelCardProps {
   image: string;
   name: string;
@@ -11,6 +13,7 @@ interface HotelCardProps {
   stars: number;
   rate: number;
   fromPrice?: number;
+  onClick: () => void;
 }
 
 export const HotelCard = ({
@@ -21,6 +24,7 @@ export const HotelCard = ({
   rate,
   fromPrice,
   mapLink,
+  onClick,
 }: HotelCardProps): JSX.Element => (
   <div className="shadow-card flex w-full flex-col rounded-md">
     <Image
@@ -62,11 +66,21 @@ export const HotelCard = ({
           <Rating rate={stars} />
         </div>
       </div>
-      {fromPrice && (
-        <span aria-label="price">
-          <strong>החל מ-</strong> {fromPrice}
-        </span>
-      )}
+      <div className="tb:flex-row tb:items-end flex flex-col justify-between gap-2 py-2">
+        {fromPrice && (
+          <span aria-label="price">
+            <strong>החל מ-</strong> {fromPrice}
+          </span>
+        )}
+        <Button
+          width="fit-content"
+          className="px-4"
+          aria-controls={ARIA_HOTEL_INFO_MODAL}
+          onClick={onClick}
+        >
+          למידע נוסף
+        </Button>
+      </div>
     </div>
   </div>
 );

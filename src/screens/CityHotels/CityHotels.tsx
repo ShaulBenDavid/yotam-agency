@@ -6,6 +6,7 @@ import { CityExtra } from '@/features/CityExtra';
 import { Routes } from '@/routes';
 import { HotelCard } from '@/components/HotelCard';
 import { Hotel } from '@/sanity/types';
+import { HotelModal, useHotelModal } from '@/features/HotelModal';
 
 interface CityHotelsProps {
   cityName: string;
@@ -23,34 +24,40 @@ export const CityHotels = ({
   countrySlug,
   citySlug,
   hotels,
-}: CityHotelsProps): JSX.Element => (
-  <CityExtra
-    activityName="מלונות"
-    activitySlug={Routes.HOTELS}
-    cityName={cityName}
-    countryName={countryName}
-    image={image}
-    citySlug={citySlug}
-    countrySlug={countrySlug}
-    data={hotels}
-    cardRender={({
-      title,
-      starRating,
-      price,
-      reviewScore,
-      address,
-      mainImage,
-      mapLink,
-    }) => (
-      <HotelCard
-        name={title}
-        image={forUrl(mainImage).url()}
-        address={address}
-        stars={starRating}
-        rate={reviewScore}
-        fromPrice={price}
-        mapLink={mapLink}
+}: CityHotelsProps): JSX.Element => {
+  const { onShow, onClose, hotelModalRef, hotelModalData } = useHotelModal();
+
+  return (
+    <>
+      <CityExtra
+        activityName="מלונות"
+        activitySlug={Routes.HOTELS}
+        cityName={cityName}
+        countryName={countryName}
+        image={image}
+        citySlug={citySlug}
+        countrySlug={countrySlug}
+        data={hotels}
+        cardRender={(params) => (
+          <HotelCard
+            name={params.title}
+            image={forUrl(params.mainImage).url()}
+            address={params.address}
+            stars={params.starRating}
+            rate={params.reviewScore}
+            fromPrice={params?.price}
+            mapLink={params.mapLink}
+            onClick={() => onShow(params)}
+          />
+        )}
       />
-    )}
-  />
-);
+      {hotelModalData && (
+        <HotelModal
+          onClose={onClose}
+          ref={hotelModalRef}
+          data={hotelModalData}
+        />
+      )}
+    </>
+  );
+};

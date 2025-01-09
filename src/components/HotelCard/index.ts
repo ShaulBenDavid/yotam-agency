@@ -1,1 +1,1 @@
-export { HotelCard } from './HotelCard';
+export { HotelCard, ARIA_HOTEL_INFO_MODAL } from './HotelCard';

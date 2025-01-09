@@ -100,7 +100,7 @@ h6 {
     */
 
 ::backdrop {
-  background: rgba(29, 13, 37, 0.3);
+  background: rgba(18, 22, 47, 0.3);
 }
 
 input[type='search']::-webkit-search-decoration,

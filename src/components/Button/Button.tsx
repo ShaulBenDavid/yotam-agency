@@ -1,21 +1,21 @@
-import React from "react";
-import { twMerge } from "tailwind-merge";
-import { ButtonVariants } from "./Button.types";
-import { buttonVariantsStyleConfig } from "./Button.config";
-import { Spinner, SpinnerSize, SpinnerVariants } from "../Spinner";
+import React from 'react';
+import { twMerge } from 'tailwind-merge';
+import { ButtonVariants } from './Button.types';
+import { buttonVariantsStyleConfig } from './Button.config';
+import { Spinner, SpinnerSize, SpinnerVariants } from '../Spinner';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant: ButtonVariants;
+  variant?: ButtonVariants;
   width?: string;
   isLoading?: boolean;
 }
 
 export const Button = ({
-  variant,
+  variant = ButtonVariants.PRIMARY,
   width,
   isLoading = false,
   children,
-  type = "submit",
+  type = 'submit',
   className,
   onClick,
   disabled,
@@ -25,11 +25,8 @@ export const Button = ({
     onClick={onClick}
     disabled={disabled || isLoading}
     className={twMerge(
-      `flex h-[35px] w-full  items-center justify-center rounded-md text-base capitalize 
-      ${disabled && "cursor-not-allowed"} 
-      ${buttonVariantsStyleConfig[variant]} 
-      ${isLoading && "cursor-wait"} disabled:opacity-60`,
-      className,
+      `flex h-[35px] w-full items-center justify-center rounded-md text-base capitalize transition duration-150 ${disabled && 'cursor-not-allowed'} ${buttonVariantsStyleConfig[variant]} ${isLoading && 'cursor-wait'} disabled:opacity-60`,
+      className
     )}
     style={{ width }}
   >
