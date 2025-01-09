@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { FaHotel, FaPlaneDeparture } from 'react-icons/fa';
+import { FaHotel } from 'react-icons/fa';
 import { Intro } from '@/features/Intro';
 import { CityLinkType } from '@/sanity/queries/city';
 import { Attraction, Hotel } from '@/sanity/types';
@@ -19,7 +19,6 @@ interface CityProps {
   countryName: string;
   description: string;
   image: string;
-  forWho: string;
   citySlug: string;
   countrySlug: string;
   cities?: CityLinkType[];
@@ -32,7 +31,6 @@ export const City = ({
   countryName,
   description,
   image,
-  forWho,
   citySlug,
   countrySlug,
   hotels,
@@ -51,11 +49,6 @@ export const City = ({
     <div className="tb:py-4 max-w-[900px] py-2">
       <p className="app-p">{description}</p>
     </div>
-    <section className="tb:py-4 flex max-w-[900px] flex-col items-center gap-2 py-2">
-      <FaPlaneDeparture size={50} aria-hidden />
-      <h2 className="app-h2">אז למי {cityName} מתאימה!</h2>
-      <p className="app-p">{forWho}</p>
-    </section>
     {!!hotels.length && (
       <CarouselSection
         title={`אז איפה ישנים ב${cityName}`}

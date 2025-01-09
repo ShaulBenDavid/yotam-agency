@@ -33,11 +33,6 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'forWho',
-      title: 'For Who',
-      type: 'string',
-    }),
-    defineField({
       name: 'mainImage',
       title: 'Main image',
       type: 'image',

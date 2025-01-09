@@ -7,5 +7,4 @@ export interface City extends Base {
   slug: Slug;
   title: string;
   description: string;
-  forWho: string;
 }

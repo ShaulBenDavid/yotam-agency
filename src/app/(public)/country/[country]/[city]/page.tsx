@@ -85,7 +85,6 @@ const CityPage = async ({ params }: CityPageProps): Promise<JSX.Element> => {
       countryName={CountriesJSON[cityData.country].title}
       image={images[cityData.country]?.blurDataURL ?? ''}
       description={cityData.description}
-      forWho={cityData.forWho}
       citySlug={citySlug}
       countrySlug={country}
       hotels={hotels}
