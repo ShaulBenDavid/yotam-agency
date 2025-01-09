@@ -42,11 +42,12 @@ export async function generateMetadata({
     notFound();
   }
 
-  const { title, description } = await getCity(city);
+  const cityData = await getCity(city);
 
-  if (!title) {
+  if (!cityData) {
     notFound();
   }
+  const { title, description } = cityData;
 
   return {
     title: `חופשה ב${title}`,
