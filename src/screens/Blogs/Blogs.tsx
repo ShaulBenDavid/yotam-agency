@@ -52,12 +52,12 @@ export const Blogs = ({
               title={title}
               content={description}
               imgUrl={forUrl(mainImage).url()}
-              href={buildRoutePath(
+              href={`/${buildRoutePath(
                 Routes.COUNTRY,
                 countrySlug,
                 Routes.BLOG,
                 slug.current
-              )}
+              )}`}
               readTime={estimatedReadingTime}
               date={new Date(_createdAt)}
               isBookmarked={false}

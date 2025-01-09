@@ -1,2 +1,2 @@
-export { getPost, getPosts, getAllPosts } from './post.client';
+export * from './post.client';
 export type { PostPageResponse } from './post.types';

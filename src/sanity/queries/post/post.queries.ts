@@ -29,6 +29,7 @@ export const postsQuery = groq`
 
 export const allPostsQuery = groq`
 *[_type=='post']{
-    slug
+    slug,
+    country
 } 
 `;
