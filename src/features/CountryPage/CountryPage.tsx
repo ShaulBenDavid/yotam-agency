@@ -2,6 +2,7 @@ import React from 'react';
 import { FaHotel } from 'react-icons/fa';
 import { MdOutlineAttractions } from 'react-icons/md';
 import { FcCloseUpMode } from 'react-icons/fc';
+import { LuBookOpenText } from 'react-icons/lu';
 import { Intro } from '@/features/Intro';
 import { CityLinkType } from '@/sanity/queries/city';
 import { ImageLinkProps } from '@/components/ImageLink/ImageLink';
@@ -56,13 +57,20 @@ export const CountryPage = ({
       )}
       <section className="tb:py-4 flex flex-col items-center gap-2 py-2">
         <h2 className="app-h2">למידע נוסף</h2>
-        <div className="flex flex-row gap-2">
-          <ButtonLink href={`${slug}/${Routes.HOTELS}`}>
+        <div className="flex flex-row flex-wrap justify-center gap-2">
+          <ButtonLink href={`${slug}/${Routes.HOTELS}`} width="fit-content">
             בתי במלון <FaHotel aria-hidden className="mr-2" size={24} />
           </ButtonLink>
-          <ButtonLink href={`${slug}/${Routes.ATTRACTIONS}`}>
+          <ButtonLink
+            href={`${slug}/${Routes.ATTRACTIONS}`}
+            width="fit-content"
+          >
             אטרקציות
             <MdOutlineAttractions aria-hidden className="mr-2" size={24} />
+          </ButtonLink>
+          <ButtonLink href={`${slug}/${Routes.BLOG}`} width="fit-content">
+            בלוגים
+            <LuBookOpenText aria-hidden className="mr-2" size={24} />
           </ButtonLink>
         </div>
       </section>
