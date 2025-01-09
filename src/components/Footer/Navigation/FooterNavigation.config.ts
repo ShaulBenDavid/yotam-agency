@@ -8,7 +8,7 @@ const legalNavigationConfig: NavigationColumnLinksType = [
     link: Routes.PRIVACY_POLICY,
   },
   {
-    title: 'התצהרת נגישות',
+    title: 'הצהרת נגישות',
     link: Routes.ACCESSIBILITY,
   },
   {

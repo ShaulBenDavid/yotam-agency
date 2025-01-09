@@ -1,10 +1,12 @@
 import React from 'react';
-import { ImageLink } from '@/components/ImageLink';
-import { countriesConfig } from '@/constants/Countries.config';
 import { FcGlobe } from 'react-icons/fc';
 import { FcSportsMode } from 'react-icons/fc';
 import { FcLandscape } from 'react-icons/fc';
 import { FaUmbrellaBeach } from 'react-icons/fa6';
+import { ImageLink } from '@/components/ImageLink';
+import { countriesConfig } from '@/constants/Countries.config';
+import { buildRoutePath } from '@/utils';
+import { Routes } from '@/routes';
 import { ShareWithFriends } from '@/features/ShareWithFriends';
 import { ContactUs } from '../../features/ContactUs';
 
@@ -26,11 +28,16 @@ export const Attractions = (): JSX.Element => (
     </span>
     <div className="w-full py-2">
       <h2 className="tb:text-xl text-center text-lg font-bold">
-        אז בואו לשמוע מאיתנו על היעדים שלנו במזרח
+        אז בואו לשמוע על האטרקציות במזרח!
       </h2>
       <div className="tb:flex-row tb:gap-8 flex w-full flex-col justify-between gap-2 pt-4">
         {countriesConfig.map(({ title, href, image }) => (
-          <ImageLink title={title} href={href} image={image} key={href} />
+          <ImageLink
+            title={title}
+            href={buildRoutePath(href, Routes.ATTRACTIONS)}
+            image={image}
+            key={href}
+          />
         ))}
       </div>
     </div>
