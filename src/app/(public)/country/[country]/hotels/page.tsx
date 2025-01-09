@@ -8,7 +8,6 @@ import CountriesJSON from '@/constants/content/countries.json';
 import { Routes } from '@/routes';
 import { countries } from '@/routes/routes.types';
 import { WEBSITE_URL } from '@/constants';
-import { CitySlugType, getAllCities } from '@/sanity/queries/city';
 import { getHotelsByCountry } from '@/sanity/queries/hotel';
 import { CountryHotels } from '@/screens/CountryHotels';
 
@@ -18,11 +17,12 @@ const images = {
   [Routes.THAILAND]: ThailandBImage,
 };
 
-export async function generateStaticParams() {
-  const cities: CitySlugType[] = await getAllCities();
-  return cities.map((city) => ({
-    country: city.country,
-  }));
+export function generateStaticParams() {
+  return [
+    { country: Routes.SRI_LANKA },
+    { country: Routes.THAILAND },
+    { country: Routes.JAPAN },
+  ];
 }
 
 type CountryHotelsPageProps = {

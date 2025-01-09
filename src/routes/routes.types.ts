@@ -9,6 +9,7 @@ export enum Routes {
 
   HOTELS = 'hotels',
   COUNTRY = 'country',
+  BLOG = 'blog',
 
   // settings
   PRIVACY_POLICY = 'privacy-policy',

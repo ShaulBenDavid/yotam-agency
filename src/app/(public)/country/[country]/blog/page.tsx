@@ -8,8 +8,8 @@ import CountriesJSON from '@/constants/content/countries.json';
 import { Routes } from '@/routes';
 import { countries } from '@/routes/routes.types';
 import { WEBSITE_URL } from '@/constants';
-import { getAttractionsByCountry } from '@/sanity/queries/attraction';
-import { CountryAttractions } from '@/screens/CountryAttractions';
+import { Blogs } from '@/screens/Blogs';
+import { getPostsByCountry } from '@/sanity/queries/post/post.client';
 
 const images = {
   [Routes.SRI_LANKA]: SriLankaBImage,
@@ -25,7 +25,7 @@ export function generateStaticParams() {
   ];
 }
 
-type CountryAttractionsPageProps = {
+type CountryBlogsPageProps = {
   params: Promise<{
     country: Routes.SRI_LANKA | Routes.THAILAND | Routes.JAPAN;
   }>;
@@ -33,7 +33,7 @@ type CountryAttractionsPageProps = {
 
 export async function generateMetadata({
   params,
-}: CountryAttractionsPageProps): Promise<Metadata> {
+}: CountryBlogsPageProps): Promise<Metadata> {
   const { country } = await params;
   if (!countries.includes(country)) {
     notFound();
@@ -42,39 +42,41 @@ export async function generateMetadata({
   const { title } = CountriesJSON[country];
 
   return {
-    title: `אטרקציות ב${title}`,
+    title: `מידע על ${title}`,
     authors: {
       name: 'FlySan',
-      url: `${WEBSITE_URL}/${country}/hotels`,
+      url: `${WEBSITE_URL}/${country}/blog`,
     },
     openGraph: {
-      title: `אטרקציות ב${title}`,
+      title: `מידע על ${title}`,
     },
     twitter: {
-      title: `אטרקציות ב${title}`,
+      title: `מידע על ${title}`,
     },
   };
 }
 
-const CountryAttractionsPage = async ({
+const CountryBlogsPage = async ({
   params,
-}: CountryAttractionsPageProps): Promise<JSX.Element> => {
+}: CountryBlogsPageProps): Promise<JSX.Element> => {
   const { country } = await params;
   if (!countries.includes(country) && !images[country]) {
     notFound();
   }
 
   const { title } = CountriesJSON[country];
-  const attractions = await getAttractionsByCountry(country);
+  const posts = await getPostsByCountry(country);
 
   return (
-    <CountryAttractions
-      countrySlug={country}
+    <Blogs
       countryName={title}
-      image={images[country].blurDataURL ?? ''}
-      data={attractions}
+      activityName="בלוגים"
+      activitySlug={Routes.BLOG}
+      countrySlug={country}
+      image={images[country]?.blurDataURL ?? ''}
+      data={posts}
     />
   );
 };
 
-export default CountryAttractionsPage;
+export default CountryBlogsPage;

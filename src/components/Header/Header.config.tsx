@@ -36,6 +36,11 @@ export const navigationLinksConfig: NavigationLinkConfigType[] = [
         title: 'אטרקציות',
         isSideNavOnly: false,
       },
+      {
+        href: buildRoutePath(Routes.COUNTRY, Routes.JAPAN, Routes.BLOG),
+        title: 'בלוג',
+        isSideNavOnly: false,
+      },
     ],
   },
   {
@@ -58,6 +63,11 @@ export const navigationLinksConfig: NavigationLinkConfigType[] = [
         title: 'אטרקציות',
         isSideNavOnly: false,
       },
+      {
+        href: buildRoutePath(Routes.COUNTRY, Routes.THAILAND, Routes.BLOG),
+        title: 'בלוג',
+        isSideNavOnly: false,
+      },
     ],
   },
   {
@@ -78,6 +88,11 @@ export const navigationLinksConfig: NavigationLinkConfigType[] = [
           Routes.ATTRACTIONS
         ),
         title: 'אטרקציות',
+        isSideNavOnly: false,
+      },
+      {
+        href: buildRoutePath(Routes.COUNTRY, Routes.SRI_LANKA, Routes.BLOG),
+        title: 'בלוג',
         isSideNavOnly: false,
       },
     ],
