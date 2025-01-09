@@ -14,6 +14,6 @@ export const BurgerButton = ({ onClick }: BurgerButton) => (
     aria-controls="navigation-drawer"
     className="mr-2 scale-x-[-1] p-2"
   >
-    <RxHamburgerMenu size={32} color="#071952" />
+    <RxHamburgerMenu size={32} color="white" />
   </button>
 );

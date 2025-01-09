@@ -2,10 +2,13 @@
 
 import React from 'react';
 import { useSelectedLayoutSegment } from 'next/navigation';
+import Link from 'next/link';
+import { Routes } from '@/routes';
 import type { NavigationLinkConfigType } from '../Header/Header.config';
 import { Drawer } from '../Drawer';
 import { SideNavTab } from './SideNavTab';
 import { ButtonLink } from '../ButtonLink';
+import { Logo } from '../Logo';
 
 interface SideNavigationProps {
   isOpen: boolean;
@@ -22,6 +25,11 @@ export const SideNavigation = ({
 
   return (
     <Drawer onClose={onClick} isOpen={isOpen}>
+      <div className="bg-primary-950 w-full rounded-b-md p-2">
+        <Link href={Routes.ROOT} onClick={onClick}>
+          <Logo />
+        </Link>
+      </div>
       <ul
         className="flex animate-[enterInSideTabs_0.6s_ease-in_forwards] flex-col gap-1 p-2 opacity-0"
         role="navigation"
