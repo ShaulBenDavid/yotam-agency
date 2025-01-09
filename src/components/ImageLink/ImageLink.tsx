@@ -26,6 +26,7 @@ export const ImageLink = ({
         style={{
           backgroundImage: `url(${image})`,
           backgroundPosition: 'center',
+          backgroundSize: 'cover',
         }}
       >
         <div className="to-primary-950/70 group-hover:to-primary-950/90 absolute inset-0 bg-gradient-to-b from-transparent duration-150" />
