@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from 'next';
-import '@/styles/global.css';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { AppProviders } from '@/providers';
 import { defaultMetadata } from '@/metadata';
 import theme from '@/styles/tailwind.theme';
+import '@/styles/global.css';
 
 export const metadata: Metadata = defaultMetadata;
 

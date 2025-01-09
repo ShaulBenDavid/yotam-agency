@@ -8,6 +8,6 @@ type ShareContent = {
 
 export const shareContent: ShareContent = {
   url: WEBSITE_URL,
-  subject: 'טסט',
-  title: 'שדגש דגש דגש דגשד ג',
+  subject: 'FlySan - חופשה במזרח',
+  title: 'כי כאן סוגרים חופשה במזרח',
 };
