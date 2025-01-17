@@ -1,0 +1,6 @@
+.customPagination {
+  width: 100%;
+  --swiper-pagination-bullet-inactive-color: #ffffff;
+  --swiper-pagination-bullet-inactive-opacity: 0.6;
+  background-color: #e7f5ff;
+}

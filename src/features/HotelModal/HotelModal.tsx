@@ -2,13 +2,26 @@
 
 import React, { RefObject } from 'react';
 import Image from 'next/image';
+import {
+  Autoplay,
+  Keyboard,
+  Mousewheel,
+  Navigation,
+  Pagination,
+} from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { CgCloseO } from 'react-icons/cg';
+import { MdPlace } from 'react-icons/md';
 import { ARIA_HOTEL_INFO_MODAL } from '@/components/HotelCard';
 import { Modal } from '@/components/Modal';
 import { Hotel } from '@/sanity/types';
 import { forUrl } from '@/sanity/sanity.utils';
 import { Rating } from '@/components/Rating';
-import { MdPlace } from 'react-icons/md';
+import S from './style.module.css';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import { Contact } from '@/components/Contact';
 
 interface HotelModalProps {
   ref: RefObject<HTMLDialogElement | null>;
@@ -30,24 +43,57 @@ export const HotelModal = ({
     price,
     mapLink,
     description,
+    gallery,
   } = data || {};
 
   return (
     <Modal ref={ref} closeModal={onClose} id={ARIA_HOTEL_INFO_MODAL}>
       <div className="shadow-card relative flex w-[80vw] max-w-[700px] flex-col rounded-md">
-        <Image
-          src={mainImage && forUrl(mainImage).url()}
-          alt={`hotel - ${title}`}
-          loading="lazy"
-          sizes="60wv"
-          width={0}
-          height={0}
-          className="aspect-video max-h-60 w-full min-w-96 rounded-t-md object-cover object-top"
-        />
+        <div className={S.customPagination}>
+          <Swiper
+            autoplay={{
+              delay: 5000,
+              disableOnInteraction: false,
+            }}
+            modules={[Navigation, Pagination, Mousewheel, Keyboard, Autoplay]}
+            className="mySwiper"
+            keyboard
+            centeredSlides
+            navigation
+            pagination={{
+              clickable: true,
+            }}
+          >
+            <SwiperSlide>
+              <Image
+                src={mainImage && forUrl(mainImage).url()}
+                alt={`hotel - ${title}`}
+                loading="lazy"
+                sizes="60wv"
+                width={0}
+                height={0}
+                className="aspect-video max-h-60 w-full rounded-t-md object-cover object-top"
+              />
+            </SwiperSlide>
+            {gallery.map(({ alt, asset }) => (
+              <SwiperSlide key={alt}>
+                <Image
+                  src={mainImage && forUrl(asset).url()}
+                  alt={`hotel - ${alt}`}
+                  loading="lazy"
+                  sizes="60wv"
+                  width={0}
+                  height={0}
+                  className="tb:object-contain aspect-video max-h-60 w-full rounded-t-md object-cover object-center"
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
         <button
           aria-label="close modal"
           onClick={onClose}
-          className="bg-primary-950 absolute right-2 top-2 rounded-full p-1"
+          className="bg-primary-950 absolute right-2 top-2 z-10 rounded-full p-1"
         >
           <CgCloseO aria-hidden size={32} color="white" />
         </button>
@@ -89,6 +135,7 @@ export const HotelModal = ({
               </span>
             )}
           </div>
+          <Contact />
         </div>
       </div>
     </Modal>

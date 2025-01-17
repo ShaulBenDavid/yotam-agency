@@ -10,7 +10,7 @@ export const ContactUs = (): JSX.Element => (
     <p className="">התייעצות, שאלה או סגירת חופשה? אל תהססו להתקשר</p>
     <span className="flex flex-row items-center justify-center gap-2 py-2">
       <MdAccessTime size={24} aria-hidden />
-      בימים א’-ה’ בין השעות 09:00-18:00
+      09:00-17:00 בימים א’-ה’ בין השעות ושישי עד 12:00
     </span>
     <div className="flex justify-center py-4">
       <Contact />

@@ -34,6 +34,31 @@ export default defineType({
       },
     }),
     defineField({
+      name: 'gallery',
+      title: 'Gallery',
+      type: 'array',
+      of: [
+        {
+          type: 'image',
+          fields: [
+            {
+              name: 'alt',
+              title: 'Alt Text',
+              type: 'string',
+              description:
+                'A brief description of the image for accessibility.',
+            },
+          ],
+          options: {
+            hotspot: true, // Enable cropping and focus point
+          },
+        },
+      ],
+      options: {
+        layout: 'grid',
+      },
+    }),
+    defineField({
       name: 'address',
       title: 'Address',
       type: 'string',
