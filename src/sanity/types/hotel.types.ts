@@ -9,7 +9,7 @@ export interface Hotel extends Base {
   slug: Slug;
   description: string;
   mainImage: Image;
-  gallery: HotelGalleryItem[];
+  gallery?: HotelGalleryItem[];
   address: string;
   mapLink: string;
   starRating: number;

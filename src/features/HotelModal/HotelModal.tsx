@@ -75,7 +75,7 @@ export const HotelModal = ({
                 className="aspect-video max-h-60 w-full rounded-t-md object-cover object-top"
               />
             </SwiperSlide>
-            {gallery.map(({ alt, asset }) => (
+            {gallery?.map(({ alt, asset }) => (
               <SwiperSlide key={alt}>
                 <Image
                   src={mainImage && forUrl(asset).url()}
