@@ -16,7 +16,6 @@ interface CountryPageProps {
   name: string;
   description: string;
   image: string;
-  forWho: string;
   slug: string;
   cities?: CityLinkType[];
 }
@@ -25,7 +24,6 @@ export const CountryPage = ({
   name,
   description,
   image,
-  forWho,
   slug,
   cities,
 }: CountryPageProps): JSX.Element => {
@@ -47,11 +45,7 @@ export const CountryPage = ({
       <div className="tb:py-4 max-w-[900px] py-2">
         <p className="app-p">{description}</p>
       </div>
-      <section className="tb:py-4 flex max-w-[900px] flex-col items-center gap-2 py-2">
-        <FcCloseUpMode size={50} aria-hidden />
-        <h2 className="app-h2">אז למי {name} מתאימה!</h2>
-        <p className="app-p">{forWho}</p>
-      </section>
+      <FcCloseUpMode size={50} aria-hidden />
       {transformedCitiesLink && (
         <CitiesSection countryName={name} cities={transformedCitiesLink} />
       )}

@@ -7,7 +7,7 @@ import { FcCollaboration } from 'react-icons/fc';
 export const whyUsListConfig = [
   {
     icon: <FcMoneyTransfer size={32} />,
-    text: 'מחירים תחרותיים',
+    text: 'מחירים מנצחים',
   },
   {
     icon: <FcViewDetails size={32} />,

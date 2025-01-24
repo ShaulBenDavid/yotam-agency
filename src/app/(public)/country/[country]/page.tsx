@@ -73,7 +73,6 @@ const Country = async ({ params }: CountryProps): Promise<JSX.Element> => {
       name={CountriesJSON[country].title}
       image={images[country].src}
       description={CountriesJSON[country].description}
-      forWho={CountriesJSON[country].forWho}
       cities={cities}
       slug={country}
     />

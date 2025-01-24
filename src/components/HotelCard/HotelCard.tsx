@@ -26,7 +26,10 @@ export const HotelCard = ({
   mapLink,
   onClick,
 }: HotelCardProps): JSX.Element => (
-  <div className="shadow-card flex w-full flex-col rounded-md">
+  <div
+    className="shadow-card flex w-full flex-col rounded-md"
+    onClick={onClick}
+  >
     <Image
       src={image}
       alt={`hotel - ${name}`}
@@ -43,7 +46,12 @@ export const HotelCard = ({
       >
         {name}
       </h3>
-      <a href={mapLink} target="_blank" rel="noopener noreferrer">
+      <a
+        href={mapLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={(e) => e.stopPropagation()}
+      >
         <address
           className="first-capitalize flex flex-row gap-2 text-sm font-medium opacity-90"
           style={{ direction: 'ltr' }}

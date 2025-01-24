@@ -47,7 +47,7 @@ export const CityExtra = <T extends DataProps>({
     >
       {data?.map((item) => cardRender(item))}
     </section>
-    <ContactUs />
+    <ContactUs title="לפרטים ומלונות נוספים צרו קשר" />
     <ShareWithFriends
       title="אהבת?! ספר לחברים"
       description="שלח לחברים ומצא פרטנרים לטיול עוד היום!"
