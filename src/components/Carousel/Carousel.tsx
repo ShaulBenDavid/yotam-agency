@@ -4,6 +4,7 @@ import React, { useCallback, useRef } from 'react';
 import { useIsScroll } from '@/hooks';
 import { useShowsButtons } from './useShowsButtons';
 import { CarouselController } from './components/CarouselController';
+import { MoreHotel } from '../HotelCard/MoreHotel';
 
 interface DataProps {
   _id: string;
@@ -12,11 +13,13 @@ interface DataProps {
 interface CarouselProps<T extends DataProps> {
   data: T[];
   cardRender: (item: T) => JSX.Element;
+  showContact?: boolean;
 }
 
 export const Carousel = <T extends DataProps>({
   data,
   cardRender,
+  showContact,
 }: CarouselProps<T>): JSX.Element => {
   const scrollRef = useRef<HTMLUListElement>(null);
   const isScroll = useIsScroll(scrollRef);
@@ -45,6 +48,11 @@ export const Carousel = <T extends DataProps>({
             {cardRender(item)}
           </li>
         ))}
+        {showContact && (
+          <li className="mr-4 w-[70%] min-w-52 shrink-0 snap-start snap-always tb:w-1/3">
+            <MoreHotel />
+          </li>
+        )}
       </ul>
       {isScroll && (
         <CarouselController

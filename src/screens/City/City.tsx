@@ -70,6 +70,7 @@ export const City = ({
           linkText="לכל הבתי מלון"
           linkHref={`${citySlug}/${Routes.HOTELS}`}
           icon={<FaHotel size={50} aria-hidden />}
+          showContact
           cardRender={(params) => (
             <HotelCard
               name={params.title}

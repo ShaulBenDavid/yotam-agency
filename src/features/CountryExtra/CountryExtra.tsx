@@ -62,6 +62,7 @@ export const CountryExtra = <T extends CountryExtraDataProps>({
             linkHref={`/${buildRoutePath(Routes.COUNTRY, countrySlug, citySlug, activitySlug)}`}
             icon={icon}
             cardRender={(card) => cardRender(card)}
+            showContact={activitySlug === 'hotels'}
           />
         )
       )}

@@ -26,7 +26,7 @@ export const AttractionModal = ({
 
   return (
     <Modal ref={ref} closeModal={onClose} id={ARIA_ATTRACTION_INFO_MODAL}>
-      <div className="relative flex w-[80vw] max-w-[700px] flex-col rounded-md shadow-card">
+      <div className="relative flex w-[90vw] max-w-[700px] flex-col rounded-md shadow-card">
         <Image
           src={mainImage && forUrl(mainImage).url()}
           alt={`hotel - ${title}`}
@@ -34,7 +34,7 @@ export const AttractionModal = ({
           sizes="60wv"
           width={0}
           height={0}
-          className="aspect-video max-h-60 w-full rounded-t-md object-cover object-top"
+          className="aspect-video max-h-72 min-h-56 w-full rounded-t-md object-cover object-top"
         />
 
         <button

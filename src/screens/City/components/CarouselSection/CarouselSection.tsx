@@ -16,6 +16,7 @@ interface CarouselSectionProps<T> {
   linkHref: string;
   icon: JSX.Element;
   cardRender: (data: T) => JSX.Element;
+  showContact?: boolean;
 }
 
 export const CarouselSection = <T extends DataProps>({
@@ -25,11 +26,12 @@ export const CarouselSection = <T extends DataProps>({
   linkHref,
   icon,
   cardRender,
+  showContact,
 }: CarouselSectionProps<T>): JSX.Element => (
-  <section className="tb:py-4 flex w-full flex-col items-center gap-2 py-2">
+  <section className="flex w-full flex-col items-center gap-2 py-2 tb:py-4">
     {icon}
     <h2 className="app-h2">{title}</h2>
-    <Carousel data={data} cardRender={cardRender} />
+    <Carousel data={data} cardRender={cardRender} showContact={showContact} />
     <ButtonLink href={linkHref} width="250px">
       {linkText}
       <FaArrowLeft />

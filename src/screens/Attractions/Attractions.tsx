@@ -13,12 +13,10 @@ import { ContactUs } from '../../features/ContactUs';
 export const Attractions = (): JSX.Element => (
   <div className="flex w-full flex-col items-center gap-2 py-2 tb:py-4">
     <h1 className="w-full rounded-md bg-primary-950 py-1 text-center text-2xl font-bold text-white tb:text-3xl">
-      סיורים, כרטיסים ועוד חוויות בלתי נשכחות! 🎟️🌍
+      אטרקציות
     </h1>
     <p className="max-w-[800px] text-center text-base font-medium tb:text-xl">
-      אטרקציות הן מה שהופכות את החופשה שלכם לבלתי נשכחת. עם זה חוויות אקסטרים,
-      טרקים, פארקים ועוד... הם מה שעוזר לכם להכיר את התרבות והמדינה אלייה אתם
-      מגיעים.
+      סיורים, כרטיסים ועוד חוויות בלתי נשכחות! 🎟️🌍
     </p>
     <span aria-hidden className="flex flex-row gap-8 py-4">
       <FcGlobe size={40} />

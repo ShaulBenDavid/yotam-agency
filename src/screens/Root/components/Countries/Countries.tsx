@@ -3,15 +3,10 @@ import { ImageLink } from '@/components/ImageLink';
 import { countriesConfig } from '@/constants/Countries.config';
 
 export const Countries = (): JSX.Element => (
-  <section className="tb:py-8 py-4">
-    <h2 className="tb:text-2xl text-center text-xl font-bold">
-      טיילו איתנו במדינות הכי ״חמות״ במזרח
-    </h2>
-    <p className="tb:text-xl text-center text-base font-medium">
-      בין אם אתם אוהבים ערים, הרים, או חופים, בין אם אתם אוהבים טרקים, בטן גב או
-      מטרופולין. המזרח בשבילכם!
-    </p>
-    <div className="tb:flex-row tb:gap-8 flex flex-col justify-between gap-2 pt-4">
+  <section className="py-4 tb:py-8">
+    <h2 className="text-center text-xl font-bold tb:text-2xl">המדינות שלנו</h2>
+
+    <div className="flex flex-col justify-between gap-2 pt-4 tb:flex-row tb:gap-8">
       {countriesConfig.map(({ title, href, image }) => (
         <ImageLink title={title} href={`/${href}`} image={image} key={href} />
       ))}
