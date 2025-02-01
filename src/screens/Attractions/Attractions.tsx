@@ -11,11 +11,11 @@ import { ShareWithFriends } from '@/features/ShareWithFriends';
 import { ContactUs } from '../../features/ContactUs';
 
 export const Attractions = (): JSX.Element => (
-  <div className="tb:py-4 flex w-full flex-col items-center gap-2 py-2">
-    <h1 className="tb:text-3xl bg-primary-950 w-full rounded-md py-1 text-center text-2xl font-bold text-white">
+  <div className="flex w-full flex-col items-center gap-2 py-2 tb:py-4">
+    <h1 className="w-full rounded-md bg-primary-950 py-1 text-center text-2xl font-bold text-white tb:text-3xl">
       אטרקציות
     </h1>
-    <p className="tb:text-xl max-w-[800px] text-center text-base font-medium">
+    <p className="max-w-[800px] text-center text-base font-medium tb:text-xl">
       אטרקציות הן מה שהופכות את החופשה שלכם לבלתי נשכחת. עם זה חוויות אקסטרים,
       טרקים, פארקים ועוד... הם מה שעוזר לכם להכיר את התרבות והמדינה אלייה אתם
       מגיעים.
@@ -27,10 +27,10 @@ export const Attractions = (): JSX.Element => (
       <FaUmbrellaBeach size={40} />
     </span>
     <div className="w-full py-2">
-      <h2 className="tb:text-xl text-center text-lg font-bold">
+      <h2 className="text-center text-lg font-bold tb:text-xl">
         אז בואו לשמוע על האטרקציות במזרח!
       </h2>
-      <div className="tb:flex-row tb:gap-8 flex w-full flex-col justify-between gap-2 pt-4">
+      <div className="flex w-full flex-col justify-between gap-2 pt-4 tb:flex-row tb:gap-8">
         {countriesConfig.map(({ title, href, image }) => (
           <ImageLink
             title={title}
@@ -42,9 +42,6 @@ export const Attractions = (): JSX.Element => (
       </div>
     </div>
     <ContactUs />
-    <ShareWithFriends
-      title="אהבת?! ספר לחברים"
-      description="בין אם אתם אוהבים ערים, הרים, או חופים, בין אם אתם אוהבים טרקים, בטן גב או מטרופולין. המזרח בשבילכם!"
-    />
+    <ShareWithFriends />
   </div>
 );

@@ -42,7 +42,7 @@ export const CountryExtra = <T extends CountryExtraDataProps>({
 
   return (
     <div
-      className="tb:gap-2 flex flex-col items-center gap-2 pb-8"
+      className="flex flex-col items-center gap-2 pb-8 tb:gap-2"
       id={activitySlug}
       tabIndex={-1}
     >
@@ -67,8 +67,6 @@ export const CountryExtra = <T extends CountryExtraDataProps>({
       )}
       <ContactUs />
       <ShareWithFriends
-        title="אהבת?! ספר לחברים"
-        description="שלח לחברים ומצא פרטנרים לטיול עוד היום!"
         url={`/${Routes.COUNTRY}/${countrySlug}/${activitySlug}`}
       />
     </div>

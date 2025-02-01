@@ -27,7 +27,7 @@ export const Contact = (): JSX.Element => (
     </li>
     <li>
       <a
-        href={`https://wa.me/${contactData.phone}`}
+        href={`https://wa.me/${contactData.phone.replace(/[+-]/g, '')}`}
         className="flex items-center gap-2 rounded bg-green-500 px-4 font-bold text-white hover:bg-green-600"
         target="_blank"
         rel="noopener noreferrer"

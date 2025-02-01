@@ -1,20 +1,35 @@
 import React from 'react';
+import Image from 'next/image';
+import JapanImage from '@/assets/images/jpLandImg.jpg';
 import { Intro } from '../../features/Intro';
 import { Countries } from './components/Countries';
 import { ContactUs } from '../../features/ContactUs';
 import { ShareWithFriends } from '../../features/ShareWithFriends';
 import { WhyUs } from './components/WhyUs';
-import JapanImage from '@/assets/images/jpLandImg.jpg';
+import FlowerSVG from './flower.png';
 
 export const Root = (): JSX.Element => (
-  <div className="tb:gap-2 flex flex-col gap-2 pb-8">
-    <Intro title="המזרח כבר לא רחוק" image={JapanImage.src} minHeight="288px" />
+  <div className="flex flex-col gap-2 pb-8 tb:gap-2">
+    <Intro
+      title={
+        <span className="flex flex-row items-center gap-2">
+          המזרח כבר לא רחוק
+          <Image
+            src={FlowerSVG}
+            alt="Flysun logo"
+            sizes="15vw"
+            width={50}
+            height={50}
+          />
+        </span>
+      }
+      image={JapanImage.src}
+      minHeight="288px"
+    />
     <Countries />
+
     <ContactUs />
     <WhyUs />
-    <ShareWithFriends
-      title="אהבת?! ספר לחברים"
-      description="בין אם אתם אוהבים ערים, הרים, או חופים, בין אם אתם אוהבים טרקים, בטן גב או מטרופולין. המזרח בשבילכם!"
-    />
+    <ShareWithFriends />
   </div>
 );

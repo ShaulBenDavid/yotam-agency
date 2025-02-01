@@ -48,7 +48,7 @@ export const HotelModal = ({
 
   return (
     <Modal ref={ref} closeModal={onClose} id={ARIA_HOTEL_INFO_MODAL}>
-      <div className="shadow-card relative flex w-[80vw] max-w-[700px] flex-col rounded-md">
+      <div className="relative flex w-[80vw] max-w-[700px] flex-col rounded-md shadow-card">
         <div className={S.customPagination}>
           <Swiper
             autoplay={{
@@ -63,6 +63,7 @@ export const HotelModal = ({
             pagination={{
               clickable: true,
             }}
+            rewind
           >
             <SwiperSlide>
               <Image
@@ -84,7 +85,7 @@ export const HotelModal = ({
                   sizes="60wv"
                   width={0}
                   height={0}
-                  className="tb:object-contain aspect-video max-h-60 w-full rounded-t-md object-cover object-center"
+                  className="aspect-video max-h-60 w-full rounded-t-md object-cover object-center tb:object-contain"
                 />
               </SwiperSlide>
             ))}
@@ -93,13 +94,13 @@ export const HotelModal = ({
         <button
           aria-label="close modal"
           onClick={onClose}
-          className="bg-primary-950 absolute right-2 top-2 z-10 rounded-full p-1"
+          className="absolute right-2 top-2 z-10 rounded-full bg-primary-950 p-1"
         >
           <CgCloseO aria-hidden size={32} color="white" />
         </button>
         <div className="flex flex-col p-2">
           <h3
-            className="tb:text-xl w-full pb-1 text-left text-base font-bold capitalize"
+            className="w-full pb-1 text-left text-base font-bold capitalize tb:text-xl"
             style={{ direction: 'ltr' }}
           >
             {title}
@@ -120,7 +121,7 @@ export const HotelModal = ({
           >
             <span
               aria-label={`Hotel rate - ${reviewScore}`}
-              className="bg-primary-950 w-fit min-w-8 rounded-md p-1 text-center text-base font-semibold text-white"
+              className="w-fit min-w-8 rounded-md bg-primary-950 p-1 text-center text-base font-semibold text-white"
             >
               {reviewScore}
             </span>

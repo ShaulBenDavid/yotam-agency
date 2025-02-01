@@ -27,7 +27,7 @@ export const HotelCard = ({
   onClick,
 }: HotelCardProps): JSX.Element => (
   <div
-    className="shadow-card flex w-full flex-col rounded-md"
+    className="flex h-full w-full flex-col rounded-md shadow-card"
     onClick={onClick}
   >
     <Image
@@ -37,11 +37,11 @@ export const HotelCard = ({
       sizes="15wv"
       width={0}
       height={0}
-      className="tb:max-h-60 aspect-square max-h-[200px] w-full min-w-52 rounded-t-md object-cover object-top sm:aspect-video"
+      className="aspect-square max-h-[200px] w-full min-w-52 rounded-t-md object-cover object-top sm:aspect-video tb:max-h-60"
     />
     <div className="flex flex-col p-2">
       <h3
-        className="tb:text-xl w-full pb-1 text-left text-base font-bold capitalize"
+        className="w-full pb-1 text-left text-base font-bold capitalize tb:text-xl"
         style={{ direction: 'ltr' }}
       >
         {name}
@@ -66,7 +66,7 @@ export const HotelCard = ({
       >
         <span
           aria-label={`Hotel rate - ${rate}`}
-          className="bg-primary-950 w-fit min-w-8 rounded-md p-1 text-center text-base font-semibold text-white"
+          className="w-fit min-w-8 rounded-md bg-primary-950 p-1 text-center text-base font-semibold text-white"
         >
           {rate}
         </span>
@@ -74,7 +74,7 @@ export const HotelCard = ({
           <Rating rate={stars} />
         </div>
       </div>
-      <div className="tb:flex-row tb:items-end flex flex-col justify-between gap-2 py-2">
+      <div className="flex flex-col justify-between gap-2 py-2 tb:flex-row tb:items-end">
         {fromPrice && (
           <span aria-label="price">
             <strong>החל מ-</strong> {fromPrice}

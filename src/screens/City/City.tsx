@@ -41,7 +41,7 @@ export const City = ({
 
   return (
     <div
-      className="tb:gap-2 flex flex-col items-center gap-2 pb-8"
+      className="flex flex-col items-center gap-2 pb-8 tb:gap-2"
       id={citySlug}
       tabIndex={-1}
     >
@@ -50,7 +50,7 @@ export const City = ({
         image={image}
         maxHeight="250px"
       />
-      <div className="tb:py-4 max-w-[900px] py-2">
+      <div className="max-w-[900px] py-2 tb:py-4">
         <p className="app-p">{description}</p>
       </div>
       {!!hotels.length && (
@@ -76,18 +76,18 @@ export const City = ({
       )}
       {!!attractions.length && (
         <>
-          <hr className="border-primary-950 my-6 w-full" aria-hidden />
+          <hr className="my-6 w-full border-primary-950" aria-hidden />
           <CarouselSection
             title={`אז מה עושים ב${cityName}`}
             data={attractions}
             linkText="לכל האטרקציות"
             linkHref={`${citySlug}/${Routes.ATTRACTIONS}`}
             icon={<MdOutlineAttractions size={50} aria-hidden />}
-            cardRender={({ title, address, mainImage }) => (
+            cardRender={({ title, description, mainImage }) => (
               <AttractionCard
                 name={title}
                 image={forUrl(mainImage).url()}
-                address={address}
+                description={description}
               />
             )}
           />
@@ -95,11 +95,7 @@ export const City = ({
       )}
 
       <ContactUs />
-      <ShareWithFriends
-        title="אהבת?! ספר לחברים"
-        description="שלח לחברים ומצא פרטנרים לטיול עוד היום!"
-        url={`/${Routes.COUNTRY}/${countrySlug}/${citySlug}`}
-      />
+      <ShareWithFriends url={`/${Routes.COUNTRY}/${countrySlug}/${citySlug}`} />
       {hotelModalData && (
         <HotelModal
           onClose={onClose}

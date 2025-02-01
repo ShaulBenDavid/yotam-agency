@@ -31,11 +31,11 @@ export const CountryAttractions = ({
     countryName={countryName}
     image={image}
     data={data}
-    cardRender={({ title, address, mainImage }) => (
+    cardRender={({ title, description, mainImage }) => (
       <AttractionCard
         name={title}
         image={forUrl(mainImage).url()}
-        address={address}
+        description={description}
       />
     )}
   />

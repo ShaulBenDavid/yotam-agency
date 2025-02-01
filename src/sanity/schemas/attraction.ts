@@ -29,8 +29,8 @@ export default defineType({
       },
     }),
     defineField({
-      name: 'address',
-      title: 'Address',
+      name: 'description',
+      title: 'Description',
       type: 'string',
     }),
     defineField({

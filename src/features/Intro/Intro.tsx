@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 interface IntroProps {
-  title: string;
+  title: ReactNode;
   image: string;
   maxHeight?: string;
   minHeight?: string;
@@ -20,14 +20,14 @@ export const Intro = ({
       style={{ gridRow: 1, gridColumn: 1 }}
     >
       <div
-        className="animate-fade-in-scale absolute left-1/2 h-full w-screen -translate-x-1/2"
+        className="absolute left-1/2 h-full w-screen -translate-x-1/2 animate-fade-in-scale"
         style={{
           backgroundImage: `url(${image})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
       >
-        <div className="to-primary-950/60 absolute inset-0 bg-gradient-to-b from-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-primary-950/60" />
       </div>
     </div>
     <h1

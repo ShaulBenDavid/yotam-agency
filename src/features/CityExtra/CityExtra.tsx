@@ -32,7 +32,7 @@ export const CityExtra = <T extends DataProps>({
   cardRender,
 }: CityExtraProps<T>): JSX.Element => (
   <div
-    className="tb:gap-2 flex flex-col items-center gap-2 pb-8"
+    className="flex flex-col items-center gap-2 pb-8 tb:gap-2"
     id={activitySlug}
     tabIndex={-1}
   >
@@ -42,15 +42,13 @@ export const CityExtra = <T extends DataProps>({
       maxHeight="250px"
     />
     <section
-      className="tb:py-4 tb:grid-cols-cards-xl-auto-fit grid-cols-cards-auto-fit grid w-full gap-6 py-2"
+      className="grid w-full grid-cols-cards-auto-fit gap-6 py-2 tb:grid-cols-cards-xl-auto-fit tb:py-4"
       aria-label={activityName}
     >
       {data?.map((item) => cardRender(item))}
     </section>
     <ContactUs title="לפרטים ומלונות נוספים צרו קשר" />
     <ShareWithFriends
-      title="אהבת?! ספר לחברים"
-      description="שלח לחברים ומצא פרטנרים לטיול עוד היום!"
       url={`/${Routes.COUNTRY}/${countrySlug}/${citySlug}/${activitySlug}`}
     />
   </div>

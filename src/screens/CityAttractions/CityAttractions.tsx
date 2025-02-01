@@ -33,12 +33,12 @@ export const CityAttractions = ({
     citySlug={citySlug}
     countrySlug={countrySlug}
     data={attractions}
-    cardRender={({ title, address, mainImage, _id }) => (
+    cardRender={({ title, description, mainImage, _id }) => (
       <AttractionCard
         key={_id}
         name={title}
         image={forUrl(mainImage).url()}
-        address={address}
+        description={description}
       />
     )}
   />

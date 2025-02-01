@@ -9,14 +9,14 @@ interface ContactUsProps {
 export const ContactUs = ({
   title = 'לפרטים נוספים צרו קשר',
 }: ContactUsProps): JSX.Element => (
-  <section className="tb:py-8 bg-primary-950 tb:text-xl w-full rounded-md py-4 text-center text-base font-medium text-white">
-    <h2 className="tb:text-2xl text-center text-lg font-bold">{title}</h2>
+  <section className="w-full rounded-md bg-primary-950 py-4 text-center text-base font-medium text-white tb:py-8 tb:text-xl">
+    <h2 className="text-center text-lg font-bold tb:text-2xl">{title}</h2>
     <p className="">התייעצות, שאלה או סגירת חופשה? אל תהססו להתקשר</p>
     <div className="flex flex-row items-center justify-center gap-2 py-2">
       <MdAccessTime size={24} aria-hidden />
       <div className="flex flex-col">
         <span>בימים א’-ה’ בין השעות 09:00-17:00</span>
-        <span>ביום ו׳ א’-ה’ בין השעות 09:00-12:00</span>
+        <span>ביום ו׳ בין השעות 09:00-12:00</span>
       </div>
     </div>
     <div className="flex justify-center py-4">
