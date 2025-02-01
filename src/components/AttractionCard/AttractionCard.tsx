@@ -1,19 +1,28 @@
 import React from 'react';
 import Image from 'next/image';
 import { isRtl } from '@/utils';
+import { Button, ButtonVariants } from '../Button';
+import { ARIA_ATTRACTION_INFO_MODAL } from '@/features/AttractionModal/AttractionModal';
 
 interface AttractionCardProps {
   image: string;
   name: string;
   description: string;
+  price?: number;
+  onClick: () => void;
 }
 
 export const AttractionCard = ({
   image,
   name,
   description,
+  price,
+  onClick,
 }: AttractionCardProps): JSX.Element => (
-  <div className="flex w-full flex-col rounded-md shadow-card">
+  <div
+    className="flex w-full flex-col rounded-md shadow-card"
+    onClick={onClick}
+  >
     <div className="relative">
       <Image
         src={image}
@@ -36,12 +45,23 @@ export const AttractionCard = ({
       >
         {name}
       </h3>
-      <p
-        className="flex flex-row gap-2 text-base font-medium"
-        style={{ direction: 'ltr' }}
-      >
-        {description}
-      </p>
+      <p className="line-clamp-3 text-base font-medium">{description}</p>
+      <div className="flex flex-col justify-between gap-2 py-2 tb:flex-row tb:items-end">
+        {price && (
+          <span aria-label="price">
+            <strong>החל מ-</strong> {price}
+          </span>
+        )}
+        <Button
+          width="fit-content"
+          className="px-4"
+          aria-controls={ARIA_ATTRACTION_INFO_MODAL}
+          onClick={onClick}
+          variant={ButtonVariants.SECONDARY}
+        >
+          למידע נוסף
+        </Button>
+      </div>
     </div>
   </div>
 );

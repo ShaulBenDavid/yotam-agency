@@ -6,6 +6,10 @@ import { forUrl } from '@/sanity/sanity.utils';
 import { AttractionCard } from '@/components/AttractionCard';
 import { CityExtra } from '@/features/CityExtra';
 import { Routes } from '@/routes';
+import {
+  AttractionModal,
+  useAttractionModal,
+} from '@/features/AttractionModal';
 
 interface CityAttractionsProps {
   cityName: string;
@@ -23,23 +27,43 @@ export const CityAttractions = ({
   countrySlug,
   citySlug,
   attractions,
-}: CityAttractionsProps): JSX.Element => (
-  <CityExtra
-    activityName="אטרקציות"
-    activitySlug={Routes.ATTRACTIONS}
-    cityName={cityName}
-    countryName={countryName}
-    image={image}
-    citySlug={citySlug}
-    countrySlug={countrySlug}
-    data={attractions}
-    cardRender={({ title, description, mainImage, _id }) => (
-      <AttractionCard
-        key={_id}
-        name={title}
-        image={forUrl(mainImage).url()}
-        description={description}
+}: CityAttractionsProps): JSX.Element => {
+  const {
+    onShowAttraction,
+    onCloseAttraction,
+    attractionModalRef,
+    attractionModalData,
+  } = useAttractionModal();
+
+  return (
+    <>
+      <CityExtra
+        activityName="אטרקציות"
+        activitySlug={Routes.ATTRACTIONS}
+        cityName={cityName}
+        countryName={countryName}
+        image={image}
+        citySlug={citySlug}
+        countrySlug={countrySlug}
+        data={attractions}
+        cardRender={(params) => (
+          <AttractionCard
+            key={params._id}
+            name={params.title}
+            image={forUrl(params.mainImage).url()}
+            description={params.description}
+            price={params.price}
+            onClick={() => onShowAttraction(params)}
+          />
+        )}
       />
-    )}
-  />
-);
+      {attractionModalData && (
+        <AttractionModal
+          onClose={onCloseAttraction}
+          ref={attractionModalRef}
+          data={attractionModalData}
+        />
+      )}
+    </>
+  );
+};

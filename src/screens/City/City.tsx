@@ -14,6 +14,10 @@ import { AttractionCard } from '@/components/AttractionCard';
 import { MdOutlineAttractions } from 'react-icons/md';
 import { Routes } from '@/routes';
 import { HotelModal, useHotelModal } from '@/features/HotelModal';
+import {
+  AttractionModal,
+  useAttractionModal,
+} from '@/features/AttractionModal';
 
 interface CityProps {
   cityName: string;
@@ -38,6 +42,12 @@ export const City = ({
   attractions,
 }: CityProps): JSX.Element => {
   const { onShow, onClose, hotelModalRef, hotelModalData } = useHotelModal();
+  const {
+    onShowAttraction,
+    onCloseAttraction,
+    attractionModalRef,
+    attractionModalData,
+  } = useAttractionModal();
 
   return (
     <div
@@ -83,11 +93,12 @@ export const City = ({
             linkText="לכל האטרקציות"
             linkHref={`${citySlug}/${Routes.ATTRACTIONS}`}
             icon={<MdOutlineAttractions size={50} aria-hidden />}
-            cardRender={({ title, description, mainImage }) => (
+            cardRender={(params) => (
               <AttractionCard
-                name={title}
-                image={forUrl(mainImage).url()}
-                description={description}
+                name={params.title}
+                image={forUrl(params.mainImage).url()}
+                description={params.description}
+                onClick={() => onShowAttraction(params)}
               />
             )}
           />
@@ -101,6 +112,13 @@ export const City = ({
           onClose={onClose}
           ref={hotelModalRef}
           data={hotelModalData}
+        />
+      )}
+      {attractionModalData && (
+        <AttractionModal
+          onClose={onCloseAttraction}
+          ref={attractionModalRef}
+          data={attractionModalData}
         />
       )}
     </div>

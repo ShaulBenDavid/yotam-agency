@@ -52,6 +52,11 @@ export default defineType({
       type: 'reference',
       to: { type: 'city' },
     }),
+    defineField({
+      name: 'price',
+      title: 'Price',
+      type: 'number',
+    }),
   ],
 
   preview: {

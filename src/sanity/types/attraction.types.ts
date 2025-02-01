@@ -7,6 +7,7 @@ export interface Attraction extends Base {
   slug: Slug;
   mainImage: Image;
   description: string;
+  price?: number;
   country: Routes.SRI_LANKA | Routes.THAILAND | Routes.JAPAN;
   city: City;
 }
