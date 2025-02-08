@@ -45,7 +45,9 @@ export const AttractionCard = ({
       >
         {name}
       </h3>
-      <p className="line-clamp-3 text-base font-medium">{description}</p>
+      <p className="line-clamp-3 text-right text-base font-medium">
+        {description}
+      </p>
       <div className="flex flex-col justify-between gap-2 py-2 tb:flex-row tb:items-end">
         {price && (
           <span aria-label="price">

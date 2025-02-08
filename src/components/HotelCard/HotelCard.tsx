@@ -53,7 +53,7 @@ export const HotelCard = ({
         onClick={(e) => e.stopPropagation()}
       >
         <address
-          className="first-capitalize flex flex-row gap-2 text-sm font-medium opacity-90"
+          className="first-capitalize flex flex-row gap-2 text-left text-sm font-medium opacity-90"
           style={{ direction: 'ltr' }}
         >
           <MdPlace size={16} aria-hidden className="shrink-0" />

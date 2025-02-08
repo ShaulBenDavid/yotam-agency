@@ -98,7 +98,7 @@ export const HotelModal = ({
         >
           <CgCloseO aria-hidden size={32} color="white" />
         </button>
-        <div className="flex flex-col p-2">
+        <div className="flex h-full flex-col p-2">
           <h3
             className="w-full pb-1 text-left text-base font-bold capitalize tb:text-xl"
             style={{ direction: 'ltr' }}

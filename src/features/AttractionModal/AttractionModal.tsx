@@ -34,7 +34,7 @@ export const AttractionModal = ({
           sizes="60wv"
           width={0}
           height={0}
-          className="aspect-video max-h-72 min-h-56 w-full rounded-t-md object-cover object-top"
+          className="aspect-video max-h-72 min-h-56 w-full rounded-t-md object-contain object-top"
         />
 
         <button

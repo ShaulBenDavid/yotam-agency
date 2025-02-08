@@ -22,9 +22,11 @@ export const Modal = ({
       onCancel={closeModal}
       ref={ref}
       id={id}
-      className="shadow-dropdown right-1/2 top-1/2 -translate-y-1/2 translate-x-1/2 animate-[fadeIn_0.3s_ease-in_forwards] overflow-hidden rounded-xl bg-white focus:outline-none"
+      className="shadow-dropdown fixed right-1/2 top-1/2 -translate-y-1/2 translate-x-1/2 animate-[fadeIn_0.3s_ease-in_forwards] overflow-hidden rounded-xl bg-white focus:outline-none"
     >
-      <div ref={contentRef}>{children}</div>
+      <div ref={contentRef} className="max-h-[90vh] overflow-y-auto">
+        {children}
+      </div>
     </dialog>
   );
 };
