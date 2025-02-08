@@ -19,7 +19,7 @@ export const Contact = (): JSX.Element => (
       <IoIosMail size={24} />
       <a
         className="hover:underline"
-        href="mailto:info@example.com"
+        href={`mailto:${contactData.email}`}
         aria-label="Email us at info@example.com"
       >
         {contactData.email}

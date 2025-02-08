@@ -1,3 +1,4 @@
+import { contactData } from '@/constants';
 import React from 'react';
 
 const page = () => (
@@ -14,14 +15,17 @@ const page = () => (
       </p>
       <p className="font-semibold text-gray-700">אימייל ליצירת קשר: </p>
       <a
-        href="mailto:info@flysan.co.il"
+        href={`mailto:${contactData.email}`}
         className="text-blue-600 hover:underline"
       >
-        info@flysan.co.il
+        {contactData.email}
       </a>
       <p className="mt-4 font-semibold text-gray-700">טלפון: </p>
-      <a href="tel:972555075024" className="text-blue-600 hover:underline">
-        972-55-507-5024+
+      <a
+        href={`tel:${contactData.phone.replace(/[+-]/g, '')}`}
+        className="text-blue-600 hover:underline"
+      >
+        {contactData.phone}
       </a>
     </div>
   </div>
