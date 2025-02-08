@@ -14,7 +14,7 @@ export interface Hotel extends Base {
   mapLink: string;
   starRating: number;
   reviewScore: number;
-  price?: number;
+  price?: string;
   country: Routes.SRI_LANKA | Routes.THAILAND | Routes.JAPAN;
   city: City;
 }

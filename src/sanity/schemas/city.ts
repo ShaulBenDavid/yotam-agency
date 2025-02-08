@@ -53,6 +53,11 @@ export default defineType({
         layout: 'radio',
       },
     }),
+    defineField({
+      name: 'cid',
+      title: 'CID Klook',
+      type: 'number',
+    }),
   ],
 
   preview: {

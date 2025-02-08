@@ -88,8 +88,9 @@ export default defineType({
     defineField({
       name: 'price',
       title: 'Price',
-      type: 'number',
+      type: 'string',
     }),
+
     defineField({
       name: 'country',
       title: 'Country',

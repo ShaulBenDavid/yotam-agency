@@ -3,6 +3,7 @@ import { Routes } from '@/routes';
 import { ContactUs } from '@/features/ContactUs';
 import { Intro } from '@/features/Intro';
 import { ShareWithFriends } from '../ShareWithFriends';
+import { KlookWidget } from '@/components/Klook';
 
 interface DataProps {
   _id: string;
@@ -16,6 +17,7 @@ interface CityExtraProps<T> {
   image: string;
   citySlug: string;
   countrySlug: string;
+  cid?: number;
   data: T[];
   cardRender: (data: T) => JSX.Element;
 }
@@ -28,6 +30,7 @@ export const CityExtra = <T extends DataProps>({
   image,
   countrySlug,
   citySlug,
+  cid,
   data,
   cardRender,
 }: CityExtraProps<T>): JSX.Element => (
@@ -41,6 +44,7 @@ export const CityExtra = <T extends DataProps>({
       image={image}
       maxHeight="250px"
     />
+    {typeof cid === 'number' && <KlookWidget cid={cid} />}
     <section
       className="grid w-full grid-cols-cards-auto-fit gap-6 py-2 tb:grid-cols-cards-xl-auto-fit tb:py-4"
       aria-label={activityName}

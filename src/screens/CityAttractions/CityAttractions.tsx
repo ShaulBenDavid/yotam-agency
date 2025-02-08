@@ -17,6 +17,7 @@ interface CityAttractionsProps {
   image: string;
   citySlug: string;
   countrySlug: string;
+  cid?: number;
   attractions: Attraction[];
 }
 
@@ -26,6 +27,7 @@ export const CityAttractions = ({
   image,
   countrySlug,
   citySlug,
+  cid,
   attractions,
 }: CityAttractionsProps): JSX.Element => {
   const {
@@ -45,6 +47,7 @@ export const CityAttractions = ({
         image={image}
         citySlug={citySlug}
         countrySlug={countrySlug}
+        cid={cid}
         data={attractions}
         cardRender={(params) => (
           <AttractionCard

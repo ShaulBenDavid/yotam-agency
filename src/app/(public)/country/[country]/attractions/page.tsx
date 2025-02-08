@@ -64,7 +64,7 @@ const CountryAttractionsPage = async ({
     notFound();
   }
 
-  const { title } = CountriesJSON[country];
+  const { title, cid } = CountriesJSON[country];
   const attractions = await getAttractionsByCountry(country);
 
   return (
@@ -72,6 +72,7 @@ const CountryAttractionsPage = async ({
       countrySlug={country}
       countryName={title}
       image={images[country].blurDataURL ?? ''}
+      cid={cid}
       data={attractions}
     />
   );

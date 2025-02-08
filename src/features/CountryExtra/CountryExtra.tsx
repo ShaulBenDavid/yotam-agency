@@ -7,6 +7,7 @@ import { ShareWithFriends } from '../ShareWithFriends';
 import { transformToCityHotelStructure } from './CountryExtra.utils';
 import { buildRoutePath } from '@/utils';
 import { Routes } from '@/routes';
+import { KlookWidget } from '@/components/Klook';
 
 export interface CountryExtraDataProps {
   _id: string;
@@ -21,6 +22,7 @@ interface CountryExtraProps<T> {
   image: string;
   carouselTitle: string;
   linkText: string;
+  cid?: number;
   data: T[];
   icon: JSX.Element;
   cardRender: (data: T) => JSX.Element;
@@ -35,6 +37,7 @@ export const CountryExtra = <T extends CountryExtraDataProps>({
   data,
   icon,
   carouselTitle,
+  cid,
   linkText,
   cardRender,
 }: CountryExtraProps<T>): JSX.Element => {
@@ -52,6 +55,7 @@ export const CountryExtra = <T extends CountryExtraDataProps>({
         image={image}
         maxHeight="250px"
       />
+      {typeof cid === 'number' && <KlookWidget cid={cid} />}
       {countrySlug === Routes.SRI_LANKA ? (
         <section
           className="grid w-full grid-cols-cards-auto-fit gap-6 py-2 tb:grid-cols-cards-xl-auto-fit tb:py-4"

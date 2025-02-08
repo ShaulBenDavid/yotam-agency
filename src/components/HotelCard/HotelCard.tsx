@@ -12,7 +12,7 @@ interface HotelCardProps {
   mapLink: string;
   stars: number;
   rate: number;
-  fromPrice?: number;
+  fromPrice?: string;
   onClick: () => void;
 }
 

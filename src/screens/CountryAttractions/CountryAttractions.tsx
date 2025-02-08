@@ -16,6 +16,7 @@ interface CountryAttractionsProps {
   countryName: string;
   countrySlug: string;
   image: string;
+  cid: number;
   data: Attraction[];
 }
 
@@ -24,6 +25,7 @@ export const CountryAttractions = ({
   image,
   countrySlug,
   data,
+  cid,
 }: CountryAttractionsProps): JSX.Element => {
   const {
     onShowAttraction,
@@ -35,6 +37,7 @@ export const CountryAttractions = ({
   return (
     <>
       <CountryExtra
+        cid={cid}
         activityName="אטרקציות"
         activitySlug={Routes.ATTRACTIONS}
         linkText="לכל האטרקציות ב"

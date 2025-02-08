@@ -21,7 +21,7 @@ export default function RootLayout({
     <html lang="he">
       <body className="antialiased">
         <AppProviders>
-          <div className="text-primary-950 flex min-h-screen flex-col items-center overflow-x-clip">
+          <div className="flex min-h-screen flex-col items-center overflow-x-clip text-primary-950">
             <Header />
             <main className="flex w-[1400px] flex-grow flex-col max-lg:w-[1000px] max-md:w-full max-md:px-2">
               {children}

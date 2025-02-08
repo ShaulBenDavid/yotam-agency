@@ -77,6 +77,7 @@ const CityAttractionsPage = async ({
       image={images[cityData.country]?.blurDataURL ?? ''}
       citySlug={citySlug}
       countrySlug={country}
+      cid={cityData?.cid ?? 0}
       attractions={attractions}
     />
   );

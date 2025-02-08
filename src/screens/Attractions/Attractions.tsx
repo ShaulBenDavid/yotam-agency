@@ -9,6 +9,7 @@ import { buildRoutePath } from '@/utils';
 import { Routes } from '@/routes';
 import { ShareWithFriends } from '@/features/ShareWithFriends';
 import { ContactUs } from '../../features/ContactUs';
+import { KlookWidget } from '@/components/Klook';
 
 export const Attractions = (): JSX.Element => (
   <div className="flex w-full flex-col items-center gap-2 py-2 tb:py-4">
@@ -39,6 +40,7 @@ export const Attractions = (): JSX.Element => (
         ))}
       </div>
     </div>
+    <KlookWidget cid={28} />
     <ContactUs />
     <ShareWithFriends />
   </div>

@@ -11,9 +11,9 @@ export const CitiesSection = ({
   countryName,
   cities,
 }: CitiesSectionProps): JSX.Element => (
-  <section className="tb:py-4 flex w-full flex-col items-center gap-2 py-2">
+  <section className="flex w-full flex-col items-center gap-2 py-2 tb:py-4">
     <h2 className="app-h2">יעדים ב{countryName}</h2>
-    <div className="grid-cols-cards-auto-fit grid w-full gap-2">
+    <div className="grid w-full grid-cols-cards-xl-auto-fit gap-2">
       {cities.map(({ title, href, image }) => (
         <ImageLink title={title} href={href} image={image} key={href} />
       ))}

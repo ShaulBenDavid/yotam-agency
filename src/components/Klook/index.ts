@@ -1,0 +1,1 @@
+export { KlookWidget } from './Klook';
