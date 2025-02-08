@@ -38,6 +38,7 @@ export const CountryHotels = ({
         data={data}
         cardRender={(params) => (
           <HotelCard
+            key={params._id}
             name={params.title}
             image={forUrl(params.mainImage).url()}
             address={params.address}

@@ -3,7 +3,6 @@ import { Routes } from '@/routes';
 import { ContactUs } from '@/features/ContactUs';
 import { Intro } from '@/features/Intro';
 import { ShareWithFriends } from '../ShareWithFriends';
-import { MoreHotel } from '@/components/HotelCard/MoreHotel';
 
 interface DataProps {
   _id: string;
@@ -47,7 +46,6 @@ export const CityExtra = <T extends DataProps>({
       aria-label={activityName}
     >
       {data?.map((item) => cardRender(item))}
-      {activitySlug === 'hotels' && <MoreHotel />}
     </section>
     <ContactUs title="לפרטים ומלונות נוספים צרו קשר" />
     <ShareWithFriends

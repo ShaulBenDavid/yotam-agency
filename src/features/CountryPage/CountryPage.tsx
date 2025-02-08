@@ -46,7 +46,7 @@ export const CountryPage = ({
         <p className="app-p">{description}</p>
       </div>
       <FcCloseUpMode size={50} aria-hidden />
-      {transformedCitiesLink && (
+      {!!transformedCitiesLink?.length && (
         <CitiesSection countryName={name} cities={transformedCitiesLink} />
       )}
       <section className="flex flex-col items-center gap-2 py-2 tb:py-4">

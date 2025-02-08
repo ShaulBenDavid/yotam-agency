@@ -6,7 +6,7 @@ import ThailandBImage from '@/assets/images/thailandB.jpg';
 import JapanBImage from '@/assets/images/japanB.jpg';
 import CountriesJSON from '@/constants/content/countries.json';
 import { Routes } from '@/routes';
-import { countries } from '@/routes/routes.types';
+import { allCountries } from '@/routes/routes.types';
 import { WEBSITE_URL } from '@/constants';
 import { Blogs } from '@/screens/Blogs';
 import { getPostsByCountry } from '@/sanity/queries/post/post.client';
@@ -35,7 +35,7 @@ export async function generateMetadata({
   params,
 }: CountryBlogsPageProps): Promise<Metadata> {
   const { country } = await params;
-  if (!countries.includes(country)) {
+  if (!allCountries.includes(country)) {
     notFound();
   }
 
@@ -60,7 +60,7 @@ const CountryBlogsPage = async ({
   params,
 }: CountryBlogsPageProps): Promise<JSX.Element> => {
   const { country } = await params;
-  if (!countries.includes(country) && !images[country]) {
+  if (!allCountries.includes(country) && !images[country]) {
     notFound();
   }
 

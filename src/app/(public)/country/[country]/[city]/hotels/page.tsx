@@ -1,7 +1,6 @@
 import React from 'react';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import SriLankaBImage from '@/assets/images/sriLankaB.jpg';
 import ThailandBImage from '@/assets/images/thailandB.jpg';
 import JapanBImage from '@/assets/images/japanB.jpg';
 import CountriesJSON from '@/constants/content/countries.json';
@@ -13,7 +12,6 @@ import { CityHotels } from '@/screens/CityHotels';
 import { getHotels } from '@/sanity/queries/hotel';
 
 const images = {
-  [Routes.SRI_LANKA]: SriLankaBImage,
   [Routes.JAPAN]: JapanBImage,
   [Routes.THAILAND]: ThailandBImage,
 };
@@ -28,7 +26,7 @@ export async function generateStaticParams() {
 
 type CityHotelsPageProps = {
   params: Promise<{
-    country: Routes.SRI_LANKA | Routes.THAILAND | Routes.JAPAN;
+    country: Routes.THAILAND | Routes.JAPAN;
     city: string;
   }>;
 };

@@ -15,8 +15,8 @@ export const ContactUs = ({
     <div className="flex flex-row items-center justify-center gap-2 py-2">
       <MdAccessTime size={24} aria-hidden />
       <div className="flex flex-col">
-        <span>בימים א’-ה’ בין השעות 09:00-17:00</span>
-        <span>ביום ו׳ בין השעות 09:00-12:00</span>
+        <span>בימים א’-ה’ בין השעות 09:00-18:00</span>
+        <span>ביום ו׳ בין השעות 09:00-13:00</span>
       </div>
     </div>
     <div className="flex justify-center py-4">

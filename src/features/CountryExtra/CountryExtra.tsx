@@ -38,7 +38,8 @@ export const CountryExtra = <T extends CountryExtraDataProps>({
   linkText,
   cardRender,
 }: CountryExtraProps<T>): JSX.Element => {
-  const transformedData = transformToCityHotelStructure(data);
+  const transformedData =
+    countrySlug === Routes.SRI_LANKA ? [] : transformToCityHotelStructure(data);
 
   return (
     <div
@@ -51,22 +52,31 @@ export const CountryExtra = <T extends CountryExtraDataProps>({
         image={image}
         maxHeight="250px"
       />
-
-      {Object.entries(transformedData)?.map(
-        ([citySlug, { city, data: cardData }]) => (
-          <CarouselSection
-            key={citySlug}
-            title={`${carouselTitle}${city.title}`}
-            data={cardData}
-            linkText={`${linkText}${city.title}`}
-            linkHref={`/${buildRoutePath(Routes.COUNTRY, countrySlug, citySlug, activitySlug)}`}
-            icon={icon}
-            cardRender={(card) => cardRender(card)}
-            showContact={activitySlug === 'hotels'}
-          />
+      {countrySlug === Routes.SRI_LANKA ? (
+        <section
+          className="grid w-full grid-cols-cards-auto-fit gap-6 py-2 tb:grid-cols-cards-xl-auto-fit tb:py-4"
+          aria-label={activityName}
+        >
+          {data?.map((item) => cardRender(item))}
+        </section>
+      ) : (
+        Object.entries(transformedData)?.map(
+          ([citySlug, { city, data: cardData }]) => (
+            <CarouselSection
+              key={citySlug}
+              title={`${carouselTitle}${city.title}`}
+              data={cardData}
+              linkText={`${linkText}${city.title}`}
+              linkHref={`/${buildRoutePath(Routes.COUNTRY, countrySlug, citySlug, activitySlug)}`}
+              icon={icon}
+              cardRender={(card) => cardRender(card)}
+              subject={activityName}
+            />
+          )
         )
       )}
-      <ContactUs />
+
+      <ContactUs title="לפרטים ומלונות נוספים צרו קשר" />
       <ShareWithFriends
         url={`/${Routes.COUNTRY}/${countrySlug}/${activitySlug}`}
       />

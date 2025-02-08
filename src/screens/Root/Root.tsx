@@ -18,8 +18,9 @@ export const Root = (): JSX.Element => (
             src={FlowerSVG}
             alt="Flysun logo"
             sizes="15vw"
-            width={40}
-            height={40}
+            className="h-8 w-8 tb:h-10 tb:w-10"
+            width={0}
+            height={0}
           />
         </span>
       }

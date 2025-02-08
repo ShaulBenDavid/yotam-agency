@@ -70,7 +70,7 @@ export const City = ({
           linkText="לכל הבתי מלון"
           linkHref={`${citySlug}/${Routes.HOTELS}`}
           icon={<FaHotel size={50} aria-hidden />}
-          showContact
+          subject="מלונות"
           cardRender={(params) => (
             <HotelCard
               name={params.title}
@@ -89,6 +89,7 @@ export const City = ({
         <>
           <hr className="my-6 w-full border-primary-950" aria-hidden />
           <CarouselSection
+            subject="אטרקציות"
             title={`אז מה עושים ב${cityName}`}
             data={attractions}
             linkText="לכל האטרקציות"

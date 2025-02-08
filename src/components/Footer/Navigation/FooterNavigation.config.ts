@@ -3,10 +3,10 @@ import { socialLinksConfig } from '@/constants/socials';
 import type { NavigationColumnLinksType } from './NavigationColumn/NavigationColumn';
 
 const legalNavigationConfig: NavigationColumnLinksType = [
-  {
-    title: 'מידניות משתמש',
-    link: Routes.PRIVACY_POLICY,
-  },
+  // {
+  //   title: 'מידניות משתמש',
+  //   link: Routes.PRIVACY_POLICY,
+  // },
   {
     title: 'הצהרת נגישות',
     link: Routes.ACCESSIBILITY,
