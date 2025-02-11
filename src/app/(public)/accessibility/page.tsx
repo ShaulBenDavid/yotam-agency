@@ -22,7 +22,7 @@ const page = () => (
       </a>
       <p className="mt-4 font-semibold text-gray-700">טלפון: </p>
       <a
-        href={`tel:${contactData.phone.replace(/[+-]/g, '')}`}
+        href={`tel:+${contactData.phone.replace(/[+-]/g, '')}`}
         className="text-blue-600 hover:underline"
       >
         {contactData.phone}

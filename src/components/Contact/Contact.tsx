@@ -9,7 +9,7 @@ export const Contact = (): JSX.Element => (
       <FaPhone size={24} />
       <a
         className="hover:underline"
-        href={`tel:${contactData.phone.replace(/[+-]/g, '')}`}
+        href={`tel:+${contactData.phone.replace(/[+-]/g, '')}`}
         aria-label={`Call us at ${contactData.phone}`}
       >
         {contactData.phone}
