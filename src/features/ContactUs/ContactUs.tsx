@@ -9,7 +9,7 @@ interface ContactUsProps {
 export const ContactUs = ({
   title = 'לפרטים נוספים צרו קשר',
 }: ContactUsProps): JSX.Element => (
-  <section className="w-full rounded-md bg-primary-950 py-4 text-center text-base font-medium text-white tb:py-8 tb:text-xl">
+  <section className="w-full rounded-md bg-primary-950 px-2 py-4 text-center text-base font-medium text-white tb:py-8 tb:text-xl">
     <h2 className="text-center text-lg font-bold tb:text-2xl">{title}</h2>
     <p className="">התייעצות, שאלה או סגירת חופשה? אל תהססו להתקשר</p>
     <div className="flex flex-row items-center justify-center gap-2 py-2">

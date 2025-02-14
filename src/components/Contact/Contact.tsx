@@ -1,5 +1,5 @@
-import { contactData } from '@/constants';
 import React from 'react';
+import { contactData } from '@/constants';
 import { FaPhone, FaWhatsapp } from 'react-icons/fa';
 import { IoIosMail } from 'react-icons/io';
 
