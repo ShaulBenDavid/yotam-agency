@@ -14,7 +14,9 @@ export const AboutMe = (): JSX.Element => (
       className="max-h-96 w-full rounded-md rounded-t-md object-cover object-top tb:min-w-80"
     />
     <div className="flex flex-col">
-      <h2 className="mb-4 border-b pb-2 text-2xl font-bold">מי אני?</h2>
+      <h2 className="mb-2 border-b pb-2 text-lg font-bold tb:text-2xl">
+        מי אני?
+      </h2>
       <p className="rounded-md p-2 text-base font-medium tb:p-3 tb:text-lg">
         שמי <strong>נתנאל</strong> (נתי) בן דוד ובשש השנים האחרונות אני מתגורר
         בעיירה קטנה וציורית בשם קארויזאווה (Karuizawa), אשר נמצאת במחוז נגאנו

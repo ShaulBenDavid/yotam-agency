@@ -51,7 +51,7 @@ export const PlaningInfo = (): JSX.Element => {
         onClick={onShowJapan}
         price={
           <span aria-label="price">
-            <strong>החל -</strong> {800} ש״ח
+            <strong>החל מ-</strong> {800} ש״ח
           </span>
         }
       />
