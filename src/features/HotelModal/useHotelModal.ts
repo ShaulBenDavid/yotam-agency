@@ -13,15 +13,15 @@ export const useHotelModal = () => {
 
   const onShow = useCallback(
     (data: Hotel) => {
-      hotelModalRef.current?.showModal();
       setHotelModalData(data);
+      hotelModalRef.current?.showModal();
     },
-    [hotelModalRef]
+    [hotelModalRef, setHotelModalData]
   );
 
   return {
     hotelModalRef,
-    hotelModalData,
+    hotelModalData: hotelModalData,
     onClose,
     onShow,
   };

@@ -1,6 +1,6 @@
 import React from 'react';
 import { GiJapan, GiPalmTree, GiSriLanka } from 'react-icons/gi';
-import { GrInfo } from 'react-icons/gr';
+import { GrInfo, GrPlan } from 'react-icons/gr';
 import { MdAttractions } from 'react-icons/md';
 import { TbAccessibleFilled } from 'react-icons/tb';
 import { FaPhone } from 'react-icons/fa';
@@ -96,6 +96,12 @@ export const navigationLinksConfig: NavigationLinkConfigType[] = [
         isSideNavOnly: false,
       },
     ],
+  },
+  {
+    href: Routes.JAPAN_PLANING_TRIP,
+    title: 'תכנון מסלול ביפן',
+    icon: <GrPlan size={24} aria-hidden />,
+    isSideNavOnly: false,
   },
   {
     href: Routes.ATTRACTIONS,

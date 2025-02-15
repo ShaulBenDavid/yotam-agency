@@ -109,20 +109,12 @@ export const City = ({
 
       <ContactUs />
       <ShareWithFriends url={`/${Routes.COUNTRY}/${countrySlug}/${citySlug}`} />
-      {hotelModalData && (
-        <HotelModal
-          onClose={onClose}
-          ref={hotelModalRef}
-          data={hotelModalData}
-        />
-      )}
-      {attractionModalData && (
-        <AttractionModal
-          onClose={onCloseAttraction}
-          ref={attractionModalRef}
-          data={attractionModalData}
-        />
-      )}
+      <HotelModal onClose={onClose} ref={hotelModalRef} data={hotelModalData} />
+      <AttractionModal
+        onClose={onCloseAttraction}
+        ref={attractionModalRef}
+        data={attractionModalData}
+      />
     </div>
   );
 };

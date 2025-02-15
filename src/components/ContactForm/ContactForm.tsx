@@ -57,9 +57,9 @@ export const ContactForm = (): JSX.Element => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="mx-auto max-w-md space-y-4 rounded-lg bg-white p-6 shadow-2xl"
+      className="mx-auto max-w-md space-y-4 rounded-md bg-white p-6 shadow-2xl"
     >
-      <h2 className="text-xl font-semibold text-gray-800">השארת פרטים</h2>
+      <h2 className="text-xl font-semibold text-primary-950">השארת פרטים</h2>
 
       <input
         type="text"

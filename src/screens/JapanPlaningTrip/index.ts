@@ -1,0 +1,1 @@
+export { JapanPlaningTrip } from './JapanPlaningTrip';

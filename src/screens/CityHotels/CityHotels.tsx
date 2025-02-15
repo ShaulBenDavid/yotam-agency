@@ -51,13 +51,7 @@ export const CityHotels = ({
           />
         )}
       />
-      {hotelModalData && (
-        <HotelModal
-          onClose={onClose}
-          ref={hotelModalRef}
-          data={hotelModalData}
-        />
-      )}
+      <HotelModal onClose={onClose} ref={hotelModalRef} data={hotelModalData} />
     </>
   );
 };

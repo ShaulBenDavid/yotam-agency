@@ -57,13 +57,11 @@ export const CountryAttractions = ({
           />
         )}
       />
-      {attractionModalData && (
-        <AttractionModal
-          onClose={onCloseAttraction}
-          ref={attractionModalRef}
-          data={attractionModalData}
-        />
-      )}
+      <AttractionModal
+        onClose={onCloseAttraction}
+        ref={attractionModalRef}
+        data={attractionModalData}
+      />
     </>
   );
 };

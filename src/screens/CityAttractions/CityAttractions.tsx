@@ -60,13 +60,11 @@ export const CityAttractions = ({
           />
         )}
       />
-      {attractionModalData && (
-        <AttractionModal
-          onClose={onCloseAttraction}
-          ref={attractionModalRef}
-          data={attractionModalData}
-        />
-      )}
+      <AttractionModal
+        onClose={onCloseAttraction}
+        ref={attractionModalRef}
+        data={attractionModalData}
+      />
     </>
   );
 };

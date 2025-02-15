@@ -18,7 +18,7 @@ export const useAttractionModal = () => {
       attractionModalRef.current?.showModal();
       setAttractionModalData(data);
     },
-    [attractionModalRef]
+    [attractionModalRef, setAttractionModalData]
   );
 
   return {

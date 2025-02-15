@@ -5,8 +5,9 @@ export enum Routes {
   THAILAND = 'thailand',
   JAPAN = 'japan',
   SRI_LANKA = 'sri-lanka',
-  ATTRACTIONS = 'attractions',
 
+  ATTRACTIONS = 'attractions',
+  JAPAN_PLANING_TRIP = 'japan-planing-trip',
   HOTELS = 'hotels',
   COUNTRY = 'country',
   BLOG = 'blog',

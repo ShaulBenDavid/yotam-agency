@@ -23,6 +23,7 @@ export const CountryHotels = ({
   data,
 }: CountryHotelsProps): JSX.Element => {
   const { onShow, onClose, hotelModalRef, hotelModalData } = useHotelModal();
+  console.log(hotelModalData);
 
   return (
     <>
@@ -50,13 +51,7 @@ export const CountryHotels = ({
           />
         )}
       />
-      {hotelModalData && (
-        <HotelModal
-          onClose={onClose}
-          ref={hotelModalRef}
-          data={hotelModalData}
-        />
-      )}
+      <HotelModal onClose={onClose} ref={hotelModalRef} data={hotelModalData} />
     </>
   );
 };
