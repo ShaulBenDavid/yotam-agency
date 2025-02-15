@@ -4,9 +4,9 @@ import { contactData } from '@/constants';
 
 export async function POST(req: Request) {
   try {
-    const { name, email, message, purpose } = await req.json();
+    const { name, email, message, purpose, tel } = await req.json();
 
-    if (!name || !email || !message || !purpose) {
+    if (!name || !email || !message || !purpose || !tel) {
       return NextResponse.json(
         { success: false, error: 'All fields are required.' },
         { status: 400 }
@@ -27,7 +27,7 @@ export async function POST(req: Request) {
       from: `${name} <${email}>`,
       to: contactData.email, // Replace with your email
       subject: `Flysan Contact-us: ${purpose} - ${Date.now()}`,
-      text: `שם: ${name}\nאימייל: ${email}\nמטרה: ${purpose}\nהודעה: ${message}`,
+      text: `שם: ${name}\nאימייל: ${email} \n טלפון: ${tel} \nמטרה: ${purpose}\nהודעה: ${message} `,
     };
 
     await transporter.sendMail(mailOptions);

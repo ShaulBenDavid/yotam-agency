@@ -37,7 +37,7 @@ export const NavTab = ({
 
   return (
     <li
-      className={`text-primary-950 group relative flex cursor-pointer flex-row items-center gap-2 text-xl font-bold capitalize ${NavLinkAnimation} ${
+      className={`group relative flex cursor-pointer flex-row items-center gap-2 text-nowrap text-xl font-bold capitalize text-primary-950 ${NavLinkAnimation} ${
         isActive && 'before:w-full before:hover:w-full'
       }`}
       onMouseEnter={() => setIsDropdownOpen(true)}

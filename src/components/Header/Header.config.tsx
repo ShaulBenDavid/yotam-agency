@@ -37,6 +37,11 @@ export const navigationLinksConfig: NavigationLinkConfigType[] = [
         isSideNavOnly: false,
       },
       {
+        href: Routes.JAPAN_PLANING_TRIP,
+        title: 'תכנון מסלול ליפן',
+        isSideNavOnly: false,
+      },
+      {
         href: buildRoutePath(Routes.COUNTRY, Routes.JAPAN, Routes.BLOG),
         title: 'בלוג',
         isSideNavOnly: false,
@@ -99,7 +104,7 @@ export const navigationLinksConfig: NavigationLinkConfigType[] = [
   },
   {
     href: Routes.JAPAN_PLANING_TRIP,
-    title: 'תכנון מסלול ביפן',
+    title: 'תכנון מסלול ליפן',
     icon: <GrPlan size={24} aria-hidden />,
     isSideNavOnly: false,
   },

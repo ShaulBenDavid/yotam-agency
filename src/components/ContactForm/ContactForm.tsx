@@ -6,6 +6,7 @@ export const ContactForm = (): JSX.Element => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    tel: '',
     message: '',
     purpose: '',
   });
@@ -42,7 +43,7 @@ export const ContactForm = (): JSX.Element => {
       });
 
       if (data.success)
-        setFormData({ name: '', email: '', message: '', purpose: '' });
+        setFormData({ name: '', email: '', message: '', purpose: '', tel: '' });
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       setResponse({
@@ -76,6 +77,15 @@ export const ContactForm = (): JSX.Element => {
         name="email"
         placeholder="example@example.com"
         value={formData.email}
+        onChange={handleChange}
+        required
+        className="w-full rounded-md border p-2"
+      />
+      <input
+        type="tel"
+        name="tel"
+        placeholder="מספר טלפון"
+        value={formData.tel}
         onChange={handleChange}
         required
         className="w-full rounded-md border p-2"

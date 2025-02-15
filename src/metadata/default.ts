@@ -28,6 +28,8 @@ export const defaultMetadata: Metadata = {
     'חופשה בתאילנד',
     'חופשה ביפן',
     'חופשה בסרי לנקה',
+    'פליסאן',
+    'פלי סאן',
   ],
   alternates: {
     canonical: new URL(WEBSITE_URL),
