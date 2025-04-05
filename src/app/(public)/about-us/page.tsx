@@ -18,6 +18,7 @@ const AboutUs = () => {
         imgUrl={YotamImg.src}
         altName="יותם"
         title="מי אני?"
+        classNameImg="object-center"
         description={
           <>
             נעים להכיר! אני <strong>יותם בן דוד</strong>, ואחרי שנים של טיולים
