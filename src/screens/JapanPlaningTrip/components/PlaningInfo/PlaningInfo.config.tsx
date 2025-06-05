@@ -32,6 +32,6 @@ export const planCardConfig: PlanCardConfig[] = [
     ],
     icon: <FcPlanner size={50} aria-hidden />,
     isDark: false,
-    price: '1000 ש״ח',
+    price: 'החל מ-1000 ש״ח',
   },
 ];
