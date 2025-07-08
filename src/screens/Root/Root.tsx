@@ -10,6 +10,7 @@ import { Intro } from '../../features/Intro';
 import { ContactUs } from '../../features/ContactUs';
 import { ShareWithFriends } from '../../features/ShareWithFriends';
 import { WhyUs } from './components/WhyUs';
+import { SocialButtons } from './components/SocialButtons';
 
 interface RootProps {
   cities?: CityLinkType[];
@@ -28,11 +29,11 @@ export const Root = ({ cities }: RootProps): JSX.Element => {
     <div className="flex flex-col gap-2 pb-8 tb:gap-2">
       <Intro title={<Logo />} image={JapanImage.src} minHeight="288px" />
 
-      {/* <Countries />
-       */}
+      {/* <Countries /> */}
       {!!transformedCitiesLink?.length && (
         <CitiesSection countryName="יפן" cities={transformedCitiesLink} />
       )}
+      <SocialButtons />
       <ContactUs />
       <WhyUs />
       <ShareWithFriends />
