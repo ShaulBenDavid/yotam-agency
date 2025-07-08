@@ -3,6 +3,7 @@
 import React, { JSX, useState } from 'react';
 import Link from 'next/link';
 import { Routes } from '@/routes';
+import { contactData } from '@/constants';
 import { BurgerButton } from '../BurgerButton';
 import { NavigationTabs } from '../NavigationTabs';
 import { navigationLinksConfig } from './Header.config';
@@ -15,8 +16,8 @@ export const Header = (): JSX.Element => {
 
   return (
     <>
-      <header className="bg-primary-950 tb:bg-white tb:bg-opacity-[0.8] sticky top-0 z-20 flex w-full flex-col items-center drop-shadow-md backdrop-blur-xl">
-        <div className="bg-primary-950 max-tb:hidden flex w-full justify-center px-2 text-white">
+      <header className="sticky top-0 z-20 flex w-full flex-col items-center bg-primary-950 drop-shadow-md backdrop-blur-xl tb:bg-white tb:bg-opacity-[0.8]">
+        <div className="flex w-full justify-center bg-primary-950 px-2 text-white max-tb:hidden">
           <div
             className="max-md:w-full-4 flex w-[1400px] flex-row items-center justify-between py-1 text-lg font-semibold max-lg:w-[1000px]"
             aria-label="Contact Information"
@@ -27,13 +28,22 @@ export const Header = (): JSX.Element => {
             </Link>
           </div>
         </div>
+
         <nav
           className="flex w-[1400px] flex-row items-center justify-between px-2 py-2 max-lg:w-[1000px] max-md:w-full"
           aria-label="Main Navigation"
         >
-          <NavigationTabs navLinks={navigationLinksConfig} />
-          <span className="tb:hidden">
+          <NavigationTabs navLinks={navigationLinksConfig} />{' '}
+          <span className="flex flex-row items-center gap-2 tb:hidden">
             <BurgerButton onClick={() => setShowDrawer(true)} />
+            <a
+              href={`https://wa.me/${contactData.phone.replace(/[+-]/g, '')}`}
+              className="flex h-8 items-center gap-2 rounded bg-green-500 px-2 font-bold text-white hover:bg-green-600"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>WhatsApp</span>
+            </a>
           </span>
           <Link href={Routes.ROOT} className="tb:hidden">
             <Logo />

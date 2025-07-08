@@ -27,7 +27,7 @@ export const Attractions = (): JSX.Element => (
     </span>
     <div className="w-full py-2">
       <h2 className="text-center text-lg font-bold tb:text-xl">
-        אז בואו לשמוע על האטרקציות במזרח!
+        אז בואו לשמוע על האטרקציות ביפן!
       </h2>
       <div className="flex w-full flex-col justify-between gap-2 pt-4 tb:flex-row tb:gap-8">
         {countriesConfig.map(({ title, href, image }) => (

@@ -19,5 +19,5 @@ export enum Routes {
   ABOUT_US = 'about-us',
 }
 
-export const countries = [Routes.JAPAN, Routes.THAILAND];
-export const allCountries = [Routes.JAPAN, Routes.THAILAND, Routes.SRI_LANKA];
+export const countries = [Routes.JAPAN];
+export const allCountries = [Routes.JAPAN];

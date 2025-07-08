@@ -19,8 +19,9 @@ const images = {
 
 export function generateStaticParams() {
   return [
-    { country: Routes.SRI_LANKA },
-    { country: Routes.THAILAND },
+    // ! Archive countries for now
+    // { country: Routes.SRI_LANKA },
+    // { country: Routes.THAILAND },
     { country: Routes.JAPAN },
   ];
 }

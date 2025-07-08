@@ -1,5 +1,6 @@
 import React from 'react';
-import { GiJapan, GiPalmTree, GiSriLanka } from 'react-icons/gi';
+// ! Archive countries for now
+import { GiJapan /*GiPalmTree, GiSriLanka */ } from 'react-icons/gi';
 import { GrInfo, GrPlan } from 'react-icons/gr';
 import { MdAttractions } from 'react-icons/md';
 import { TbAccessibleFilled } from 'react-icons/tb';
@@ -48,60 +49,64 @@ export const navigationLinksConfig: NavigationLinkConfigType[] = [
       },
     ],
   },
-  {
-    href: buildRoutePath(Routes.COUNTRY, Routes.THAILAND),
-    title: 'תאילנד',
-    icon: <GiPalmTree size={24} aria-hidden />,
-    isSideNavOnly: false,
-    subLinks: [
-      {
-        href: buildRoutePath(Routes.COUNTRY, Routes.THAILAND, Routes.HOTELS),
-        title: 'מלונות',
-        isSideNavOnly: false,
-      },
-      {
-        href: buildRoutePath(
-          Routes.COUNTRY,
-          Routes.THAILAND,
-          Routes.ATTRACTIONS
-        ),
-        title: 'אטרקציות',
-        isSideNavOnly: false,
-      },
-      {
-        href: buildRoutePath(Routes.COUNTRY, Routes.THAILAND, Routes.BLOG),
-        title: 'בלוג',
-        isSideNavOnly: false,
-      },
-    ],
-  },
-  {
-    href: buildRoutePath(Routes.COUNTRY, Routes.SRI_LANKA),
-    title: 'סרי לנקה',
-    icon: <GiSriLanka size={24} aria-hidden />,
-    isSideNavOnly: false,
-    subLinks: [
-      {
-        href: buildRoutePath(Routes.COUNTRY, Routes.SRI_LANKA, Routes.HOTELS),
-        title: 'מלונות',
-        isSideNavOnly: false,
-      },
-      {
-        href: buildRoutePath(
-          Routes.COUNTRY,
-          Routes.SRI_LANKA,
-          Routes.ATTRACTIONS
-        ),
-        title: 'אטרקציות',
-        isSideNavOnly: false,
-      },
-      {
-        href: buildRoutePath(Routes.COUNTRY, Routes.SRI_LANKA, Routes.BLOG),
-        title: 'בלוג',
-        isSideNavOnly: false,
-      },
-    ],
-  },
+  // ! Archive countries for now
+
+  // {
+  //   href: buildRoutePath(Routes.COUNTRY, Routes.THAILAND),
+  //   title: 'תאילנד',
+  //   icon: <GiPalmTree size={24} aria-hidden />,
+  //   isSideNavOnly: false,
+  //   subLinks: [
+  //     {
+  //       href: buildRoutePath(Routes.COUNTRY, Routes.THAILAND, Routes.HOTELS),
+  //       title: 'מלונות',
+  //       isSideNavOnly: false,
+  //     },
+  //     {
+  //       href: buildRoutePath(
+  //         Routes.COUNTRY,
+  //         Routes.THAILAND,
+  //         Routes.ATTRACTIONS
+  //       ),
+  //       title: 'אטרקציות',
+  //       isSideNavOnly: false,
+  //     },
+  //     {
+  //       href: buildRoutePath(Routes.COUNTRY, Routes.THAILAND, Routes.BLOG),
+  //       title: 'בלוג',
+  //       isSideNavOnly: false,
+  //     },
+  //   ],
+  // },
+  // ! Archive countries for now
+
+  // {
+  //   href: buildRoutePath(Routes.COUNTRY, Routes.SRI_LANKA),
+  //   title: 'סרי לנקה',
+  //   icon: <GiSriLanka size={24} aria-hidden />,
+  //   isSideNavOnly: false,
+  //   subLinks: [
+  //     {
+  //       href: buildRoutePath(Routes.COUNTRY, Routes.SRI_LANKA, Routes.HOTELS),
+  //       title: 'מלונות',
+  //       isSideNavOnly: false,
+  //     },
+  //     {
+  //       href: buildRoutePath(
+  //         Routes.COUNTRY,
+  //         Routes.SRI_LANKA,
+  //         Routes.ATTRACTIONS
+  //       ),
+  //       title: 'אטרקציות',
+  //       isSideNavOnly: false,
+  //     },
+  //     {
+  //       href: buildRoutePath(Routes.COUNTRY, Routes.SRI_LANKA, Routes.BLOG),
+  //       title: 'בלוג',
+  //       isSideNavOnly: false,
+  //     },
+  //   ],
+  // },
   {
     href: Routes.JAPAN_PLANING_TRIP,
     title: 'תכנון מסלול ליפן',
