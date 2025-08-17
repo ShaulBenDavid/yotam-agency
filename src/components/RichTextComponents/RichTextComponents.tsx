@@ -12,7 +12,7 @@ export const RichTextComponents: Partial<PortableTextReactComponents> = {
         alt=""
         role="presentation"
         loading="lazy"
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 70vw, 50vw"
+        unoptimized
         width={500}
         height={200}
         className="aspect-[1000/420] w-full object-contain"
@@ -43,7 +43,7 @@ export const RichTextComponents: Partial<PortableTextReactComponents> = {
 
       return (
         <h3
-          className="tb:text-2xl text-xl font-bold"
+          className="text-xl font-bold tb:text-2xl"
           {...(match ? { id: match[1] } : {})}
         >
           {modifiedString}
@@ -51,7 +51,7 @@ export const RichTextComponents: Partial<PortableTextReactComponents> = {
       );
     },
     h2: ({ children }) => (
-      <h2 className="tb:text-3xl text-2xl font-bold">{children}</h2>
+      <h2 className="text-2xl font-bold tb:text-3xl">{children}</h2>
     ),
     blockquote: ({ children }) => <Blockquote>{children}</Blockquote>,
   },

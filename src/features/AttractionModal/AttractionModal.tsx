@@ -32,7 +32,7 @@ export const AttractionModal = ({
             src={mainImage && forUrl(mainImage).url()}
             alt={`hotel - ${title}`}
             loading="lazy"
-            sizes="60wv"
+            unoptimized
             width={0}
             height={0}
             className="aspect-video max-h-72 min-h-56 w-full rounded-t-md object-contain object-top"

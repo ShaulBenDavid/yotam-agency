@@ -28,7 +28,7 @@ export const AttractionCard = ({
         src={image}
         alt={`attraction - ${name}`}
         loading="lazy"
-        sizes="15wv"
+        unoptimized
         width={0}
         height={0}
         className="aspect-square max-h-[200px] w-full min-w-52 rounded-t-md object-cover object-top sm:aspect-video tb:max-h-60"

@@ -36,19 +36,19 @@ export const PostPreview = ({
           src={imgUrl}
           alt={title}
           loading="lazy"
-          sizes="15wv"
+          unoptimized
           width={0}
           height={0}
-          className="mb:w-40 aspect-square h-28 w-auto object-cover sm:aspect-video sm:h-[130px] sm:w-auto"
+          className="aspect-square h-28 w-auto object-cover mb:w-40 sm:aspect-video sm:h-[130px] sm:w-auto"
         />
       </figure>
     </Link>
     <div className="flex h-full w-full flex-col">
       <Link href={href} className="hover:underline">
-        <h4 className="xs:line-clamp-1 line-clamp-2 text-base font-bold sm:text-lg">
+        <h4 className="line-clamp-2 text-base font-bold xs:line-clamp-1 sm:text-lg">
           {title}
         </h4>
-        <p className="text-primary-gray max-xs:hidden line-clamp-1 text-sm sm:line-clamp-2 sm:text-base">
+        <p className="text-primary-gray line-clamp-1 text-sm max-xs:hidden sm:line-clamp-2 sm:text-base">
           {content}
         </p>
       </Link>

@@ -25,6 +25,7 @@ export const EmptyState = ({
         src={svgUrl}
         priority
         className="w-[250px]"
+        unoptimized
       />
     )}
     <h2 className="text-center text-xl font-semibold">{header}</h2>

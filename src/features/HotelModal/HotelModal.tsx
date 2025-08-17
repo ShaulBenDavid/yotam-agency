@@ -71,7 +71,7 @@ export const HotelModal = ({
                   src={mainImage && forUrl(mainImage).url()}
                   alt={`hotel - ${title}`}
                   loading="lazy"
-                  sizes="60wv"
+                  unoptimized
                   width={0}
                   height={0}
                   className="aspect-video max-h-72 w-full rounded-t-md object-cover object-top"
@@ -83,7 +83,7 @@ export const HotelModal = ({
                     src={mainImage && forUrl(asset).url()}
                     alt={`hotel - ${alt}`}
                     loading="lazy"
-                    sizes="60wv"
+                    unoptimized
                     width={0}
                     height={0}
                     className="aspect-video max-h-72 w-full rounded-t-md object-cover object-center tb:object-contain"

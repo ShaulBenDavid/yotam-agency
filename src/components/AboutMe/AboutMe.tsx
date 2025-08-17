@@ -23,7 +23,7 @@ export const AboutMe = ({
       src={imgUrl}
       alt={`תמונה של ${altName}`}
       loading="lazy"
-      sizes="15wv"
+      unoptimized
       width={0}
       height={0}
       className={twMerge(
