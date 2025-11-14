@@ -7,12 +7,13 @@ import YotamImg from '@/assets/images/yotamImg.jpeg';
 const AboutUs = () => {
   return (
     <section className="flex flex-col gap-3 py-2 tb:py-4">
-      <h1 className="text-center text-xl font-bold tb:text-2xl">עלינו</h1>
-      <p className="text-center text-lg font-semibold">
-        פלייסאן היא סוכנות נסיעות המתמחה בטיולים למזרח הרחוק, עם דגש על חוויות
-        ייחודיות, שירות אישי ותכנון מדויק. בזכות הקשרים המקומיים שלנו והאהבה
-        לאנשים ותרבויות, אנו מציעים חבילות טיול, מלונות, סיורים מודרכים וייעוץ
-        מקצועי לכל יעד, כך שתוכלו ליהנות מחופשה בלתי נשכחת בראש שקט. 🌏✈️
+      <h1 className="text-center text-xl font-bold tb:text-2xl">עלינו🇯🇵</h1>
+      <p className="mx-auto max-w-[700px] whitespace-pre-line text-center text-lg font-semibold leading-relaxed">
+        {`FlySan היא סוכנות נסיעות המתמחה בטיולים ליפן 🇯🇵
+המטרה שלנו – לעזור לכם לחוות את יפן לעומק, בצורה חכמה, נוחה ומרגשת.
+עם ידע מקומי, קשרים בשטח וניסיון של שנים בתכנון טיולים, אנחנו בונים עבורכם מסלולים אישיים ומדויקים – כולל לינה, תחבורה, אטרקציות, אוכל, וטיפים קטנים שהופכים את כל החוויה לבלתי נשכחת.
+בין אם זו הפעם הראשונה שלכם ביפן או שאתם חוזרים להתאהב בה מחדש – אנחנו כאן כדי לדאוג להכול.
+🌸✨ FlySan – מתכננים חכם, מטיילים רגוע.`}
       </p>
       <AboutMe
         imgUrl={YotamImg.src}

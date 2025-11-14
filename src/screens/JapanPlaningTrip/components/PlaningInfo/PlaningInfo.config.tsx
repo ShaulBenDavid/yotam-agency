@@ -18,7 +18,7 @@ export const planCardConfig: PlanCardConfig[] = [
     ],
     icon: <FcSelfie size={50} aria-hidden />,
     isDark: true,
-    price: '400 ש״ח',
+    price: 'החל מ-500 ש״ח',
   },
   {
     title: 'בניית מסלול אישי + פגישת ייעוץ',
