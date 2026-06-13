@@ -7,9 +7,7 @@ import { Routes } from '@/routes';
 import { ShareWithFriends } from '@/features/ShareWithFriends';
 import { PlaningInfo } from './components/PlaningInfo';
 import { InfoList } from './components/InfoList';
-import { AboutMe } from '../../components/AboutMe';
 import JapanImage from './jpConsImg.png';
-import NatiImg from './natiImg.jpeg';
 
 export const JapanPlaningTrip = (): JSX.Element => {
   return (
@@ -19,36 +17,20 @@ export const JapanPlaningTrip = (): JSX.Element => {
       tabIndex={-1}
     >
       <Intro
-        title="ייעוץ ותכנון מסלול ליפן - 2025"
+        title="תכנון טיול ליפן בהתאמה אישית"
         image={JapanImage.src}
         maxHeight="320px"
       />
       <GiJapan size={80} aria-hidden />
       <div className="max-w-[900px] py-2 tb:py-4">
         <p className="app-p">
-          יפן היא מדינה מדהימה, אבל מורכבת לטיול עצמאי. התרבות, השפה, התחבורה
-          וההרגלים המקומיים שונים ממה שרוב המטיילים מכירים. תכנון נכון יכול
-          להפוך את החוויה שלך מחופשה מסובכת למסע בלתי נשכח.
+          תכנון טיול ליפן יכול להפוך במהירות למשימה מורכבת. אנחנו בונים עבורכם
+          מסלול אישי ומפורט המותאם לסגנון הטיול, לקצב, להעדפות ולתקציב שלכם, תוך
+          תכנון נכון של התחבורה, המלונות והאטרקציות. כך תוכלו ליהנות מהטיול בראש
+          שקט, לחסוך שעות של חיפוש מידע והתלבטויות, ולהפיק את המקסימום מהזמן
+          שלכם ביפן.
         </p>
       </div>
-      <AboutMe
-        imgUrl={NatiImg.src}
-        altName="נתנאל"
-        title="מי אני?"
-        description={
-          <>
-            שמי <strong>נתנאל</strong> (נתי) בן דוד ובשש השנים האחרונות אני
-            מתגורר בעיירה קטנה וציורית בשם קארויזאווה (Karuizawa), אשר נמצאת
-            במחוז נגאנו באלפים היפניים. הקשר שלי עם יפן נרקם ממש ממש מזמן -
-            בתקופת בית הספר היסודי - בחוג הג׳ודו שבמתנ״ס בשכונת ארמון הנציב
-            בירושלים. עם השנים, האהבה ליפן התחזקה ובהמשך הדרך הצטרפתי למחלקה
-            ללימודי מזרח אסיה באוניברסיטה העברית, שם התמחיתי בתרבות ובשפה
-            היפנית. ביקרתי ביפן מספר פעמים לפני שעברתי להתגורר בה ולכן אני מבין
-            את הצד של המטיילים ומעודכן במקומות המתוירים וגם הפחות מתוירים. אשמח
-            לעזור לכם לקבל פרספקטיבה על הטיול העתידי שלכם ליפן! בואו נצא לדרך
-          </>
-        }
-      />
       <InfoList />
       <PlaningInfo />
       <div className="mt-2 flex w-full flex-col-reverse gap-4 tb:flex-row">

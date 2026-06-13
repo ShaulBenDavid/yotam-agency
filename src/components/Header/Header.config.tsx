@@ -39,7 +39,7 @@ export const navigationLinksConfig: NavigationLinkConfigType[] = [
       },
       {
         href: Routes.JAPAN_PLANING_TRIP,
-        title: 'תכנון מסלול ליפן',
+        title: 'תכנון טיול ליפן בהתאמה אישית',
         isSideNavOnly: false,
       },
       {
@@ -109,7 +109,7 @@ export const navigationLinksConfig: NavigationLinkConfigType[] = [
   // },
   {
     href: Routes.JAPAN_PLANING_TRIP,
-    title: 'תכנון מסלול ליפן',
+    title: 'תכנון טיול בהתאמה אישית',
     icon: <GrPlan size={24} aria-hidden />,
     isSideNavOnly: false,
   },
@@ -127,7 +127,7 @@ export const navigationLinksConfig: NavigationLinkConfigType[] = [
   },
   {
     href: Routes.ABOUT_US,
-    title: 'עלינו',
+    title: 'מי אנחנו',
     icon: <GrInfo size={24} aria-hidden />,
     isSideNavOnly: false,
   },

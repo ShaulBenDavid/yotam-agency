@@ -5,15 +5,19 @@ export const InfoList = (): JSX.Element => {
   return (
     <div className="max-w-2xl rounded-md bg-gray-100 p-2 shadow-lg tb:p-6">
       <h2 className="mb-4 border-b pb-2 text-lg font-bold text-primary-950 tb:text-2xl">
-        למה כדאי להיעזר בייעוץ מקצועי לתכנון טיול ליפן?🇯🇵
+        למה לבחור בנו
       </h2>
       <ul className="space-y-3">
-        {japanPoints.map(({ id, text }) => (
+        {japanPoints.map(({ id, title, text }) => (
           <li
             key={id}
             className="rounded-md bg-white p-2 text-base font-medium shadow tb:p-3 tb:text-lg"
           >
-            <span className="text-primary-900">{id}.</span> {text}
+            <div>
+              <span className="text-primary-900">{id}.</span>{' '}
+              {title ? <strong className="mr-2">{title} - </strong> : null}
+              <span>{text}</span>
+            </div>
           </li>
         ))}
       </ul>

@@ -18,7 +18,7 @@ export const AboutMe = ({
   imgUrl,
   classNameImg,
 }: AboutMeProps): JSX.Element => (
-  <section className="י flex flex-col gap-2 rounded-md bg-primary-950 p-2 text-white shadow-xl tb:flex-row">
+  <section className="flex flex-col items-center gap-2 rounded-md bg-primary-950 p-2 text-white shadow-xl tb:flex-row">
     <Image
       src={imgUrl}
       alt={`תמונה של ${altName}`}
@@ -27,7 +27,7 @@ export const AboutMe = ({
       width={0}
       height={0}
       className={twMerge(
-        'max-h-96 w-full rounded-md rounded-t-md object-cover object-top tb:min-w-80',
+        'max-h-24 w-full max-w-24 rounded-md rounded-t-md object-cover object-top',
         classNameImg
       )}
     />
