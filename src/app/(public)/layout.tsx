@@ -19,6 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="he">
+      <script src="https://elfsightcdn.com/platform.js" async></script>
       <body className="antialiased">
         <AppProviders>
           <div className="flex min-h-screen flex-col items-center overflow-x-clip text-primary-950">

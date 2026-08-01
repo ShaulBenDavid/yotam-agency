@@ -33,6 +33,10 @@ export const JapanPlaningTrip = (): JSX.Element => {
       </div>
       <InfoList />
       <PlaningInfo />
+      <div
+        className="elfsight-app-0ccda39a-87b9-45d4-8ffc-ca63c7e79275"
+        data-elfsight-app-lazy
+      ></div>
       <div className="mt-2 flex w-full flex-col-reverse gap-4 tb:flex-row">
         <ContactForm />
         <ContactUs />

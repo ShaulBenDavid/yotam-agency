@@ -36,6 +36,11 @@ export const Root = ({ cities }: RootProps): JSX.Element => {
       <SocialButtons />
       <ContactUs />
       <WhyUs />
+
+      <div
+        className="elfsight-app-0ccda39a-87b9-45d4-8ffc-ca63c7e79275"
+        data-elfsight-app-lazy
+      ></div>
       <ShareWithFriends />
     </div>
   );
