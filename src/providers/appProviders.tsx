@@ -2,6 +2,7 @@
 
 import React, { Suspense } from 'react';
 import { AppProgressBar as ProgressBar } from 'next-nprogress-bar';
+import { CookieConsent } from './CookieConsent';
 
 export const AppProviders = ({
   children,
@@ -10,6 +11,7 @@ export const AppProviders = ({
 }): JSX.Element => (
   <>
     {children}
+    <CookieConsent />
     <Suspense fallback={null}>
       <ProgressBar
         height="4px"

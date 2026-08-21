@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { AppProviders } from '@/providers';
+import { GoogleAds } from '@/providers/GoogleAds';
 import { defaultMetadata } from '@/metadata';
 import theme from '@/styles/tailwind.theme';
 import '@/styles/global.css';
@@ -20,6 +21,7 @@ export default function RootLayout({
   return (
     <html lang="he">
       <script src="https://elfsightcdn.com/platform.js" async></script>
+      {process.env.NODE_ENV === 'production' && <GoogleAds />}
       <body className="antialiased">
         <AppProviders>
           <div className="flex min-h-screen flex-col items-center overflow-x-clip text-primary-950">
