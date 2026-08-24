@@ -14,6 +14,17 @@ const consentButtonClasses = {
     'bg-transparent text-white underline underline-offset-2 hover:enabled:text-white/70',
 };
 
+const updateConsent = (state: 'granted' | 'denied'): void => {
+  if (window.gtag) {
+    window.gtag('consent', 'update', {
+      ad_storage: state,
+      ad_user_data: state,
+      ad_personalization: state,
+      analytics_storage: state,
+    });
+  }
+};
+
 export const CookieConsent = (): JSX.Element | null => {
   const router = useRouter();
   const [isMounted, setIsMounted] = useState(false);
@@ -22,6 +33,8 @@ export const CookieConsent = (): JSX.Element | null => {
     setIsMounted(true);
     if (getCookieConsentValue() === 'false') {
       resetCookieConsentValue();
+    } else if (getCookieConsentValue() === 'true') {
+      updateConsent('granted');
     }
   }, []);
 
@@ -36,7 +49,11 @@ export const CookieConsent = (): JSX.Element | null => {
       declineButtonText="דוחה"
       style={{ borderRadius: '12px 12px 0 0' }}
       containerClasses="bg-primary-950 text-white"
-      onAccept={router.refresh}
+      onAccept={() => {
+        updateConsent('granted');
+        router.refresh();
+      }}
+      onDecline={() => updateConsent('denied')}
       buttonWrapperClasses="flex flex-row gap-3 px-2 pb-2 max-w-[600px]"
       overlay
       ButtonComponent={(
