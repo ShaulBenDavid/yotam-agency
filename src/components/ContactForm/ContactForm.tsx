@@ -1,6 +1,8 @@
 'use client';
 
 import { useState } from 'react';
+import { getCookieConsentValue } from 'react-cookie-consent';
+import { reportConversion } from '@/utils';
 
 export const ContactForm = (): JSX.Element => {
   const [formData, setFormData] = useState({
@@ -42,8 +44,14 @@ export const ContactForm = (): JSX.Element => {
         message: data.message || data.error,
       });
 
-      if (data.success)
+      if (data.success) {
         setFormData({ name: '', email: '', message: '', purpose: '', tel: '' });
+        if (getCookieConsentValue() === 'true') {
+          reportConversion(
+            process.env.NEXT_PUBLIC_GOOGLE_ADS_LEAD_FORM_CONVERSION_LABEL as string
+          );
+        }
+      }
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       setResponse({
