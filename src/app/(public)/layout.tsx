@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
-import { GoogleAnalytics } from '@next/third-parties/google';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { AppProviders } from '@/providers';
@@ -24,6 +23,8 @@ export default function RootLayout({
       <script src="https://elfsightcdn.com/platform.js" async></script>
       {process.env.NODE_ENV === 'production' && (
         <>
+          {/* Consent Mode v2 — deny everything until the user opts in via the
+              cookie banner (see CookieConsent). Must run before gtag.js loads. */}
           <Script id="gtag-consent-default" strategy="beforeInteractive">
             {`
               window.dataLayer = window.dataLayer || [];
@@ -32,13 +33,25 @@ export default function RootLayout({
                 ad_storage: 'denied',
                 ad_user_data: 'denied',
                 ad_personalization: 'denied',
-                analytics_storage: 'denied'
+                analytics_storage: 'denied',
+                wait_for_update: 500
               });
+              gtag('set', 'ads_data_redaction', true);
+              gtag('set', 'url_passthrough', true);
             `}
           </Script>
-          <GoogleAnalytics
-            gaId={process.env.NEXT_PUBLIC_GOOGLE_ADS_ID as string}
+          {/* Google tag (gtag.js) — standard install, no third-party wrapper */}
+          <Script
+            id="gtag-js"
+            strategy="afterInteractive"
+            src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ADS_ID}`}
           />
+          <Script id="gtag-init" strategy="afterInteractive">
+            {`
+              gtag('js', new Date());
+              gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ADS_ID}');
+            `}
+          </Script>
         </>
       )}
       <body className="antialiased">
