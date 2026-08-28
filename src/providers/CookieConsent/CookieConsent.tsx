@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import ConsentModal, {
   getCookieConsentValue,
@@ -8,11 +9,7 @@ import ConsentModal, {
 } from 'react-cookie-consent';
 import { Button, ButtonVariants } from '@/components/Button';
 
-const consentButtonClasses = {
-  accept: 'bg-white text-primary-950 hover:enabled:bg-white/90',
-  decline:
-    'bg-transparent text-white underline underline-offset-2 hover:enabled:text-white/70',
-};
+const DECLINE_BUTTON_ID = 'rcc-decline-button';
 
 const updateConsent = (state: 'granted' | 'denied'): void => {
   if (window.gtag) {
@@ -23,6 +20,35 @@ const updateConsent = (state: 'granted' | 'denied'): void => {
       analytics_storage: state,
     });
   }
+};
+
+type ConsentButtonProps = {
+  id?: string;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  children: React.ReactNode;
+};
+
+const ConsentButton = ({
+  id,
+  onClick,
+  children,
+}: ConsentButtonProps): JSX.Element => {
+  const isDecline = id === DECLINE_BUTTON_ID;
+
+  return (
+    <Button
+      type="button"
+      onClick={onClick}
+      variant={isDecline ? ButtonVariants.SECONDARY : ButtonVariants.PRIMARY}
+      className={
+        isDecline
+          ? 'h-11 text-sm font-medium sm:w-auto sm:min-w-[124px] sm:px-6'
+          : 'h-11 text-base font-semibold sm:flex-1'
+      }
+    >
+      {children}
+    </Button>
+  );
 };
 
 export const CookieConsent = (): JSX.Element | null => {
@@ -44,37 +70,37 @@ export const CookieConsent = (): JSX.Element | null => {
 
   return (
     <ConsentModal
+      disableStyles
       enableDeclineButton
-      buttonText="מאשר/ה"
-      declineButtonText="דוחה"
-      style={{ borderRadius: '12px 12px 0 0' }}
-      containerClasses="bg-primary-950 text-white"
+      overlay
+      expires={180}
+      buttonText="אישור הכול"
+      declineButtonText="דחיית הכול"
+      ariaAcceptLabel="אישור כל העוגיות"
+      ariaDeclineLabel="דחיית עוגיות שאינן חיוניות"
+      overlayClasses="fixed inset-0 z-[999] bg-primary-950/40 backdrop-blur-[2px]"
+      containerClasses="fixed inset-x-0 bottom-0 z-[1000] mx-auto flex max-w-[520px] flex-col gap-1 rounded-t-2xl border border-primary-100 bg-white p-5 shadow-[0_-8px_40px_rgba(7,25,82,0.18)] motion-safe:animate-[enterInSideTabs_0.25s_ease-out] sm:inset-x-auto sm:bottom-5 sm:right-5 sm:max-w-[400px] sm:rounded-2xl sm:shadow-[0_16px_48px_rgba(7,25,82,0.24)]"
+      contentClasses="flex items-start gap-2.5 text-sm leading-6 text-primary-950/85"
+      buttonWrapperClasses="mt-4 flex flex-col gap-2.5 sm:flex-row sm:items-center"
       onAccept={() => {
         updateConsent('granted');
         router.refresh();
       }}
       onDecline={() => updateConsent('denied')}
-      buttonWrapperClasses="flex flex-row gap-3 px-2 pb-2 max-w-[600px]"
-      overlay
-      ButtonComponent={(
-        props: React.ButtonHTMLAttributes<HTMLButtonElement> & { id?: string }
-      ) => {
-        const isDecline = props.id === 'rcc-decline-button';
-        return (
-          <Button
-            {...props}
-            variant={ButtonVariants.LINK}
-            className={
-              isDecline
-                ? consentButtonClasses.decline
-                : consentButtonClasses.accept
-            }
-          />
-        );
-      }}
+      ButtonComponent={ConsentButton}
     >
-      🍪 אתר זה משתמש בעוגיות (Cookies) כדי לשפר את חוויית הגלישה ולמדוד ביצועי
-      פרסום. ניתן לקרוא עוד במדיניות הפרטיות שלנו.
+      <span className="shrink-0 text-xl leading-6" aria-hidden>
+        🍪
+      </span>
+      <p>
+        האתר משתמש בעוגיות כדי לשפר את חוויית הגלישה ולמדוד ביצועי פרסום.{' '}
+        <Link
+          href="/privacy-policy"
+          className="font-medium text-primary-700 underline underline-offset-2"
+        >
+          מדיניות הפרטיות
+        </Link>
+      </p>
     </ConsentModal>
   );
 };
