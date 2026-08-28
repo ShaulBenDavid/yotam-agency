@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { getCookieConsentValue } from 'react-cookie-consent';
 import { reportConversion } from '@/utils';
 
 export const ContactForm = (): JSX.Element => {
@@ -46,11 +45,11 @@ export const ContactForm = (): JSX.Element => {
 
       if (data.success) {
         setFormData({ name: '', email: '', message: '', purpose: '', tel: '' });
-        if (getCookieConsentValue() === 'true') {
-          reportConversion(
-            process.env.NEXT_PUBLIC_GOOGLE_ADS_LEAD_FORM_CONVERSION_LABEL as string
-          );
-        }
+        // Fire unconditionally — Consent Mode v2 handles the denied case by
+        // sending cookieless pings, so gating this call drops most conversions.
+        reportConversion(
+          process.env.NEXT_PUBLIC_GOOGLE_ADS_LEAD_FORM_CONVERSION_LABEL as string
+        );
       }
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
