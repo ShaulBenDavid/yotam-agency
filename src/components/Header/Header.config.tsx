@@ -114,7 +114,7 @@ export const navigationLinksConfig: NavigationLinkConfigType[] = [
     isSideNavOnly: false,
   },
   {
-    href: Routes.ATTRACTIONS,
+    href: buildRoutePath(Routes.COUNTRY, Routes.JAPAN, Routes.ATTRACTIONS),
     title: 'אטרקציות',
     icon: <MdAttractions size={24} aria-hidden />,
     isSideNavOnly: false,

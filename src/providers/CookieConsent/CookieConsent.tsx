@@ -42,8 +42,8 @@ const ConsentButton = ({
       variant={isDecline ? ButtonVariants.SECONDARY : ButtonVariants.PRIMARY}
       className={
         isDecline
-          ? 'h-11 text-sm font-medium sm:w-auto sm:min-w-[124px] sm:px-6'
-          : 'h-11 text-base font-semibold sm:flex-1'
+          ? 'text-sm font-medium sm:w-auto sm:min-w-[124px]'
+          : 'sm:flex-1'
       }
     >
       {children}
@@ -79,8 +79,8 @@ export const CookieConsent = (): JSX.Element | null => {
       ariaAcceptLabel="אישור כל העוגיות"
       ariaDeclineLabel="דחיית עוגיות שאינן חיוניות"
       overlayClasses="fixed inset-0 z-[999] bg-primary-950/40 backdrop-blur-[2px]"
-      containerClasses="fixed inset-x-0 bottom-0 z-[1000] mx-auto flex max-w-[520px] flex-col gap-1 rounded-t-2xl border border-primary-100 bg-white p-5 shadow-[0_-8px_40px_rgba(7,25,82,0.18)] motion-safe:animate-[enterInSideTabs_0.25s_ease-out] sm:inset-x-auto sm:bottom-5 sm:right-5 sm:max-w-[400px] sm:rounded-2xl sm:shadow-[0_16px_48px_rgba(7,25,82,0.24)]"
-      contentClasses="flex items-start gap-2.5 text-sm leading-6 text-primary-950/85"
+      containerClasses="fixed inset-x-0 bottom-0 z-[1000] mx-auto flex max-w-[520px] flex-col gap-1 rounded-t-xl border border-line bg-white p-5 pb-[calc(1.25rem+env(safe-area-inset-bottom))] shadow-sheet motion-safe:animate-[enterInSideTabs_0.25s_ease-out] sm:inset-x-auto sm:bottom-5 sm:right-5 sm:max-w-[400px] sm:rounded-card sm:pb-5 sm:shadow-lift"
+      contentClasses="flex items-start gap-2.5 text-sm leading-6 text-ink-soft"
       buttonWrapperClasses="mt-4 flex flex-col gap-2.5 sm:flex-row sm:items-center"
       onAccept={() => {
         updateConsent('granted');
@@ -96,7 +96,7 @@ export const CookieConsent = (): JSX.Element | null => {
         האתר משתמש בעוגיות כדי לשפר את חוויית הגלישה ולמדוד ביצועי פרסום.{' '}
         <Link
           href="/privacy-policy"
-          className="font-medium text-primary-700 underline underline-offset-2"
+          className="font-semibold text-primary-950 underline underline-offset-2 hover:text-accent-strong"
         >
           מדיניות הפרטיות
         </Link>

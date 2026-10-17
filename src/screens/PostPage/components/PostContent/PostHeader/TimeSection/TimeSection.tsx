@@ -11,7 +11,7 @@ export const TimeSection = ({
   createdAt,
   readingTime,
 }: TimeSectionProps): JSX.Element => (
-  <div className="text-s text-primary-gray tb:self-end flex flex-row gap-1 font-medium">
+  <div className="flex flex-row gap-1 text-sm text-ink-muted">
     <time>
       {new Date(createdAt).toLocaleDateString('he-IL', {
         day: 'numeric',

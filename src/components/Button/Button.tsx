@@ -2,6 +2,7 @@ import React from 'react';
 import { twMerge } from 'tailwind-merge';
 import { ButtonVariants } from './Button.types';
 import { buttonVariantsStyleConfig } from './Button.config';
+import { pillBaseClassName } from '@/styles/buttonVariants';
 import { Spinner, SpinnerSize, SpinnerVariants } from '../Spinner';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -25,7 +26,12 @@ export const Button = ({
     onClick={onClick}
     disabled={disabled || isLoading}
     className={twMerge(
-      `flex h-[35px] w-full items-center justify-center rounded-md text-base capitalize transition duration-150 ${disabled && 'cursor-not-allowed'} ${buttonVariantsStyleConfig[variant]} ${isLoading && 'cursor-wait'} disabled:opacity-60`,
+      pillBaseClassName,
+      'w-full',
+      buttonVariantsStyleConfig[variant],
+      disabled && 'cursor-not-allowed',
+      isLoading && 'cursor-wait',
+      'disabled:opacity-60',
       className
     )}
     style={{ width }}
@@ -34,7 +40,8 @@ export const Button = ({
       <Spinner
         size={SpinnerSize.SMALL}
         variant={
-          variant === ButtonVariants.PRIMARY
+          variant === ButtonVariants.PRIMARY ||
+          variant === ButtonVariants.ON_DARK_OUTLINE
             ? SpinnerVariants.WHITE
             : SpinnerVariants.PRIMARY
         }

@@ -2,9 +2,8 @@
 
 import React, { RefObject } from 'react';
 import Image from 'next/image';
-
-import { CgCloseO } from 'react-icons/cg';
 import { Modal } from '@/components/Modal';
+import { ModalCloseButton } from '@/components/ModalCloseButton';
 import { Attraction } from '@/sanity/types';
 import { forUrl } from '@/sanity/sanity.utils';
 import { Contact } from '@/components/Contact';
@@ -27,38 +26,35 @@ export const AttractionModal = ({
   return (
     <Modal ref={ref} closeModal={onClose} id={ARIA_ATTRACTION_INFO_MODAL}>
       {data && mainImage ? (
-        <div className="relative flex w-[90vw] max-w-[700px] flex-col rounded-md shadow-card">
-          <Image
-            src={mainImage && forUrl(mainImage).url()}
-            alt={`hotel - ${title}`}
-            loading="lazy"
-            unoptimized
-            width={0}
-            height={0}
-            className="aspect-video max-h-72 min-h-56 w-full rounded-t-md object-contain object-top"
-          />
-
-          <button
-            aria-label="close modal"
-            onClick={onClose}
-            className="absolute right-2 top-2 z-10 rounded-full bg-primary-950 p-1"
-          >
-            <CgCloseO aria-hidden size={32} color="white" />
-          </button>
-          <div className="flex flex-col p-2">
-            <h3 className="w-full pb-1 text-base font-bold capitalize tb:text-xl">
+        <div className="relative flex w-full flex-col tb:w-[min(90vw,640px)]">
+          <div className="bg-tint">
+            <Image
+              src={mainImage && forUrl(mainImage).url()}
+              alt={`hotel - ${title}`}
+              loading="lazy"
+              unoptimized
+              width={0}
+              height={0}
+              className="aspect-video max-h-72 min-h-56 w-full object-contain object-top"
+            />
+          </div>
+          <ModalCloseButton onClose={onClose} />
+          <div className="flex flex-col gap-3 p-5 tb:p-7">
+            <h3 className="w-full text-lg font-extrabold capitalize leading-snug tb:text-xl">
               {title}
             </h3>
-            <p>{description}</p>
-
-            <div className="flex flex-row items-end justify-between gap-2 py-2">
-              {price && (
-                <span aria-label="price">
-                  <strong>החל מ-</strong> {price}
-                </span>
-              )}
-            </div>
-            <Contact />
+            <p className="ds-body whitespace-pre-line text-[15px]">
+              {description}
+            </p>
+            {price && (
+              <span aria-label="price" className="text-[15px] text-ink-soft">
+                <strong className="text-ink">החל מ-</strong> {price}
+              </span>
+            )}
+            <Contact
+              tone="onLight"
+              className="mt-2 justify-start border-t border-line-soft pt-5 max-sm:flex-col max-sm:items-stretch max-sm:[&_a]:w-full"
+            />
           </div>
         </div>
       ) : null}

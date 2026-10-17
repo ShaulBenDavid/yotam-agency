@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { CarouselSection } from '@/screens/City/components/CarouselSection';
 import { City } from '@/sanity/types';
 import { Intro } from '../Intro';
@@ -8,6 +8,7 @@ import { transformToCityHotelStructure } from './CountryExtra.utils';
 import { buildRoutePath } from '@/utils';
 import { Routes } from '@/routes';
 import { KlookWidget } from '@/components/Klook';
+import { Section } from '@/components/Section';
 
 export interface CountryExtraDataProps {
   _id: string;
@@ -45,29 +46,28 @@ export const CountryExtra = <T extends CountryExtraDataProps>({
     countrySlug === Routes.SRI_LANKA ? [] : transformToCityHotelStructure(data);
 
   return (
-    <div
-      className="flex flex-col items-center gap-2 pb-8 tb:gap-2"
-      id={activitySlug}
-      tabIndex={-1}
-    >
+    <div className="flex flex-col" id={activitySlug} tabIndex={-1}>
       <Intro
         title={`${activityName} ב-${countryName}`}
         image={image}
-        maxHeight="250px"
+        maxHeight="320px"
       />
       {typeof cid === 'number' && <KlookWidget cid={cid} />}
       {countrySlug === Routes.SRI_LANKA ? (
-        <section
-          className="grid w-full grid-cols-cards-auto-fit gap-6 py-2 tb:grid-cols-cards-xl-auto-fit tb:py-4"
-          aria-label={activityName}
+        <Section
+          ariaLabel={activityName}
+          innerClassName="grid grid-cols-1 gap-4 xs:grid-cols-2 tb:grid-cols-3 tb:gap-5 md:grid-cols-4"
         >
-          {data?.map((item) => cardRender(item))}
-        </section>
+          {data?.map((item) => (
+            <Fragment key={item._id}>{cardRender(item)}</Fragment>
+          ))}
+        </Section>
       ) : (
         Object.entries(transformedData)?.map(
-          ([citySlug, { city, data: cardData }]) => (
+          ([citySlug, { city, data: cardData }], index) => (
             <CarouselSection
               key={citySlug}
+              tone={index % 2 === 1 ? 'tint' : 'plain'}
               title={`${carouselTitle}${city.title}`}
               data={cardData}
               linkText={`${linkText}${city.title}`}

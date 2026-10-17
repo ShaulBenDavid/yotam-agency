@@ -6,6 +6,11 @@ import { useShowsButtons } from './useShowsButtons';
 import { CarouselController } from './components/CarouselController';
 import { ContactCard } from '../ContactCard';
 
+const SLIDE_GAP_PX = 20;
+
+const slideClassName =
+  'w-[78%] shrink-0 snap-start snap-always sm:w-[calc((100%-16px)/2)] tb:w-[calc((100%-40px)/3)] md:w-[calc((100%-60px)/4)]';
+
 interface DataProps {
   _id: string;
 }
@@ -27,28 +32,28 @@ export const Carousel = <T extends DataProps>({
 
   const handleScroll = useCallback((scrollTo: number) => {
     if (scrollRef?.current) {
-      const left =
+      const slideWidth =
         scrollRef.current.children[0].getBoundingClientRect().width ?? 0;
-      scrollRef.current.scrollBy({ left: scrollTo * left, behavior: 'smooth' });
+      scrollRef.current.scrollBy({
+        left: scrollTo * (slideWidth + SLIDE_GAP_PX),
+        behavior: 'smooth',
+      });
     }
   }, []);
 
   return (
-    <div className="relative flex h-fit w-full flex-col gap-2">
+    <div className="relative flex h-fit w-full flex-col">
       <ul
-        className="flex h-full w-full snap-x snap-mandatory scroll-px-[-20x] overflow-x-scroll py-2 scrollbar-none"
+        className="-mx-4 flex snap-x snap-mandatory scroll-px-4 gap-4 overflow-x-auto px-4 pb-2 pt-1 scrollbar-none tb:mx-0 tb:scroll-px-0 tb:gap-5 tb:px-0"
         ref={scrollRef}
         aria-label="Hotels"
       >
         {data.map((item) => (
-          <li
-            className="mr-4 w-[70%] min-w-52 shrink-0 snap-start snap-always tb:w-1/3"
-            key={item._id}
-          >
+          <li className={slideClassName} key={item._id}>
             {cardRender(item)}
           </li>
         ))}
-        <li className="mr-4 w-[70%] min-w-52 shrink-0 snap-start snap-always tb:w-1/3">
+        <li className={slideClassName}>
           <ContactCard subject={subject} />
         </li>
       </ul>

@@ -1,4 +1,4 @@
-import React, { type ReactNode } from "react";
+import React, { type ReactNode } from 'react';
 
 interface BlockquoteProps {
   children: ReactNode;
@@ -6,10 +6,10 @@ interface BlockquoteProps {
 
 export const Blockquote = ({ children }: BlockquoteProps): JSX.Element => (
   <blockquote
-    className="w-full border-s-4 border-dw-grey bg-bg-grey p-4"
+    className="my-2 w-full rounded-card border-s-4 border-accent bg-tint px-5 py-4"
     data-testid="blockquote-component-test-id"
   >
-    <p className="max-w-[70ch] text-lg font-medium italic leading-relaxed text-secondary-950 opacity-90 sm:text-xl">
+    <p className="max-w-[70ch] text-lg font-medium italic leading-relaxed text-ink sm:text-xl">
       &quot;{children}&quot;
     </p>
   </blockquote>

@@ -1,5 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import { FaArrowLeft } from 'react-icons/fa';
 
 export interface ImageLinkProps {
   title: string;
@@ -12,35 +14,26 @@ export const ImageLink = ({
   href,
   image,
 }: ImageLinkProps): JSX.Element => (
-  <Link
-    href={href}
-    className="group grid h-40 w-full overflow-hidden rounded-md text-center drop-shadow-md"
-  >
-    <div
-      className="relative h-full w-full"
-      aria-hidden
-      style={{ gridRow: 1, gridColumn: 1 }}
-    >
-      <div
-        className="bg-primary-200 absolute left-1/2 h-full w-full -translate-x-1/2 duration-300 group-hover:scale-110"
-        style={{
-          backgroundImage: `url(${image})`,
-          backgroundPosition: 'center',
-          backgroundSize: 'cover',
-        }}
-      >
-        <div className="to-primary-950/70 group-hover:to-primary-950/90 absolute inset-0 bg-gradient-to-b from-transparent duration-150" />
-      </div>
+  <Link href={href} className="ds-card-interactive group flex flex-col">
+    <div className="relative aspect-[4/3] w-full overflow-hidden bg-tint">
+      <Image
+        src={image}
+        alt=""
+        fill
+        unoptimized
+        loading="lazy"
+        className="object-cover transition-transform duration-500 group-hover:scale-105"
+      />
     </div>
-    <span
-      className="tb:text-4xl z-10 place-self-center text-2xl font-bold capitalize text-white"
-      style={{
-        gridRow: 1,
-        gridColumn: 1,
-        textShadow: '5px 1px 12px rgba(7, 25, 82, 0.8)',
-      }}
-    >
-      {title}
-    </span>
+    <div className="flex items-center justify-between gap-2 px-3 py-3 tb:px-5 tb:py-4">
+      <span className="text-[15px] font-bold capitalize text-ink tb:text-[17px]">
+        {title}
+      </span>
+      <FaArrowLeft
+        size={12}
+        aria-hidden
+        className="shrink-0 text-ink-muted transition-transform group-hover:-translate-x-1 group-hover:text-primary-950"
+      />
+    </div>
   </Link>
 );

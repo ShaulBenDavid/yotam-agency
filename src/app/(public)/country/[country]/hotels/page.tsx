@@ -1,4 +1,5 @@
 import React from 'react';
+import { absoluteUrl, ogImages } from '@/metadata';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import SriLankaBImage from '@/assets/images/sriLankaB.jpg';
@@ -7,7 +8,6 @@ import JapanBImage from '@/assets/images/japanB.jpg';
 import CountriesJSON from '@/constants/content/countries.json';
 import { Routes } from '@/routes';
 import { allCountries } from '@/routes/routes.types';
-import { WEBSITE_URL } from '@/constants';
 import { getHotelsByCountry } from '@/sanity/queries/hotel';
 import { CountryHotels } from '@/screens/CountryHotels';
 
@@ -41,18 +41,34 @@ export async function generateMetadata({
   }
 
   const { title } = CountriesJSON[country];
+  const pageTitle = `מלונות ב${title}`;
+  const description = `מחפשים מלון ל${title}? FlySan ממליצה על בתי המלון והריוקנים הכי מתאימים, מתקציב ועד יוקרה, לכל חלקי ${title}.`;
+  const url = absoluteUrl(`/country/${country}/hotels`);
 
   return {
-    title: `מלונות ב${title}`,
+    title: pageTitle,
+    description,
+    alternates: {
+      canonical: url,
+    },
     authors: {
       name: 'FlySan',
-      url: `${WEBSITE_URL}/${country}/hotels`,
+      url,
     },
     openGraph: {
-      title: `מלונות ב${title}`,
+      images: ogImages,
+      title: pageTitle,
+      description,
+      url,
+      siteName: 'FlySan',
+      type: 'website',
+      locale: 'he_IL',
     },
     twitter: {
-      title: `מלונות ב${title}`,
+      images: ogImages,
+      title: pageTitle,
+      description,
+      card: 'summary_large_image',
     },
   };
 }

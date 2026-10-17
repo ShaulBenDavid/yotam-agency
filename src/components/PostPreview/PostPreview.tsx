@@ -27,44 +27,46 @@ export const PostPreview = ({
   place,
 }: PostPreviewProps): JSX.Element => (
   <article
-    className="flex h-28 w-full flex-row gap-1 sm:h-[130px]"
+    className="ds-card-interactive group flex w-full flex-row"
     data-testid="post-preview-component-test-id"
   >
-    <Link href={href} aria-hidden className="flex-shrink-0" tabIndex={-1}>
-      <figure className="dw-skeleton group relative">
-        <Image
-          src={imgUrl}
-          alt={title}
-          loading="lazy"
-          unoptimized
-          width={0}
-          height={0}
-          className="aspect-square h-28 w-auto object-cover mb:w-40 sm:aspect-video sm:h-[130px] sm:w-auto"
-        />
-      </figure>
+    <Link
+      href={href}
+      aria-hidden
+      className="relative w-28 shrink-0 overflow-hidden bg-tint mb:w-32 sm:w-56"
+      tabIndex={-1}
+    >
+      <Image
+        src={imgUrl}
+        alt={title}
+        loading="lazy"
+        unoptimized
+        fill
+        className="object-cover transition-transform duration-500 group-hover:scale-105"
+      />
     </Link>
-    <div className="flex h-full w-full flex-col">
-      <Link href={href} className="hover:underline">
-        <h4 className="line-clamp-2 text-base font-bold xs:line-clamp-1 sm:text-lg">
+    <div className="flex min-h-32 w-full min-w-0 flex-col gap-1 p-3 sm:min-h-40 sm:p-5">
+      <Link href={href} className="hover:text-accent-strong">
+        <h4 className="line-clamp-2 text-[15px] font-bold leading-snug sm:text-lg">
           {title}
         </h4>
-        <p className="text-primary-gray line-clamp-1 text-sm max-xs:hidden sm:line-clamp-2 sm:text-base">
+        <p className="mt-1 line-clamp-2 text-sm leading-relaxed text-ink-muted max-xs:hidden sm:text-[15px]">
           {content}
         </p>
       </Link>
       <span
         aria-label="מקום"
-        className="mt-auto flex flex-row gap-1 text-sm font-medium"
+        className="mt-auto flex flex-row items-center gap-1 pt-2 text-[13px] font-semibold text-ink-soft"
       >
-        <MdPlace size={16} aria-hidden className="shrink-0" />
+        <MdPlace size={15} aria-hidden className="shrink-0" />
         {place}
       </span>
-      <div className="text-primary-gray flex flex-row items-center gap-1 text-xs sm:text-sm">
+      <div className="flex flex-row items-center gap-1 text-xs text-ink-muted sm:text-[13px]">
         <time dateTime={new Date(date).toISOString()}>
           {formatDateToCustomFormat(date)}
         </time>
-        -
-        <small className="text-xs sm:text-sm">
+        <span aria-hidden>·</span>
+        <small className="text-xs sm:text-[13px]">
           {readTime || MIN_READ_TIME} דקות קריאה
         </small>
       </div>

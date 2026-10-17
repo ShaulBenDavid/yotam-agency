@@ -16,17 +16,25 @@ export const PlanCard = ({
   onClick,
 }: PlanCardProps): JSX.Element => (
   <div
-    className={`flex w-full flex-col items-center gap-2 rounded-md ${isDark ? 'bg-primary-950 text-white' : 'bg-white text-primary-950'} px-2 py-4 text-center text-base font-medium shadow-2xl`}
+    className={`flex w-full cursor-pointer flex-col items-center gap-4 rounded-card px-6 py-8 text-center transition hover:-translate-y-0.5 hover:shadow-lift tb:px-8 tb:py-10 ${
+      isDark
+        ? 'bg-primary-950 text-white'
+        : 'border border-line bg-white text-ink'
+    }`}
     onClick={onClick}
   >
-    {icon}
-    <h2 className="text-center text-lg font-bold tb:text-2xl">{title}</h2>
+    <span
+      className={`flex h-20 w-20 items-center justify-center rounded-full ${isDark ? 'bg-white/10' : 'bg-tint'}`}
+    >
+      {icon}
+    </span>
+    <h2 className="text-xl font-extrabold tb:text-2xl">{title}</h2>
     <Button
       width="fit-content"
-      className="mx-auto px-4"
+      className="mx-auto"
       aria-controls={ARIA_JAPAN_PLANING_INFO_MODAL}
       onClick={onClick}
-      variant={isDark ? ButtonVariants.SECONDARY : ButtonVariants.PRIMARY}
+      variant={isDark ? ButtonVariants.ON_DARK : ButtonVariants.PRIMARY}
     >
       לפרטים נוספים
     </Button>

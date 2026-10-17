@@ -1,20 +1,31 @@
 import React from 'react';
+import { twMerge } from 'tailwind-merge';
 import { socialLinksConfig } from '@/constants/socials';
+import { socialIconsConfig } from '@/components/Footer/SocialIconsLinks/SocialIconsLinks.config';
+import {
+  pillBaseClassName,
+  pillVariantClassNames,
+} from '@/styles/buttonVariants';
 
 export const SocialButtons = (): JSX.Element => (
-  <section className="flex flex-col gap-2 pb-4">
-    <h2 className="text-center text-lg font-bold tb:text-2xl">
+  <section className="ds-container flex flex-col items-center gap-4 pb-12 tb:pb-20">
+    <h2 className="text-center text-lg font-extrabold tb:text-xl">
       תעקבו אחרינו ב-
     </h2>
-    <div className="flex justify-center gap-2">
+    <div className="flex flex-wrap justify-center gap-3">
       {socialLinksConfig.map(({ title, link }) => (
         <a
           key={title}
           href={link}
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 px-4 py-2 uppercase text-white transition-all hover:from-blue-700 hover:to-purple-700"
+          className={twMerge(
+            pillBaseClassName,
+            pillVariantClassNames.secondary,
+            'uppercase'
+          )}
         >
+          {socialIconsConfig[title]}
           {title}
         </a>
       ))}

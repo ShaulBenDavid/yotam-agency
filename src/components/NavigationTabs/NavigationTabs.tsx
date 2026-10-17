@@ -1,8 +1,9 @@
 'use client';
 
 import React from 'react';
-import { useSelectedLayoutSegment } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import type { NavigationLinkConfigType } from '../Header/Header.config';
+import { isNavLinkActive } from '../Header/Header.utils';
 import { NavTab } from './NavTab';
 import { ButtonLink } from '../ButtonLink';
 
@@ -13,12 +14,12 @@ interface NavigationTabsProps {
 export const NavigationTabs = ({
   navLinks,
 }: NavigationTabsProps): JSX.Element => {
-  const activeSegment = useSelectedLayoutSegment() ?? '/';
+  const pathname = usePathname();
   const filteredLinks = navLinks.filter(({ isSideNavOnly }) => !isSideNavOnly);
 
   return (
     <ul
-      className="max-tb:hidden ml-auto flex list-none flex-row items-center gap-5"
+      className="flex list-none flex-row flex-wrap items-center justify-center gap-x-7 gap-y-1"
       role="navigation"
       aria-label="Main"
       id="main-nav"
@@ -29,7 +30,7 @@ export const NavigationTabs = ({
             <ButtonLink
               href={`/${href}`}
               variant={linkVariant}
-              isAriaCurrent={activeSegment === href.substring(1)}
+              isAriaCurrent={isNavLinkActive(pathname, href)}
             >
               {title}
             </ButtonLink>
@@ -39,7 +40,7 @@ export const NavigationTabs = ({
             key={href}
             href={`/${href}`}
             title={title}
-            isActive={activeSegment === href.substring(1)}
+            isActive={isNavLinkActive(pathname, href)}
             subLinks={subLinks}
           />
         )

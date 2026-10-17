@@ -26,8 +26,13 @@ export const Root = ({ cities }: RootProps): JSX.Element => {
   );
 
   return (
-    <div className="flex flex-col gap-2 pb-8 tb:gap-2">
-      <Intro title={<Logo />} image={JapanImage.src} minHeight="288px" />
+    <div className="flex flex-col">
+      <Intro
+        title={<Logo width={320} className="mx-auto h-auto w-[min(72vw,360px)]" />}
+        image={JapanImage.src}
+        minHeight="420px"
+        maxHeight="640px"
+      />
 
       {/* <Countries /> */}
       {!!transformedCitiesLink?.length && (
@@ -37,10 +42,12 @@ export const Root = ({ cities }: RootProps): JSX.Element => {
       <ContactUs />
       <WhyUs />
 
-      <div
-        className="elfsight-app-0ccda39a-87b9-45d4-8ffc-ca63c7e79275"
-        data-elfsight-app-lazy
-      ></div>
+      <div className="ds-container py-10 empty:hidden tb:py-14">
+        <div
+          className="elfsight-app-0ccda39a-87b9-45d4-8ffc-ca63c7e79275"
+          data-elfsight-app-lazy
+        ></div>
+      </div>
       <ShareWithFriends />
     </div>
   );

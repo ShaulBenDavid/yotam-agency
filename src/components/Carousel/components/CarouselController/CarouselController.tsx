@@ -1,13 +1,14 @@
 import React from 'react';
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
-import theme from '@/styles/tailwind.theme';
-import S from './CarouselController.module.css';
 
 interface CarouselControllerProps {
   handleScroll: (pixels: number) => void;
   isShowLeft: boolean;
   isShowRight: boolean;
 }
+
+const controlClassName =
+  'absolute top-[calc(50%-24px)] z-10 flex h-11 w-11 items-center justify-center rounded-full border border-line bg-white text-primary-950 shadow-lift transition hover:bg-primary-950 hover:text-white max-tb:hidden';
 
 export const CarouselController = ({
   handleScroll,
@@ -16,36 +17,26 @@ export const CarouselController = ({
 }: CarouselControllerProps): JSX.Element => (
   <>
     {isShowLeft && (
-      <div className={S.leftBackground}>
-        <button
-          aria-label="previous sections"
-          tabIndex={-1}
-          className="tb:p-4 group duration-75"
-          onClick={() => handleScroll(-1)}
-        >
-          <SlArrowLeft
-            color={theme.white}
-            size={32}
-            className="group-hover:scale-110"
-          />
-        </button>
-      </div>
+      <button
+        type="button"
+        aria-label="previous sections"
+        tabIndex={-1}
+        className={`${controlClassName} -left-5`}
+        onClick={() => handleScroll(-1)}
+      >
+        <SlArrowLeft size={16} aria-hidden />
+      </button>
     )}
     {isShowRight && (
-      <div className={S.rightBackground}>
-        <button
-          aria-label="next sections"
-          tabIndex={-1}
-          className="tb:p-4 group duration-75"
-          onClick={() => handleScroll(1)}
-        >
-          <SlArrowRight
-            color={theme.white}
-            size={32}
-            className="group-hover:scale-110"
-          />
-        </button>
-      </div>
+      <button
+        type="button"
+        aria-label="next sections"
+        tabIndex={-1}
+        className={`${controlClassName} -right-5`}
+        onClick={() => handleScroll(1)}
+      >
+        <SlArrowRight size={16} aria-hidden />
+      </button>
     )}
   </>
 );

@@ -11,20 +11,23 @@ interface NavigationColumnProps {
   isOutSourceLinks?: boolean;
 }
 
+const linkClassName =
+  'inline-flex min-h-8 items-center text-sm capitalize transition-colors hover:text-white';
+
 export const NavigationColumn = ({
   name,
   links,
   isOutSourceLinks = false,
 }: NavigationColumnProps) => (
   <div>
-    <h3 className="tb:text-lg mb-6 text-base font-bold uppercase">{name}</h3>
-    <ul className="text-base font-medium" role="navigation" aria-label={name}>
+    <h3 className="mb-4 text-sm font-bold text-white">{name}</h3>
+    <ul className="flex flex-col gap-1.5" role="navigation" aria-label={name}>
       {links.map(({ title, link }) =>
         isOutSourceLinks ? (
-          <li className="mb-4" key={title}>
+          <li key={title}>
             <a
               href={link}
-              className="capitalize hover:underline"
+              className={linkClassName}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -32,8 +35,8 @@ export const NavigationColumn = ({
             </a>
           </li>
         ) : (
-          <li className="mb-4" key={title}>
-            <Link href={link} className="capitalize hover:underline">
+          <li key={title}>
+            <Link href={`/${link}`} className={linkClassName}>
               {title}
             </Link>
           </li>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { absoluteUrl, ogImages, truncateDescription } from '@/metadata';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import ThailandBImage from '@/assets/images/thailandB.jpg';
@@ -10,6 +11,7 @@ import { CitySlugType, getAllCities, getCity } from '@/sanity/queries/city';
 import { City } from '@/screens/City';
 import { getFiveHotels } from '@/sanity/queries/hotel';
 import { getFiveAttractions } from '@/sanity/queries/attraction';
+import { BreadcrumbJsonLd } from '@/components/JsonLd';
 import { WEBSITE_URL } from '@/constants';
 
 const images = {
@@ -45,22 +47,35 @@ export async function generateMetadata({
   if (!cityData) {
     notFound();
   }
-  const { title, description } = cityData;
+  const { title, description: rawDescription } = cityData;
+  const pageTitle = `חופשה ב${title}`;
+  const description = truncateDescription(rawDescription);
+  const url = absoluteUrl(`/country/${country}/${city}`);
 
   return {
-    title: `חופשה ב${title}`,
+    title: pageTitle,
     description,
+    alternates: {
+      canonical: url,
+    },
     authors: {
       name: 'FlySan',
-      url: `${WEBSITE_URL}/${country}/${city}`,
+      url,
     },
     openGraph: {
-      title: `חופשה ב${title}`,
+      images: ogImages,
+      title: pageTitle,
       description,
+      url,
+      siteName: 'FlySan',
+      type: 'website',
+      locale: 'he_IL',
     },
     twitter: {
-      title: `חופשה ב${title}`,
+      images: ogImages,
+      title: pageTitle,
       description,
+      card: 'summary_large_image',
     },
   };
 }
@@ -77,18 +92,31 @@ const CityPage = async ({ params }: CityPageProps): Promise<JSX.Element> => {
   }
   const hotels = await getFiveHotels(citySlug);
   const attractions = await getFiveAttractions(citySlug);
+  const countryTitle = CountriesJSON[cityData.country].title;
 
   return (
-    <City
-      cityName={cityData.title}
-      countryName={CountriesJSON[cityData.country].title}
-      image={images[cityData.country]?.blurDataURL ?? ''}
-      description={cityData.description}
-      citySlug={citySlug}
-      countrySlug={country}
-      hotels={hotels}
-      attractions={attractions}
-    />
+    <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'בית', url: WEBSITE_URL },
+          { name: countryTitle, url: absoluteUrl(`/country/${country}`) },
+          {
+            name: cityData.title,
+            url: absoluteUrl(`/country/${country}/${citySlug}`),
+          },
+        ]}
+      />
+      <City
+        cityName={cityData.title}
+        countryName={countryTitle}
+        image={images[cityData.country]?.blurDataURL ?? ''}
+        description={cityData.description}
+        citySlug={citySlug}
+        countrySlug={country}
+        hotels={hotels}
+        attractions={attractions}
+      />
+    </>
   );
 };
 

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { PostPreview } from '@/components/PostPreview';
 import { ContactUs } from '@/features/ContactUs';
 import { Intro } from '@/features/Intro';
@@ -25,17 +25,13 @@ export const Blogs = ({
   countrySlug,
   data,
 }: BlogsProps): JSX.Element => (
-  <div
-    className="flex flex-col items-center gap-2 pb-8 tb:gap-2"
-    id={activitySlug}
-    tabIndex={-1}
-  >
+  <div className="flex flex-col" id={activitySlug} tabIndex={-1}>
     <Intro
       title={`${activityName} ב-${countryName}`}
       image={image}
-      maxHeight="250px"
+      maxHeight="320px"
     />
-    <section className="flex w-full flex-col gap-3 pb-2">
+    <section className="ds-container-content ds-section flex flex-col gap-4">
       {data?.map(
         ({
           _id,
@@ -47,24 +43,22 @@ export const Blogs = ({
           estimatedReadingTime,
           city,
         }) => (
-          <Fragment key={_id}>
-            <PostPreview
-              title={title}
-              content={description}
-              imgUrl={forUrl(mainImage).url()}
-              href={`/${buildRoutePath(
-                Routes.COUNTRY,
-                countrySlug,
-                Routes.BLOG,
-                slug.current
-              )}`}
-              readTime={estimatedReadingTime}
-              date={new Date(_createdAt)}
-              isBookmarked={false}
-              place={`${countryName},${city.title}.`}
-            />
-            <hr className="border-dw-grey" />
-          </Fragment>
+          <PostPreview
+            key={_id}
+            title={title}
+            content={description}
+            imgUrl={forUrl(mainImage).url()}
+            href={`/${buildRoutePath(
+              Routes.COUNTRY,
+              countrySlug,
+              Routes.BLOG,
+              slug.current
+            )}`}
+            readTime={estimatedReadingTime}
+            date={new Date(_createdAt)}
+            isBookmarked={false}
+            place={`${countryName},${city.title}.`}
+          />
         )
       )}
     </section>

@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Routes } from '@/routes';
 import { ContactUs } from '@/features/ContactUs';
 import { Intro } from '@/features/Intro';
 import { ShareWithFriends } from '../ShareWithFriends';
 import { KlookWidget } from '@/components/Klook';
+import { Section } from '@/components/Section';
 
 interface DataProps {
   _id: string;
@@ -34,23 +35,21 @@ export const CityExtra = <T extends DataProps>({
   data,
   cardRender,
 }: CityExtraProps<T>): JSX.Element => (
-  <div
-    className="flex flex-col items-center gap-2 pb-8 tb:gap-2"
-    id={activitySlug}
-    tabIndex={-1}
-  >
+  <div className="flex flex-col" id={activitySlug} tabIndex={-1}>
     <Intro
       title={`${activityName} ב-${cityName} ${countryName}`}
       image={image}
-      maxHeight="250px"
+      maxHeight="320px"
     />
     {typeof cid === 'number' && <KlookWidget cid={cid} />}
-    <section
-      className="grid w-full grid-cols-cards-auto-fit gap-6 py-2 tb:grid-cols-cards-xl-auto-fit tb:py-4"
-      aria-label={activityName}
+    <Section
+      ariaLabel={activityName}
+      innerClassName="grid grid-cols-1 gap-4 xs:grid-cols-2 tb:grid-cols-3 tb:gap-5 md:grid-cols-4"
     >
-      {data?.map((item) => cardRender(item))}
-    </section>
+      {data?.map((item) => (
+        <Fragment key={item._id}>{cardRender(item)}</Fragment>
+      ))}
+    </Section>
     <ContactUs title="לפרטים ומלונות נוספים צרו קשר" />
     <ShareWithFriends
       url={`/${Routes.COUNTRY}/${countrySlug}/${citySlug}/${activitySlug}`}

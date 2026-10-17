@@ -1,4 +1,5 @@
 import React from 'react';
+import { absoluteUrl, ogImages } from '@/metadata';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import SriLankaBImage from '@/assets/images/sriLankaB.jpg';
@@ -7,7 +8,6 @@ import JapanBImage from '@/assets/images/japanB.jpg';
 import CountriesJSON from '@/constants/content/countries.json';
 import { Routes } from '@/routes';
 import { allCountries } from '@/routes/routes.types';
-import { WEBSITE_URL } from '@/constants';
 import { getAttractionsByCountry } from '@/sanity/queries/attraction';
 import { CountryAttractions } from '@/screens/CountryAttractions';
 
@@ -41,18 +41,34 @@ export async function generateMetadata({
   }
 
   const { title } = CountriesJSON[country];
+  const pageTitle = `אטרקציות ב${title}`;
+  const description = `גלו את האטרקציות, הסיורים והחוויות המומלצות ב${title} – FlySan עוזרת לכם לבחור ולהזמין בדיוק את מה שמתאים למסלול שלכם.`;
+  const url = absoluteUrl(`/country/${country}/attractions`);
 
   return {
-    title: `אטרקציות ב${title}`,
+    title: pageTitle,
+    description,
+    alternates: {
+      canonical: url,
+    },
     authors: {
       name: 'FlySan',
-      url: `${WEBSITE_URL}/${country}/hotels`,
+      url,
     },
     openGraph: {
-      title: `אטרקציות ב${title}`,
+      images: ogImages,
+      title: pageTitle,
+      description,
+      url,
+      siteName: 'FlySan',
+      type: 'website',
+      locale: 'he_IL',
     },
     twitter: {
-      title: `אטרקציות ב${title}`,
+      images: ogImages,
+      title: pageTitle,
+      description,
+      card: 'summary_large_image',
     },
   };
 }

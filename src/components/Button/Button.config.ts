@@ -1,10 +1,10 @@
+import { pillVariantClassNames } from '@/styles/buttonVariants';
 import { ButtonVariants } from './Button.types';
 
 export const buttonVariantsStyleConfig: Record<ButtonVariants, string> = {
-  [ButtonVariants.PRIMARY]:
-    'bg-primary-900 shadow-button text-white hover:enabled:bg-primary-950',
-  [ButtonVariants.SECONDARY]:
-    'shadow-button border-primary-900 bg-white border-[1px] hover:enabled:bg-wizard-white text-primary-900',
-  [ButtonVariants.LINK]:
-    'bg-transparent text-primary-900 hover:enabled:underline underline-offset-2',
+  [ButtonVariants.PRIMARY]: pillVariantClassNames.primary,
+  [ButtonVariants.SECONDARY]: pillVariantClassNames.secondary,
+  [ButtonVariants.LINK]: pillVariantClassNames.link,
+  [ButtonVariants.ON_DARK]: pillVariantClassNames.onDark,
+  [ButtonVariants.ON_DARK_OUTLINE]: pillVariantClassNames.onDarkOutline,
 };

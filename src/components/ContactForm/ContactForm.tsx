@@ -1,7 +1,15 @@
 'use client';
 
 import { useState } from 'react';
+import { twMerge } from 'tailwind-merge';
 import { reportConversion } from '@/utils';
+import {
+  pillBaseClassName,
+  pillVariantClassNames,
+} from '@/styles/buttonVariants';
+
+const fieldClassName =
+  'w-full min-h-12 rounded-card border border-line bg-white px-4 py-3 text-base text-ink placeholder:text-ink-muted transition focus:border-primary-950 focus:outline-none focus:ring-2 focus:ring-primary-950/15';
 
 export const ContactForm = (): JSX.Element => {
   const [formData, setFormData] = useState({
@@ -65,45 +73,51 @@ export const ContactForm = (): JSX.Element => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="mx-auto max-w-md space-y-4 rounded-md bg-white p-6 shadow-2xl"
+      className="ds-card mx-auto w-full max-w-md space-y-3 p-5 shadow-lift tb:p-8"
     >
-      <h2 className="text-xl font-semibold text-primary-950">השארת פרטים</h2>
+      <h2 className="mb-2 text-xl font-extrabold text-ink tb:text-2xl">
+        השארת פרטים
+      </h2>
 
       <input
         type="text"
         name="name"
+        aria-label="השם שלך"
         placeholder="השם שלך"
         value={formData.name}
         onChange={handleChange}
         required
-        className="w-full rounded-md border p-2"
+        className={fieldClassName}
       />
 
       <input
         type="email"
         name="email"
+        aria-label="אימייל"
         placeholder="example@example.com"
         value={formData.email}
         onChange={handleChange}
         required
-        className="w-full rounded-md border p-2"
+        className={fieldClassName}
       />
       <input
         type="tel"
         name="tel"
+        aria-label="מספר טלפון"
         placeholder="מספר טלפון"
         value={formData.tel}
         onChange={handleChange}
         required
-        className="w-full rounded-md border p-2"
+        className={fieldClassName}
       />
 
       <select
         name="purpose"
+        aria-label="מטרה"
         value={formData.purpose}
         onChange={handleChange}
         required
-        className="w-full rounded-md border bg-white p-2"
+        className={fieldClassName}
       >
         <option value="">מטרה</option>
         <option value="מלונות">מלונות</option>
@@ -114,24 +128,30 @@ export const ContactForm = (): JSX.Element => {
 
       <textarea
         name="message"
+        aria-label="פרטים נוספים"
         placeholder="פרטים נוספים"
         value={formData.message}
         onChange={handleChange}
         required
-        className="w-full rounded-md border p-2"
+        className={twMerge(fieldClassName, 'min-h-28 resize-y')}
+        rows={4}
       />
 
       <button
         type="submit"
         disabled={loading}
-        className="w-full rounded-md bg-blue-600 py-2 text-white hover:bg-blue-700 disabled:bg-gray-400"
+        className={twMerge(
+          pillBaseClassName,
+          pillVariantClassNames.primary,
+          'mt-2 w-full disabled:cursor-wait disabled:opacity-60'
+        )}
       >
         {loading ? 'טוען...' : 'שלח'}
       </button>
 
       {response && (
         <p
-          className={`mt-2 text-center text-sm ${response.success ? 'text-green-600' : 'text-red-600'}`}
+          className={`mt-2 text-center text-sm ${response.success ? 'text-emerald-700' : 'text-red-700'}`}
         >
           {response.message}
         </p>

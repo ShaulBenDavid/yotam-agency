@@ -1,11 +1,20 @@
 import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
+import { Noto_Sans_Hebrew } from 'next/font/google';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { AppProviders } from '@/providers';
 import { defaultMetadata } from '@/metadata';
+import { OrganizationJsonLd } from '@/components/JsonLd';
 import theme from '@/styles/tailwind.theme';
 import '@/styles/global.css';
+
+const notoSansHebrew = Noto_Sans_Hebrew({
+  subsets: ['hebrew', 'latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  display: 'swap',
+  variable: '--font-sans',
+});
 
 export const metadata: Metadata = defaultMetadata;
 
@@ -19,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="he">
+    <html lang="he" dir="rtl" className={notoSansHebrew.variable}>
       <script src="https://elfsightcdn.com/platform.js" async></script>
       {process.env.NODE_ENV === 'production' && (
         <>
@@ -55,12 +64,11 @@ export default function RootLayout({
         </>
       )}
       <body className="antialiased">
+        <OrganizationJsonLd />
         <AppProviders>
-          <div className="flex min-h-screen flex-col items-center overflow-x-clip text-primary-950">
+          <div className="flex min-h-screen flex-col overflow-x-clip">
             <Header />
-            <main className="flex w-[1400px] flex-grow flex-col max-lg:w-[1000px] max-md:w-full max-md:px-2">
-              {children}
-            </main>
+            <main className="flex w-full flex-grow flex-col">{children}</main>
             <Footer />
           </div>
         </AppProviders>

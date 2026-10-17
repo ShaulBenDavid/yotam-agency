@@ -6,17 +6,16 @@ import { SocialIconsLinks } from './SocialIconsLinks';
 import { FooterNavigation } from './Navigation';
 
 export const Footer = () => (
-  <footer className="w-full bg-white">
-    <div className="mx-auto w-[1400px] py-6 max-lg:w-[1000px] max-md:w-full max-md:px-2">
+  <footer className="w-full bg-night text-night-muted">
+    <div className="ds-container pb-8 pt-12 tb:pt-16">
       <FooterNavigation />
-      <hr className="border-primary-950 my-6 lg:my-8" aria-hidden />
-      <div className="sm:flex sm:items-center sm:justify-between">
-        <span className="text-base font-medium sm:text-center">
+      <div className="mt-10 flex flex-col-reverse items-center gap-4 border-t border-night-line pt-6 tb:flex-row tb:justify-between">
+        <span className="text-center text-[13px]">
           © {new Date().getFullYear()}{' '}
           <Link
             href={Routes.ROOT}
             aria-label="Home"
-            className="hover:underline"
+            className="transition-colors hover:text-white"
           >
             FlySan.co.il™
           </Link>{' '}

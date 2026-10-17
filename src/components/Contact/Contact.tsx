@@ -1,40 +1,78 @@
 import React from 'react';
-import { contactData } from '@/constants';
+import { twMerge } from 'tailwind-merge';
 import { FaPhone, FaWhatsapp } from 'react-icons/fa';
 import { IoIosMail } from 'react-icons/io';
+import { contactData, contactLinks, displayPhone } from '@/constants';
+import {
+  pillBaseClassName,
+  pillVariantClassNames,
+} from '@/styles/buttonVariants';
 
-export const Contact = (): JSX.Element => (
-  <ul className="flex flex-row flex-wrap items-center justify-center gap-4">
-    <li className="flex flex-row gap-2">
-      <FaPhone size={24} />
-      <a
-        className="hover:underline"
-        href={`tel:+${contactData.phone.replace(/[+-]/g, '')}`}
-        aria-label={`Call us at ${contactData.phone}`}
-      >
-        {contactData.phone}
-      </a>
-    </li>
-    <li className="flex flex-row items-center gap-2">
-      <IoIosMail size={24} />
-      <a
-        className="hover:underline"
-        href={`mailto:${contactData.email}`}
-        aria-label="Email us at info@example.com"
-      >
-        {contactData.email}
-      </a>
-    </li>
-    <li>
-      <a
-        href={`https://wa.me/${contactData.phone.replace(/[+-]/g, '')}`}
-        className="flex items-center gap-2 rounded bg-green-500 px-4 font-bold text-white hover:bg-green-600"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <FaWhatsapp size={24} />
-        <span>WhatsApp</span>
-      </a>
-    </li>
-  </ul>
-);
+export type ContactTone = 'onDark' | 'onLight';
+
+interface ContactProps {
+  tone?: ContactTone;
+  className?: string;
+}
+
+const pillClassNamesByTone: Record<
+  ContactTone,
+  { main: string; secondary: string }
+> = {
+  onDark: {
+    main: pillVariantClassNames.onDark,
+    secondary: pillVariantClassNames.onDarkOutline,
+  },
+  onLight: {
+    main: pillVariantClassNames.primary,
+    secondary: pillVariantClassNames.secondary,
+  },
+};
+
+export const Contact = ({
+  tone = 'onDark',
+  className,
+}: ContactProps): JSX.Element => {
+  const pillClassNames = pillClassNamesByTone[tone];
+
+  return (
+    <ul
+      className={twMerge(
+        'flex flex-row flex-wrap items-center justify-center gap-3',
+        className
+      )}
+    >
+      <li>
+        <a
+          className={twMerge(pillBaseClassName, pillClassNames.main)}
+          href={contactLinks.tel}
+          aria-label={`Call us at ${contactData.phone}`}
+        >
+          <FaPhone size={14} aria-hidden />
+          <span dir="ltr">{displayPhone}</span>
+        </a>
+      </li>
+      <li>
+        <a
+          href={contactLinks.whatsapp}
+          className={twMerge(pillBaseClassName, pillClassNames.secondary)}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <FaWhatsapp size={18} aria-hidden />
+          <span>WhatsApp</span>
+        </a>
+      </li>
+      <li>
+        <a
+          className={twMerge(pillBaseClassName, pillClassNames.secondary)}
+          href={contactLinks.mail}
+          aria-label={`Email us at ${contactData.email}`}
+        >
+          <IoIosMail size={18} aria-hidden />
+          <span>{contactData.email}</span>
+        </a>
+      </li>
+    </ul>
+  );
+};

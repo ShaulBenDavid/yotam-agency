@@ -4,6 +4,8 @@ import { FcSportsMode } from 'react-icons/fc';
 import { FcLandscape } from 'react-icons/fc';
 import { FaUmbrellaBeach } from 'react-icons/fa6';
 import { ImageLink } from '@/components/ImageLink';
+import { Section } from '@/components/Section';
+import { SectionHeader } from '@/components/SectionHeader';
 import { countriesConfig } from '@/constants/Countries.config';
 import { buildRoutePath } from '@/utils';
 import { Routes } from '@/routes';
@@ -12,24 +14,26 @@ import { ContactUs } from '../../features/ContactUs';
 import { KlookWidget } from '@/components/Klook';
 
 export const Attractions = (): JSX.Element => (
-  <div className="flex w-full flex-col items-center gap-2 py-2 tb:py-4">
-    <h1 className="w-full rounded-md bg-primary-950 py-1 text-center text-2xl font-bold text-white tb:text-3xl">
-      אטרקציות
-    </h1>
-    <p className="max-w-[800px] text-center text-base font-medium tb:text-xl">
-      סיורים, כרטיסים ועוד חוויות בלתי נשכחות! 🎟️🌍
-    </p>
-    <span aria-hidden className="flex flex-row gap-8 py-4">
-      <FcGlobe size={40} />
-      <FcSportsMode size={40} />
-      <FcLandscape size={40} />
-      <FaUmbrellaBeach size={40} />
-    </span>
-    <div className="w-full py-2">
-      <h2 className="text-center text-lg font-bold tb:text-xl">
+  <div className="flex w-full flex-col">
+    <Section width="content" innerClassName="flex flex-col items-center">
+      <SectionHeader
+        as="h1"
+        title="אטרקציות"
+        subtitle="סיורים, כרטיסים ועוד חוויות בלתי נשכחות! 🎟️🌍"
+        className="mb-6 tb:mb-8"
+      />
+      <span aria-hidden className="flex flex-row gap-6 tb:gap-8">
+        <FcGlobe size={36} />
+        <FcSportsMode size={36} />
+        <FcLandscape size={36} />
+        <FaUmbrellaBeach size={36} className="text-primary-950" />
+      </span>
+    </Section>
+    <Section tone="tint" width="content">
+      <h2 className="mb-6 text-center text-lg font-extrabold tb:mb-8 tb:text-xl">
         אז בואו לשמוע על האטרקציות ביפן!
       </h2>
-      <div className="flex w-full flex-col justify-between gap-2 pt-4 tb:flex-row tb:gap-8">
+      <div className="mx-auto grid max-w-md grid-cols-1 gap-5">
         {countriesConfig.map(({ title, href, image }) => (
           <ImageLink
             title={title}
@@ -39,7 +43,7 @@ export const Attractions = (): JSX.Element => (
           />
         ))}
       </div>
-    </div>
+    </Section>
     <KlookWidget cid={28} />
     <ContactUs />
     <ShareWithFriends />

@@ -1,2 +1,1 @@
-export {CityExtra} from './CityExtra';
-
+export { CityExtra } from './CityExtra';

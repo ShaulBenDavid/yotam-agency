@@ -5,41 +5,36 @@ interface IntroProps {
   image: string;
   maxHeight?: string;
   minHeight?: string;
+  children?: ReactNode;
 }
 
 export const Intro = ({
   title,
   image,
-  maxHeight = '500px',
-  minHeight = '120px',
+  maxHeight = '360px',
+  minHeight = '220px',
+  children,
 }: IntroProps): JSX.Element => (
-  <section className="grid h-[27vw]" style={{ maxHeight, minHeight }}>
+  <section
+    className="relative isolate flex w-full overflow-hidden bg-primary-950"
+    style={{ height: `clamp(${minHeight}, 42vw, ${maxHeight})` }}
+  >
     <div
-      className="relative h-full w-full overflow-y-clip"
       aria-hidden
-      style={{ gridRow: 1, gridColumn: 1 }}
-    >
-      <div
-        className="absolute left-1/2 h-full w-screen -translate-x-1/2 animate-fade-in-scale"
-        style={{
-          backgroundImage: `url(${image})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
+      className="absolute inset-0 -z-10 animate-[heroIn_1.2s_ease-out_forwards] bg-cover bg-center"
+      style={{ backgroundImage: `url(${image})` }}
+    />
+    <div
+      aria-hidden
+      className="absolute inset-0 -z-10 bg-gradient-to-b from-primary-950/25 via-primary-950/45 to-primary-950/85"
+    />
+    <div className="ds-container flex flex-col items-center justify-center gap-4 text-center">
+      <h1
+        className="max-w-[800px] animate-[enterInSideTabs_0.8s_ease-out_forwards] text-[clamp(1.75rem,4.6vw,3.25rem)] font-extrabold leading-tight text-white opacity-0 [text-shadow:0_2px_24px_rgba(7,25,82,0.45)]"
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-primary-950/60" />
-      </div>
+        {title}
+      </h1>
+      {children}
     </div>
-    <h1
-      style={{
-        gridRow: 1,
-        gridColumn: 1,
-        fontSize: 'clamp(1.5rem, 3vw, 4rem)',
-        textShadow: '5px 1px 12px rgba(7, 25, 82, 0.8)',
-      }}
-      className="z-10 animate-[enterInSideTabs_1s_ease-in_forwards] place-self-center text-center font-bold text-white"
-    >
-      {title}
-    </h1>
   </section>
 );

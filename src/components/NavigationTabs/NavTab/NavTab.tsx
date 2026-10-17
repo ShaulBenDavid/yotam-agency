@@ -37,8 +37,10 @@ export const NavTab = ({
 
   return (
     <li
-      className={`group relative flex cursor-pointer flex-row items-center gap-2 text-nowrap text-xl font-bold capitalize text-primary-950 ${NavLinkAnimation} ${
-        isActive && 'before:w-full before:hover:w-full'
+      className={`group relative flex h-12 cursor-pointer flex-row items-center gap-1 text-nowrap text-[15px] capitalize transition-colors ${NavLinkAnimation} ${
+        isActive
+          ? 'font-bold text-primary-950 before:w-full'
+          : 'font-medium text-ink-soft hover:text-primary-950'
       }`}
       onMouseEnter={() => setIsDropdownOpen(true)}
       onMouseLeave={() => setIsDropdownOpen(false)}
@@ -50,12 +52,18 @@ export const NavTab = ({
       {subLinks && (
         <>
           <button
+            type="button"
+            className="flex h-8 w-6 items-center justify-center"
+            aria-label={`${title} - תפריט`}
             aria-controls={menuId}
             aria-expanded={isDropdownOpen}
             id={buttonId}
             onClick={() => setIsDropdownOpen((prev) => !prev)}
           >
-            <IoIosArrowDown aria-hidden />
+            <IoIosArrowDown
+              aria-hidden
+              className={`transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`}
+            />
           </button>
           <MenuSubLinks
             isDropdownOpen={isDropdownOpen}

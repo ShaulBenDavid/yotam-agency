@@ -1,9 +1,11 @@
 'use client';
 
 import React from 'react';
-import { Carousel } from '@/components/Carousel';
-import { ButtonLink } from '@/components/ButtonLink';
 import { FaArrowLeft } from 'react-icons/fa';
+import { Carousel } from '@/components/Carousel';
+import { ButtonLink, ButtonLinkVariants } from '@/components/ButtonLink';
+import { Section } from '@/components/Section';
+import { SectionHeader } from '@/components/SectionHeader';
 
 interface DataProps {
   _id: string;
@@ -17,6 +19,7 @@ interface CarouselSectionProps<T> {
   icon: JSX.Element;
   cardRender: (data: T) => JSX.Element;
   subject: string;
+  tone?: 'plain' | 'tint';
 }
 
 export const CarouselSection = <T extends DataProps>({
@@ -27,14 +30,21 @@ export const CarouselSection = <T extends DataProps>({
   icon,
   cardRender,
   subject,
+  tone = 'plain',
 }: CarouselSectionProps<T>): JSX.Element => (
-  <section className="flex w-full flex-col items-center gap-2 py-2 tb:py-4">
-    {icon}
-    <h2 className="app-h2">{title}</h2>
+  <Section tone={tone} innerClassName="flex flex-col items-center">
+    <SectionHeader
+      title={title}
+      icon={<span className="[&_svg]:h-9 [&_svg]:w-9">{icon}</span>}
+    />
     <Carousel data={data} cardRender={cardRender} subject={subject} />
-    <ButtonLink href={linkHref} width="250px">
+    <ButtonLink
+      href={linkHref}
+      variant={ButtonLinkVariants.SECONDARY}
+      className="mt-8"
+    >
       {linkText}
-      <FaArrowLeft />
+      <FaArrowLeft size={12} aria-hidden />
     </ButtonLink>
-  </section>
+  </Section>
 );

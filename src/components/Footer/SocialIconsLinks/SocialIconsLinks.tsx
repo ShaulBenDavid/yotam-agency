@@ -9,13 +9,13 @@ interface SocialIconsLinksProps {
 export const SocialIconsLinks = ({
   links,
 }: SocialIconsLinksProps): JSX.Element => (
-  <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
+  <div className="flex gap-2">
     {links.map(({ link, title }) => (
       <a
         key={link}
         href={link}
         aria-label={title}
-        className="text-gray-500 transition-opacity hover:text-gray-900 hover:opacity-70"
+        className="flex h-10 w-10 items-center justify-center rounded-full border border-night-line text-night-muted transition-colors hover:border-white hover:text-white"
         target="_blank"
         rel="noopener noreferrer"
       >

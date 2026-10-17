@@ -13,6 +13,7 @@ import { CarouselSection } from './components/CarouselSection';
 import { AttractionCard } from '@/components/AttractionCard';
 import { MdOutlineAttractions } from 'react-icons/md';
 import { Routes } from '@/routes';
+import { Section } from '@/components/Section';
 import { HotelModal, useHotelModal } from '@/features/HotelModal';
 import {
   AttractionModal,
@@ -50,19 +51,15 @@ export const City = ({
   } = useAttractionModal();
 
   return (
-    <div
-      className="flex flex-col items-center gap-2 pb-8 tb:gap-2"
-      id={citySlug}
-      tabIndex={-1}
-    >
+    <div className="flex flex-col" id={citySlug} tabIndex={-1}>
       <Intro
         title={`${countryName} - ${cityName}`}
         image={image}
-        maxHeight="250px"
+        maxHeight="360px"
       />
-      <div className="max-w-[900px] py-2 tb:py-4">
-        <p className="app-p">{description}</p>
-      </div>
+      <Section width="prose" className="pb-0 tb:pb-0">
+        <p className="ds-body text-[17px]">{description}</p>
+      </Section>
       {!!hotels.length && (
         <CarouselSection
           title={`אז איפה ישנים ב${cityName}`}
@@ -87,8 +84,8 @@ export const City = ({
       )}
       {!!attractions.length && (
         <>
-          <hr className="my-6 w-full border-primary-950" aria-hidden />
           <CarouselSection
+            tone="tint"
             subject="אטרקציות"
             title={`אז מה עושים ב${cityName}`}
             data={attractions}

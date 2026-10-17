@@ -1,4 +1,5 @@
 import React from 'react';
+import { absoluteUrl, ogImages } from '@/metadata';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { CountryPage } from '@/features/CountryPage';
@@ -9,6 +10,7 @@ import CountriesJSON from '@/constants/content/countries.json';
 import { Routes } from '@/routes';
 import { allCountries } from '@/routes/routes.types';
 import { getCitiesLinkByCountry } from '@/sanity/queries/city';
+import { BreadcrumbJsonLd } from '@/components/JsonLd';
 import { WEBSITE_URL } from '@/constants';
 
 const images = {
@@ -41,22 +43,36 @@ export async function generateMetadata({
     notFound();
   }
 
-  const { title, description } = CountriesJSON[country];
+  const { title } = CountriesJSON[country];
+  const pageTitle = `חופשה ב${title}`;
+  const description =
+    'FlySan עוזרת לכם לתכנן טיול בלתי נשכח ליפן – מהערים הגדולות ועד הכפרים המסורתיים, עם מלונות, אטרקציות וטיפים מקומיים למסלול מושלם.';
+  const url = absoluteUrl(`/country/${country}`);
 
   return {
-    title: `חופשה ב${title}`,
+    title: pageTitle,
     description,
+    alternates: {
+      canonical: url,
+    },
     authors: {
       name: 'FlySan',
-      url: `${WEBSITE_URL}/${country}`,
+      url,
     },
     openGraph: {
-      title: `חופשה ב${title}`,
+      images: ogImages,
+      title: pageTitle,
       description,
+      url,
+      siteName: 'FlySan',
+      type: 'website',
+      locale: 'he_IL',
     },
     twitter: {
-      title: `חופשה ב${title}`,
+      images: ogImages,
+      title: pageTitle,
       description,
+      card: 'summary_large_image',
     },
   };
 }
@@ -68,15 +84,24 @@ const Country = async ({ params }: CountryProps): Promise<JSX.Element> => {
   }
 
   const cities = await getCitiesLinkByCountry(country);
+  const { title } = CountriesJSON[country];
 
   return (
-    <CountryPage
-      name={CountriesJSON[country].title}
-      image={images[country].src}
-      description={CountriesJSON[country].description}
-      cities={cities}
-      slug={country}
-    />
+    <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'בית', url: WEBSITE_URL },
+          { name: title, url: absoluteUrl(`/country/${country}`) },
+        ]}
+      />
+      <CountryPage
+        name={title}
+        image={images[country].src}
+        description={CountriesJSON[country].description}
+        cities={cities}
+        slug={country}
+      />
+    </>
   );
 };
 

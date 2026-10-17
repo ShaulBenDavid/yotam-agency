@@ -1,6 +1,8 @@
 import React, { type ReactNode } from 'react';
 import Link, { type LinkProps } from 'next/link';
 import { ButtonLinkVariants } from './ButtonLink.types';
+import { twMerge } from 'tailwind-merge';
+import { pillBaseClassName } from '@/styles/buttonVariants';
 import { linkStyleConfig } from './ButtonLink.config';
 
 interface ButtonLinkProps extends LinkProps {
@@ -8,6 +10,7 @@ interface ButtonLinkProps extends LinkProps {
   width?: string;
   ariaLabel?: string;
   isAriaCurrent?: boolean;
+  className?: string;
   children: ReactNode;
 }
 
@@ -17,11 +20,17 @@ export const ButtonLink = ({
   children,
   ariaLabel,
   isAriaCurrent = false,
+  className,
   ...props
 }: ButtonLinkProps): JSX.Element => (
   <Link
     {...props}
-    className={`flex h-10 w-full flex-row content-center items-center justify-center whitespace-nowrap rounded-md px-6 text-lg font-bold capitalize ${linkStyleConfig[variant]}`}
+    className={twMerge(
+      pillBaseClassName,
+      'text-center',
+      linkStyleConfig[variant],
+      className
+    )}
     style={{ width }}
     aria-label={ariaLabel}
     aria-current={isAriaCurrent ? 'page' : undefined}

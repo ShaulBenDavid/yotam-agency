@@ -20,24 +20,22 @@ export const AttractionCard = ({
   onClick,
 }: AttractionCardProps): JSX.Element => (
   <div
-    className="flex w-full flex-col rounded-md shadow-card"
+    className="ds-card-interactive flex h-full w-full cursor-pointer flex-col"
     onClick={onClick}
   >
-    <div className="relative">
+    <div className="relative aspect-[4/3] w-full shrink-0 overflow-hidden bg-tint">
       <Image
         src={image}
-        alt={`attraction - ${name}`}
+        alt={`אטרקציה ${name}`}
         loading="lazy"
         unoptimized
-        width={0}
-        height={0}
-        className="aspect-square max-h-[200px] w-full min-w-52 rounded-t-md object-cover object-top sm:aspect-video tb:max-h-60"
+        fill
+        className="object-cover object-top"
       />
-      <div className="pointer-events-none absolute inset-0 after:absolute after:inset-0 after:bg-gradient-to-t after:from-[rgba(231,245,255,0.7)] after:via-transparent after:to-transparent"></div>
     </div>
-    <div className="z-[1] -mt-3 flex flex-col rounded-2xl bg-primary-950 p-2 text-left text-white">
+    <div className="flex flex-1 flex-col gap-2 p-4">
       <h3
-        className="w-full pb-1 text-base font-bold tb:text-lg"
+        className="w-full text-[15px] font-bold leading-snug text-ink tb:text-base"
         style={{
           direction: isRtl(name) ? 'rtl' : 'ltr',
           textAlign: isRtl(name) ? 'right' : 'left',
@@ -45,18 +43,18 @@ export const AttractionCard = ({
       >
         {name}
       </h3>
-      <p className="line-clamp-3 text-right text-base font-medium">
+      <p className="line-clamp-3 text-right text-[13px] leading-relaxed text-ink-muted">
         {description}
       </p>
-      <div className="flex flex-col justify-between gap-2 py-2 tb:flex-row tb:items-end">
+      <div className="mt-auto flex flex-wrap items-center justify-between gap-3 border-t border-line-soft pt-3">
         {price && (
-          <span aria-label="price">
-            <strong>החל מ-</strong> {price}
+          <span aria-label="price" className="text-sm text-ink-soft">
+            <strong className="text-ink">החל מ-</strong> {price}
           </span>
         )}
         <Button
           width="fit-content"
-          className="px-4"
+          className="min-h-9 px-4 text-[13px]"
           aria-controls={ARIA_ATTRACTION_INFO_MODAL}
           onClick={onClick}
           variant={ButtonVariants.SECONDARY}

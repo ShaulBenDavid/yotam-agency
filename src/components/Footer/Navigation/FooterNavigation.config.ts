@@ -4,7 +4,7 @@ import type { NavigationColumnLinksType } from './NavigationColumn/NavigationCol
 
 const legalNavigationConfig: NavigationColumnLinksType = [
   {
-    title: 'מידניות משתמש',
+    title: 'מדיניות משתמש',
     link: Routes.PRIVACY_POLICY,
   },
   {

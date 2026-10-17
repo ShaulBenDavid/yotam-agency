@@ -22,16 +22,43 @@ export default {
     },
 
     extend: {
+      fontFamily: {
+        sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
+      },
+      maxWidth: {
+        page: '1280px',
+        content: '1120px',
+        prose: '820px',
+      },
+      borderRadius: {
+        card: '4px',
+      },
       gridTemplateColumns: {
         'cards-auto-fit': 'repeat(auto-fill, minmax(300px, 1fr))',
         'cards-xl-auto-fit': 'repeat(auto-fill, minmax(400px, 1fr))',
       },
       boxShadow: {
         card: '0 2px 8px 0 rgba(26, 26, 26, 0.16)',
+        lift: '0 12px 28px -12px rgba(7, 25, 82, 0.28)',
+        sheet: '0 -8px 32px -8px rgba(7, 25, 82, 0.24)',
       },
       colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
+        page: 'var(--color-page)',
+        surface: 'var(--color-surface)',
+        tint: 'var(--color-tint)',
+        ink: 'var(--color-ink)',
+        'ink-soft': 'var(--color-ink-soft)',
+        'ink-muted': 'var(--color-ink-muted)',
+        line: 'var(--color-line)',
+        'line-soft': 'var(--color-line-soft)',
+        accent: 'var(--color-accent)',
+        'accent-strong': 'var(--color-accent-strong)',
+        night: 'var(--color-night)',
+        'night-line': 'var(--color-night-line)',
+        'night-muted': 'var(--color-night-muted)',
+        whatsapp: '#25D366',
         primary: {
           '50': '#e7f5ff',
           '100': '#d4edff',
@@ -70,11 +97,15 @@ export default {
         },
         enterIn: {
           '0%': { transform: 'translateX(100%)' },
-          '100%': { translate: 'translateX(0%)' },
+          '100%': { transform: 'translateX(0%)' },
         },
         enterInSideTabs: {
           '0%': { transform: 'translateY(15px)', opacity: '0' },
-          '100%': { translate: 'translateY(0)', opacity: '1' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+        heroIn: {
+          '0%': { transform: 'scale(1.06)', opacity: '0.6' },
+          '100%': { transform: 'scale(1)', opacity: '1' },
         },
         fadeInScale: {
           '0%': {

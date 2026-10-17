@@ -2,12 +2,82 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
-  .app-p {
-    @apply tb:text-xl text-center text-base font-medium;
+@layer base {
+  :root {
+    --color-page: oklch(98% 0.004 70);
+    --color-surface: #ffffff;
+    --color-tint: oklch(95% 0.014 255);
+    --color-ink: oklch(22% 0.015 260);
+    --color-ink-soft: oklch(38% 0.015 260);
+    --color-ink-muted: oklch(50% 0.02 260);
+    --color-line: oklch(91% 0.008 260);
+    --color-line-soft: oklch(94% 0.008 260);
+    --color-accent: oklch(58% 0.12 25);
+    --color-accent-strong: oklch(45% 0.09 25);
+    --color-night: oklch(15% 0.02 260);
+    --color-night-line: oklch(28% 0.02 260);
+    --color-night-muted: oklch(72% 0.01 260);
+    --header-height: 64px;
   }
-  .app-h2 {
-    @apply tb:text-2xl text-center text-xl font-bold;
+
+  @media (min-width: 768px) {
+    :root {
+      --header-height: 112px;
+    }
+  }
+
+  html {
+    scroll-padding-top: calc(var(--header-height) + 16px);
+  }
+
+  body {
+    @apply bg-page font-sans text-ink;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary-950;
+  }
+}
+
+@layer components {
+  .ds-container {
+    @apply mx-auto w-full max-w-page px-4 tb:px-8;
+  }
+  .ds-container-content {
+    @apply mx-auto w-full max-w-content px-4 tb:px-8;
+  }
+  .ds-container-prose {
+    @apply mx-auto w-full max-w-prose px-4 tb:px-8;
+  }
+  .ds-section {
+    @apply py-12 tb:py-20;
+  }
+  .ds-eyebrow {
+    @apply mb-2 text-[13px] font-bold tracking-[2px] text-accent;
+  }
+  .ds-h1 {
+    @apply text-[clamp(28px,4vw,44px)] font-extrabold leading-tight;
+  }
+  .ds-h2 {
+    @apply text-[clamp(22px,2.8vw,32px)] font-extrabold leading-tight;
+  }
+  .ds-h3 {
+    @apply text-lg font-bold leading-snug tb:text-xl;
+  }
+  .ds-body {
+    @apply text-base leading-[1.85] text-ink-soft;
+  }
+  .ds-muted {
+    @apply text-sm leading-relaxed text-ink-muted;
+  }
+  .ds-card {
+    @apply overflow-hidden rounded-card border border-line bg-surface;
+  }
+  .ds-card-interactive {
+    @apply ds-card transition duration-200 hover:-translate-y-0.5 hover:border-primary-950/20 hover:shadow-lift;
+  }
+  .ds-link {
+    @apply font-bold text-primary-950 underline-offset-4 transition-colors hover:text-accent-strong hover:underline;
   }
 }
 

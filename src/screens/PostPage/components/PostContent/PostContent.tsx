@@ -15,7 +15,7 @@ export const PostContent = ({
   countrySlug,
   place,
 }: PostContentProps): JSX.Element => (
-  <article className="border-dw-grey flex flex-1 flex-col gap-3 sm:overflow-hidden sm:rounded-xl sm:border-2">
+  <article className="flex min-w-0 max-w-[820px] flex-1 flex-col gap-6">
     <PostHeader
       title={data.title}
       createdAt={data._createdAt}
@@ -25,7 +25,7 @@ export const PostContent = ({
       countrySlug={countrySlug}
       place={place}
     />
-    <section className="tb:px-4 tb:text-xl flex flex-col gap-2 pb-8 text-lg sm:px-2">
+    <section className="flex flex-col gap-4 pb-8 text-[17px] leading-[1.85] text-ink-soft tb:text-lg">
       <PortableText value={data.body} components={RichTextComponents} />
     </section>
   </article>

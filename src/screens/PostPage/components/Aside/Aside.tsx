@@ -9,10 +9,10 @@ interface AsideProps {
 }
 
 export const Aside = ({ countrySlug, postSlug }: AsideProps): JSX.Element => (
-  <aside className="sticky top-20 flex h-fit w-96 flex-col gap-1 pt-2 max-lg:w-72 max-md:hidden">
-    <h2 className="text-base font-bold">שתף עם חבריך!</h2>
+  <aside className="sticky top-[calc(var(--header-height)+24px)] flex h-fit w-72 flex-col items-start gap-4 rounded-card border border-line bg-white p-6 max-md:hidden lg:w-80">
+    <h2 className="text-base font-extrabold">שתף עם חבריך!</h2>
     <Share
-      url={buildRoutePath(Routes.COUNTRY, countrySlug, Routes.BLOG, postSlug)}
+      url={`/${buildRoutePath(Routes.COUNTRY, countrySlug, Routes.BLOG, postSlug)}`}
     />
   </aside>
 );

@@ -1,4 +1,5 @@
 import React from 'react';
+import { absoluteUrl, ogImages } from '@/metadata';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import SriLankaBImage from '@/assets/images/sriLankaB.jpg';
@@ -7,7 +8,6 @@ import JapanBImage from '@/assets/images/japanB.jpg';
 import CountriesJSON from '@/constants/content/countries.json';
 import { Routes } from '@/routes';
 import { allCountries } from '@/routes/routes.types';
-import { WEBSITE_URL } from '@/constants';
 import { Blogs } from '@/screens/Blogs';
 import { getPostsByCountry } from '@/sanity/queries/post/post.client';
 
@@ -41,18 +41,34 @@ export async function generateMetadata({
   }
 
   const { title } = CountriesJSON[country];
+  const pageTitle = `בלוג הטיולים ל${title}`;
+  const description = `מאמרים, טיפים והמלצות לטיול ל${title} – כל מה שכדאי לדעת לפני שנוסעים, מאת צוות FlySan.`;
+  const url = absoluteUrl(`/country/${country}/blog`);
 
   return {
-    title: `מידע על ${title}`,
+    title: pageTitle,
+    description,
+    alternates: {
+      canonical: url,
+    },
     authors: {
       name: 'FlySan',
-      url: `${WEBSITE_URL}/${country}/blog`,
+      url,
     },
     openGraph: {
-      title: `מידע על ${title}`,
+      images: ogImages,
+      title: pageTitle,
+      description,
+      url,
+      siteName: 'FlySan',
+      type: 'website',
+      locale: 'he_IL',
     },
     twitter: {
-      title: `מידע על ${title}`,
+      images: ogImages,
+      title: pageTitle,
+      description,
+      card: 'summary_large_image',
     },
   };
 }

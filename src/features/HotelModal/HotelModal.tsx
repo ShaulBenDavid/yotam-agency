@@ -10,14 +10,13 @@ import {
   Pagination,
 } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { CgCloseO } from 'react-icons/cg';
 import { MdPlace } from 'react-icons/md';
 import { ARIA_HOTEL_INFO_MODAL } from '@/components/HotelCard';
 import { Modal } from '@/components/Modal';
+import { ModalCloseButton } from '@/components/ModalCloseButton';
 import { Hotel } from '@/sanity/types';
 import { forUrl } from '@/sanity/sanity.utils';
 import { Rating } from '@/components/Rating';
-import S from './style.module.css';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
@@ -49,8 +48,8 @@ export const HotelModal = ({
   return (
     <Modal ref={ref} closeModal={onClose} id={ARIA_HOTEL_INFO_MODAL}>
       {data && mainImage ? (
-        <div className="relative flex w-[90vw] max-w-[700px] flex-col rounded-md shadow-card">
-          <div className={S.customPagination}>
+        <div className="relative flex w-full flex-col tb:w-[min(90vw,640px)]">
+          <div className="w-full bg-tint [--swiper-navigation-size:22px] [--swiper-pagination-bullet-inactive-color:#ffffff] [--swiper-pagination-bullet-inactive-opacity:0.6] [--swiper-theme-color:#ffffff]">
             <Swiper
               autoplay={{
                 delay: 5000,
@@ -74,7 +73,7 @@ export const HotelModal = ({
                   unoptimized
                   width={0}
                   height={0}
-                  className="aspect-video max-h-72 w-full rounded-t-md object-cover object-top"
+                  className="aspect-video max-h-72 w-full object-cover object-top"
                 />
               </SwiperSlide>
               {gallery?.map(({ alt, asset }) => (
@@ -86,58 +85,56 @@ export const HotelModal = ({
                     unoptimized
                     width={0}
                     height={0}
-                    className="aspect-video max-h-72 w-full rounded-t-md object-cover object-center tb:object-contain"
+                    className="aspect-video max-h-72 w-full object-cover object-center tb:object-contain"
                   />
                 </SwiperSlide>
               ))}
             </Swiper>
           </div>
-          <button
-            aria-label="close modal"
-            onClick={onClose}
-            className="absolute right-2 top-2 z-10 rounded-full bg-primary-950 p-1"
-          >
-            <CgCloseO aria-hidden size={32} color="white" />
-          </button>
-          <div className="flex h-full flex-col p-2">
+          <ModalCloseButton onClose={onClose} />
+          <div className="flex h-full flex-col gap-3 p-5 tb:p-7">
             <h3
-              className="w-full pb-1 text-left text-base font-bold capitalize tb:text-xl"
+              className="w-full text-left text-lg font-extrabold capitalize leading-snug tb:text-xl"
               style={{ direction: 'ltr' }}
             >
               {title}
             </h3>
-            <p>{description}</p>
-            <a href={mapLink} target="_blank" rel="noopener noreferrer">
-              <address
-                className="first-capitalize flex flex-row gap-2 text-sm font-medium opacity-90"
-                style={{ direction: 'ltr' }}
-              >
-                <MdPlace size={16} aria-hidden className="shrink-0" />
-                {address}
-              </address>
-            </a>
             <div
-              className="flex flex-row items-center gap-2 py-1"
+              className="flex flex-row items-center gap-2"
               style={{ direction: 'ltr' }}
             >
               <span
                 aria-label={`Hotel rate - ${reviewScore}`}
-                className="w-fit min-w-8 rounded-md bg-primary-950 p-1 text-center text-base font-semibold text-white"
+                className="min-w-9 rounded-card bg-primary-950 px-2 py-0.5 text-center text-sm font-bold text-white"
               >
                 {reviewScore}
               </span>
-              <div>
-                <Rating rate={starRating as number} />
-              </div>
+              <Rating rate={starRating as number} />
             </div>
-            <div className="flex flex-row items-end justify-between gap-2 py-2">
-              {price && (
-                <span aria-label="price">
-                  <strong>החל מ-</strong> {price}
-                </span>
-              )}
-            </div>
-            <Contact />
+            <p className="ds-body text-[15px]">{description}</p>
+            <a
+              href={mapLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-ink-muted transition-colors hover:text-primary-950"
+            >
+              <address
+                className="first-capitalize flex flex-row gap-1.5 text-sm not-italic leading-relaxed"
+                style={{ direction: 'ltr' }}
+              >
+                <MdPlace size={16} aria-hidden className="mt-0.5 shrink-0" />
+                {address}
+              </address>
+            </a>
+            {price && (
+              <span aria-label="price" className="text-[15px] text-ink-soft">
+                <strong className="text-ink">החל מ-</strong> {price}
+              </span>
+            )}
+            <Contact
+              tone="onLight"
+              className="mt-2 justify-start border-t border-line-soft pt-5 max-sm:flex-col max-sm:items-stretch max-sm:[&_a]:w-full"
+            />
           </div>
         </div>
       ) : null}

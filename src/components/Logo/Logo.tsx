@@ -1,11 +1,31 @@
 import React from 'react';
 
+export type LogoTone = 'light' | 'dark';
+
 interface LogoProps {
   width?: number;
+  tone?: LogoTone;
+  className?: string;
 }
 
-export const Logo = ({ width = 150 }: LogoProps): JSX.Element => (
+const wordmarkFillByTone: Record<LogoTone, string> = {
+  light: '#FBFBFC',
+  dark: '#071952',
+};
+
+export const Logo = ({
+  width = 150,
+  tone = 'light',
+  className,
+}: LogoProps): JSX.Element => {
+  const wordmarkFill = wordmarkFillByTone[tone];
+
+  return (
   <svg
+    className={className}
+    role="img"
+    aria-label="FlySan"
+
     version="1.1"
     id="Layer_1"
     xmlns="http://www.w3.org/2000/svg"
@@ -16,7 +36,7 @@ export const Logo = ({ width = 150 }: LogoProps): JSX.Element => (
     enableBackground="new 0 0 739 231"
   >
     <path
-      fill="#FBFBFC"
+      fill={wordmarkFill}
       opacity="1.000000"
       stroke="none"
       d="
@@ -46,7 +66,7 @@ M315.195801,136.000107
 z"
     />
     <path
-      fill="#FAFAFC"
+      fill={wordmarkFill}
       opacity="1.000000"
       stroke="none"
       d="
@@ -76,7 +96,7 @@ M408.480438,113.487991
 z"
     />
     <path
-      fill="#F8F8FB"
+      fill={wordmarkFill}
       opacity="1.000000"
       stroke="none"
       d="
@@ -105,7 +125,7 @@ M79.285667,181.838440
 z"
     />
     <path
-      fill="#F6F6F9"
+      fill={wordmarkFill}
       opacity="1.000000"
       stroke="none"
       d="
@@ -145,7 +165,7 @@ M479.977417,65.912003
 z"
     />
     <path
-      fill="#FAFAFB"
+      fill={wordmarkFill}
       opacity="1.000000"
       stroke="none"
       d="
@@ -169,7 +189,7 @@ M577.782471,139.000290
 z"
     />
     <path
-      fill="#FBFBFC"
+      fill={wordmarkFill}
       opacity="1.000000"
       stroke="none"
       d="
@@ -361,4 +381,5 @@ M523.202026,110.336807
 z"
     />
   </svg>
-);
+  );
+};

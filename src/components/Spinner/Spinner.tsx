@@ -14,7 +14,7 @@ export const Spinner = ({
   <div role="status">
     <svg
       aria-hidden="true"
-      className={`animate-spin text-wizard-grey text-opacity-40 ${spinnerSizesConfig[size]} ${spinnerVariantConfig[variant]} `}
+      className={`animate-spin text-line ${spinnerSizesConfig[size]} ${spinnerVariantConfig[variant]} `}
       viewBox="0 0 100 101"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

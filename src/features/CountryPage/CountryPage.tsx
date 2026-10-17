@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { FaHotel } from 'react-icons/fa';
 import { MdOutlineAttractions } from 'react-icons/md';
 import { FcCloseUpMode } from 'react-icons/fc';
@@ -10,7 +11,11 @@ import { forUrl } from '@/sanity/sanity.utils';
 import { Routes } from '@/routes';
 import { CitiesSection } from './CitiesSection';
 import { ShareWithFriends } from '../ShareWithFriends';
-import { ButtonLink } from '@/components/ButtonLink';
+import { Section } from '@/components/Section';
+import { SectionHeader } from '@/components/SectionHeader';
+
+const infoTileClassName =
+  'group flex min-h-24 flex-col items-center justify-center gap-3 rounded-card bg-tint px-4 py-6 text-center text-[17px] font-bold text-primary-950 transition hover:-translate-y-0.5 hover:bg-primary-950 hover:text-white tb:min-h-32';
 
 interface CountryPageProps {
   name: string;
@@ -36,38 +41,35 @@ export const CountryPage = ({
   );
 
   return (
-    <div
-      className="flex flex-col items-center gap-2 pb-8 tb:gap-2"
-      tabIndex={-1}
-      id={slug}
-    >
-      <Intro title={name} image={image} maxHeight="400px" />
-      <div className="max-w-[900px] py-2 tb:py-4">
-        <p className="app-p">{description}</p>
-      </div>
-      <FcCloseUpMode size={50} aria-hidden />
+    <div className="flex flex-col" tabIndex={-1} id={slug}>
+      <Intro title={name} image={image} minHeight="260px" maxHeight="460px" />
+      <Section width="prose" className="pb-0 tb:pb-0">
+        <p className="ds-body text-[17px]">{description}</p>
+        <FcCloseUpMode size={44} aria-hidden className="mx-auto mt-8" />
+      </Section>
       {!!transformedCitiesLink?.length && (
         <CitiesSection countryName={name} cities={transformedCitiesLink} />
       )}
-      <section className="flex flex-col items-center gap-2 py-2 tb:py-4">
-        <h2 className="app-h2">למידע נוסף</h2>
-        <div className="flex flex-row flex-wrap justify-center gap-2">
-          <ButtonLink href={`${slug}/${Routes.HOTELS}`} width="fit-content">
-            בתי במלון <FaHotel aria-hidden className="mr-2" size={24} />
-          </ButtonLink>
-          <ButtonLink
+      <Section className="pt-0 tb:pt-0">
+        <SectionHeader title="למידע נוסף" />
+        <div className="grid grid-cols-1 gap-3 xs:grid-cols-3 tb:gap-5">
+          <Link href={`${slug}/${Routes.HOTELS}`} className={infoTileClassName}>
+            <FaHotel aria-hidden size={26} />
+            בתי במלון
+          </Link>
+          <Link
             href={`${slug}/${Routes.ATTRACTIONS}`}
-            width="fit-content"
+            className={infoTileClassName}
           >
+            <MdOutlineAttractions aria-hidden size={28} />
             אטרקציות
-            <MdOutlineAttractions aria-hidden className="mr-2" size={24} />
-          </ButtonLink>
-          <ButtonLink href={`${slug}/${Routes.BLOG}`} width="fit-content">
+          </Link>
+          <Link href={`${slug}/${Routes.BLOG}`} className={infoTileClassName}>
+            <LuBookOpenText aria-hidden size={26} />
             בלוגים
-            <LuBookOpenText aria-hidden className="mr-2" size={24} />
-          </ButtonLink>
+          </Link>
         </div>
-      </section>
+      </Section>
       <ShareWithFriends url={`/${Routes.COUNTRY}/${slug}`} />
     </div>
   );

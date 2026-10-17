@@ -14,7 +14,10 @@ export const PostPage = ({
   countrySlug,
   countryName,
 }: PostPageProps): JSX.Element => (
-  <div id="page-content" className="flex flex-row justify-between gap-4">
+  <div
+    id="page-content"
+    className="ds-container flex flex-row justify-between gap-8 py-6 tb:py-10 lg:gap-12"
+  >
     <PostContent
       data={postData}
       countrySlug={countrySlug}

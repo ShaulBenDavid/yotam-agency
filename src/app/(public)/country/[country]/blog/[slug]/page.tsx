@@ -1,4 +1,5 @@
 import React from 'react';
+import { absoluteUrl, ogImages, truncateDescription } from '@/metadata';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import SriLankaBImage from '@/assets/images/sriLankaB.jpg';
@@ -7,11 +8,12 @@ import JapanBImage from '@/assets/images/japanB.jpg';
 import CountriesJSON from '@/constants/content/countries.json';
 import { getAllPostsSlug, getPost } from '@/sanity/queries/post/post.client';
 import { Post } from '@/sanity/types';
-import { WEBSITE_URL } from '@/constants';
 import { Routes } from '@/routes';
 import { PostPageResponse } from '@/sanity/queries/post';
 import { countries } from '@/routes/routes.types';
 import { PostPage } from '@/screens/PostPage';
+import { ArticleJsonLd } from '@/components/JsonLd';
+import { forUrl } from '@/sanity/sanity.utils';
 
 const images = {
   [Routes.SRI_LANKA]: SriLankaBImage,
@@ -42,22 +44,35 @@ export async function generateMetadata({
   params,
 }: BlogPageProps): Promise<Metadata> {
   const { country, slug } = await params;
-  const { title, description }: PostPageResponse = await getPost(slug);
+  const { title, description: rawDescription }: PostPageResponse =
+    await getPost(slug);
+  const description = truncateDescription(rawDescription);
+  const url = absoluteUrl(`/country/${country}/blog/${slug}`);
 
   return {
     title,
     description,
+    alternates: {
+      canonical: url,
+    },
     authors: {
       name: 'Flysan',
-      url: `${WEBSITE_URL}/${country}/blog/${slug}`,
+      url,
     },
     openGraph: {
+      images: ogImages,
       title,
       description,
+      url,
+      siteName: 'FlySan',
+      type: 'article',
+      locale: 'he_IL',
     },
     twitter: {
+      images: ogImages,
       title,
       description,
+      card: 'summary_large_image',
     },
   };
 }
@@ -74,7 +89,19 @@ const BlogPage = async ({ params }: BlogPageProps): Promise<JSX.Element> => {
     notFound();
   }
 
-  return <PostPage postData={post} countryName={title} countrySlug={country} />;
+  return (
+    <>
+      <ArticleJsonLd
+        headline={post.title}
+        description={truncateDescription(post.description)}
+        imageUrl={post.mainImage ? forUrl(post.mainImage).url() : undefined}
+        datePublished={post._createdAt}
+        dateModified={post._updatedAt}
+        url={absoluteUrl(`/country/${country}/blog/${slug}`)}
+      />
+      <PostPage postData={post} countryName={title} countrySlug={country} />
+    </>
+  );
 };
 
 export default BlogPage;

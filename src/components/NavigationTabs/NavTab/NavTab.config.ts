@@ -1,2 +1,2 @@
 export const NavLinkAnimation =
-  'before:absolute before:rounded-[10px] before:top-7 before:w-0 before:h-1 before:bg-primary-950 before:-translate-x-2/4 before:left-2/4 before:hover:w-3 before:transition-all';
+  'before:absolute before:bottom-0 before:right-0 before:h-0.5 before:w-0 before:rounded-full before:bg-accent before:transition-all before:duration-200 hover:before:w-full';

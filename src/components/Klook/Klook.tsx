@@ -20,7 +20,7 @@ export const KlookWidget = ({ cid }: KlookWidgetProps) => {
   }, []);
 
   return (
-    <div className="h-fit w-full flex-shrink-0">
+    <div className="ds-container h-fit flex-shrink-0 py-6">
       <ins
         className="klk-aff-widget"
         data-adid="995372"

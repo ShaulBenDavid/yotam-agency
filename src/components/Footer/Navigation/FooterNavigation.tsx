@@ -7,20 +7,14 @@ import { footerNavigationConfig } from './FooterNavigation.config';
 
 export const FooterNavigation = (): JSX.Element => (
   <nav
-    className="md:flex md:justify-between"
+    className="flex flex-col gap-10 tb:flex-row tb:justify-between"
     id="footer-nav"
     aria-label="Footer"
   >
-    <div className="mb-6 md:mb-0">
-      <Link
-        href={Routes.ROOT}
-        className="bg-primary-950 flex w-fit items-center rounded-md"
-        passHref
-      >
-        <Logo />
-      </Link>
-    </div>
-    <ul className="grid grid-cols-2 gap-8 sm:grid-cols-2 sm:gap-6">
+    <Link href={Routes.ROOT} className="w-fit" aria-label="FlySan - דף הבית">
+      <Logo width={140} />
+    </Link>
+    <ul className="grid grid-cols-2 gap-8 tb:gap-20">
       {footerNavigationConfig.map(({ name, links, isOutSourceLinks }) => (
         <li key={name}>
           <NavigationColumn
