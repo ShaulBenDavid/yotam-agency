@@ -4,6 +4,7 @@
 
 @layer base {
   :root {
+    --font-sans: 'Noto Sans Hebrew Variable';
     --color-page: oklch(98% 0.004 70);
     --color-surface: #ffffff;
     --color-tint: oklch(95% 0.014 255);

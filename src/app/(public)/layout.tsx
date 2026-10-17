@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
-import { Noto_Sans_Hebrew } from 'next/font/google';
+import '@fontsource-variable/noto-sans-hebrew';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { AppProviders } from '@/providers';
@@ -8,13 +8,6 @@ import { defaultMetadata } from '@/metadata';
 import { OrganizationJsonLd } from '@/components/JsonLd';
 import theme from '@/styles/tailwind.theme';
 import '@/styles/global.css';
-
-const notoSansHebrew = Noto_Sans_Hebrew({
-  subsets: ['hebrew', 'latin'],
-  weight: ['400', '500', '600', '700', '800'],
-  display: 'swap',
-  variable: '--font-sans',
-});
 
 export const metadata: Metadata = defaultMetadata;
 
@@ -28,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="he" dir="rtl" className={notoSansHebrew.variable}>
+    <html lang="he" dir="rtl">
       <script src="https://elfsightcdn.com/platform.js" async></script>
       {process.env.NODE_ENV === 'production' && (
         <>
